@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+  <definition name="common" template="/WEB-INF/view/include/main.jsp">   
+  	<put-attribute name="head" value="/WEB-INF/view/include/head.jsp" /> 
+    <put-attribute name="header" value="/WEB-INF/view/include/header.jsp" />    
+    <put-attribute name="tab" value="" />
+  </definition>
+  
+  <definition name="login" template="/WEB-INF/view/login.jsp" >  	
+  </definition>
+  
+  <definition name="error" extends="common" >   
+  	<put-attribute name="title" value="Error" />
+  	<put-attribute name="body" value="/WEB-INF/view/error.jsp" />    
+  	<put-attribute name="current" value="error" />
+  </definition>
+  
+  <definition name="index" extends="common" >   
+  	<put-attribute name="title" value="HOME" />
+  	<put-attribute name="body" value="/WEB-INF/view/index.jsp" />    
+  	<put-attribute name="current" value="index" />
+  </definition>
+  
+  <definition name="usermgt" extends="common" >   
+  	<put-attribute name="title" value="User" />
+  	<put-attribute name="body" value="/WEB-INF/view/admin/userdashboard.jsp" />
+  	<put-attribute name="current" value="user" />
+  	<put-attribute name="tab" value="administrator" />     
+  </definition>
+  
+  <definition name="newuser" extends="common" >   
+  	<put-attribute name="title" value="User" />
+  	<put-attribute name="body" value="/WEB-INF/view/admin/newuser.jsp" />
+  	<put-attribute name="current" value="user" />     
+  	<put-attribute name="tab" value="administrator" />
+  </definition>
+  
+  <definition name="edituser" extends="common" >   
+  	<put-attribute name="title" value="User" />
+  	<put-attribute name="body" value="/WEB-INF/view/admin/edituser.jsp" />
+  	<put-attribute name="current" value="user" />     
+  	<put-attribute name="tab" value="administrator" />
+  </definition>
+  
+</tiles-definitions>
