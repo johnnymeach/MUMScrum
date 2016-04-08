@@ -24,13 +24,6 @@
   	<put-attribute name="current" value="index" />
   </definition>
   
-  <definition name="usermgt" extends="common" >   
-  	<put-attribute name="title" value="User" />
-  	<put-attribute name="body" value="/WEB-INF/view/admin/userdashboard.jsp" />
-  	<put-attribute name="current" value="user" />
-  	<put-attribute name="tab" value="administrator" />     
-  </definition>
-  
   <definition name="newuser" extends="common" >   
   	<put-attribute name="title" value="User" />
   	<put-attribute name="body" value="/WEB-INF/view/admin/newuser.jsp" />
