@@ -1,13 +1,7 @@
 package org.mum.scrum.repositories;
 
-import java.util.Set;
-
 import org.mum.scrum.entities.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
-
 
 public interface RoleRepository extends JpaRepository<Role,Integer> {
 //	public Set<Role> findByStatus(Byte status);
