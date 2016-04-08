@@ -26,14 +26,14 @@
   
   <definition name="newuser" extends="common" >   
   	<put-attribute name="title" value="User" />
-  	<put-attribute name="body" value="/WEB-INF/view/admin/newuser.jsp" />
+  	<put-attribute name="body" value="/WEB-INF/view/user/createUser.jsp" />
   	<put-attribute name="current" value="user" />     
   	<put-attribute name="tab" value="administrator" />
   </definition>
   
   <definition name="edituser" extends="common" >   
   	<put-attribute name="title" value="User" />
-  	<put-attribute name="body" value="/WEB-INF/view/admin/edituser.jsp" />
+  	<put-attribute name="body" value="/WEB-INF/view/user/edituser.jsp" />
   	<put-attribute name="current" value="user" />     
   	<put-attribute name="tab" value="administrator" />
   </definition>

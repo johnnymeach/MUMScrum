@@ -23,7 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-public class MainController {
+public class LoginController {
 			
 	@Autowired
 	private IAdmin adminService;
@@ -134,45 +134,4 @@ public class MainController {
 		return model;
 	}
 	
-//	@Transactional
-//	@RequestMapping(value =  "/changepwd", method = RequestMethod.POST)	
-//	public String processChangePassword(@RequestParam String oldpwd,@RequestParam String newpwd,Model model,Principal principal) {
-//		if(oldpwd.isEmpty() || newpwd.isEmpty()){
-//			model.addAttribute("error","Invalid password and new password");
-//			return "changepwd";
-//		}
-//		if(checkPassword(oldpwd, principal)=="false"){
-//			model.addAttribute("error","Current Password is not correct");
-//			return "changepwd";
-//		}
-//		
-//		User user=hrService.findEmployeeByUserName(principal.getName());				
-//		
-//		
-//		BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();		
-//		user.setPassword(encoder.encode(newpwd));
-//
-//		Calendar cal = Calendar.getInstance(); 
-//		cal.add(Calendar.MONTH, 3);
-//		Date pwdEx=new Date();
-//	    pwdEx=cal.getTime();
-//	    user.setPwdExpiredDate(pwdEx);
-//	    user.setSynDate(new Date());
-//	    user.setOperator(principal.getName());
-//	    user.setFirstLogin(false);
-//	    hrService.updateEmployee(user);	    	   
-//		
-//	    model.addAttribute("success","Password change successfully!");
-//		return "changepwd";
-//	}
-//	
-//	@RequestMapping(value =  "/check-password", method = RequestMethod.POST)
-//	@ResponseBody
-//	public String checkPassword(@RequestParam String password,Principal principal) {		
-//		
-//		BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
-//		User user=hrService.findEmployeeByUserName(principal.getName());
-//		Boolean isMatch=encoder.matches(password, user.getPassword());
-//		return isMatch.toString();
-//	}
 }
