@@ -23,13 +23,21 @@
 	                    <div class="panel-body">
 	                            <fieldset>
 	                                <div class="form-group">
-	                                	<input type="text" name="email" class="form-control" placeholder="Email" autofocus />
-	                                    <p class="errorLabel"></p>
+	                                	<input type="text" name="email" class="form-control" placeholder="Email" autofocus required />
 	                                </div>
 	                                <div class="form-group">
-	                                	<input type="password" class="form-control" name="password" placeholder="password" />
-	                                    <p class="errorLabel"></p>
-	                                    <small class="text-muted text-center">Note: Password is case sensitive</small>
+	                                	<input type="password" class="form-control" name="password" placeholder="password" required />
+	                                    <p class="errorLabel">
+	                                    	<c:if test="${not empty error}">
+											  <div class="text-danger">${error}</div>
+											  </c:if>
+											  <c:if test="${not empty msg}">
+											  <div class="text-success">${msg}</div>
+											  </c:if>
+											  <c:if test="${not empty expire}">
+											  <div class="text-danger">${expire}</div>
+											 </c:if>
+	                                    </p>
 	                                </div>
 	                                <p id="forgotPassword"><a href="#">Forgot your password?</a></p>
 	                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Login" />
@@ -39,6 +47,7 @@
 	                </div>
 	            </div>
 	        </div>
+	         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>
 </body>
 </html>

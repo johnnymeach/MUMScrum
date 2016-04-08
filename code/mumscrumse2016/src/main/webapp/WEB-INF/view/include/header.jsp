@@ -8,11 +8,11 @@
 					<div class="dropdown navbar-right">
 					  	<a data-toggle="dropdown" href="#">
 					  		<span class="imgProfile"><i class="fa fa-user"></i></span>
-					  		<span class="name" style="text-transform: capitalize">${pageContext.request.userPrincipal.name} </span> &nbsp;<i class="fa fa-angle-down"></i>
+					  		<span class="name">${pageContext.request.userPrincipal.name} </span> &nbsp;<i class="fa fa-angle-down"></i>
 					  	</a>
 					  	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 					   	 	<li><a href="#"><i class="fa fa-credit-card"></i> <span>Profile</span></a></li>
-					   	 	<li><a href="<c:url value="/changepwd"/>"><i class="fa fa-cogs"></i> <span>Change Password</span></a></li>				   	 	
+					   	 	<li><a href="#"><i class="fa fa-cogs"></i> <span>Change Password</span></a></li>				   	 	
 					   	 	<li class="divider"></li>
 					   	 	<li>
 					   	 	<c:url value="/logout" var="logoutUrl" />
