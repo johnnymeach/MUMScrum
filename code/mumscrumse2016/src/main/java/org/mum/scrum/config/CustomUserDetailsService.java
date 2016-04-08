@@ -23,10 +23,7 @@ import org.mum.scrum.entities.EmployeeRole;
 import org.mum.scrum.entities.SecurityUser;
 import org.mum.scrum.services.IAdminSubSystem;
 
-/**
- * @author Sam
- *
- */
+
 @Service("userDetailsService")
 public class CustomUserDetailsService implements UserDetailsService{
 

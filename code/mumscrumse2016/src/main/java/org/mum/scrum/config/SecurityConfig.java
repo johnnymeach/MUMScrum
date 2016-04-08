@@ -22,10 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-/**
- * @author Sam
- *
- */
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true) 
@@ -88,7 +85,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 			.and()			
 		.logout()				
 			.logoutSuccessUrl("/login?logout")	
-//			.logoutSuccessHandler(customLogoutSuccessHandler)
 			.deleteCookies("JSESSIONID")				
 			.and()
 		.headers()

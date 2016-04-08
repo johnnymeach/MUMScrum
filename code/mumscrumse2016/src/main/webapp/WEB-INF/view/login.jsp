@@ -7,11 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login MUM Scrum System</title>
 <link href="<c:url value="/resources/bootstrap-3.3.6/css/bootstrap.min.css" />" rel="stylesheet" >
+<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet" >
 <script src="<c:url value="/resources/js/jquery-1.11.3.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/bootstrap-3.3.6/jsbootstrap.min.js"/>" type="text/javascript"></script>
 </head>
 <body>
-	<form name="loginForm" action="">
+	<form name="loginForm" action="/login" method="post">
 		<div class="container" style="margin-top: 100px;">
 	        <div class="row">
 	            <div class="col-md-6 col-md-offset-3">
@@ -22,11 +23,11 @@
 	                    <div class="panel-body">
 	                            <fieldset>
 	                                <div class="form-group">
-	                                	<label>Email: </label><input type="text" name="email" class="form-control" placeholder="Email" autofocus />
+	                                	<input type="text" name="email" class="form-control" placeholder="Email" autofocus />
 	                                    <p class="errorLabel"></p>
 	                                </div>
 	                                <div class="form-group">
-	                                	<label>Password: </label><input type="password" class="form-control" name="password" placeholder="password" />
+	                                	<input type="password" class="form-control" name="password" placeholder="password" />
 	                                    <p class="errorLabel"></p>
 	                                    <small class="text-muted text-center">Note: Password is case sensitive</small>
 	                                </div>
