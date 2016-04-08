@@ -6,7 +6,7 @@ import java.util.Set;
 
 import org.mum.scrum.entities.User;
 
-public interface IAdminSubSystem {
+public interface IAdmin {
 
 	public List<User> findAll();
 

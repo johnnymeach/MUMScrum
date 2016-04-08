@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class AdminSubsystemService implements IAdminSubSystem
+public class AdminService implements IAdmin
 {
 	//private UserDao userDao;
 	

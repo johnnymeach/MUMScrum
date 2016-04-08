@@ -1,13 +1,8 @@
 package org.mum.scrum.web.controllers;
 
-import java.security.Principal;
-import java.util.Calendar;
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 
-import org.mum.scrum.entities.User;
-import org.mum.scrum.services.IAdminSubSystem;
+import org.mum.scrum.services.IAdmin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -17,9 +12,7 @@ import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class MainController {
 			
 	@Autowired
-	private IAdminSubSystem hrService;
+	private IAdmin adminService;
 	
 	@ExceptionHandler(ResourceNotFoundException.class)
     public String handleResourceNotFoundException() {
