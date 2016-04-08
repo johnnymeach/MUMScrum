@@ -1,7 +1,12 @@
 @CHARSET "ISO-8859-1";
 
 body{
-	margin: 25px;
+	margin: 10px;
+}
+#header-wrapper{
+	border: 1px solid red;
+	height: 100px;
+    padding: 15px;
 }
 #forgotPassword{
   text-align: right;
