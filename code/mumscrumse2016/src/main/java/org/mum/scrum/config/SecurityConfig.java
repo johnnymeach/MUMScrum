@@ -80,7 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 		.formLogin()
 			.loginPage("/login").failureUrl("/login?error")	
 			.successHandler(myAuthenticationSuccessHandler)
-			.usernameParameter("username")
+			.usernameParameter("email")
 			.passwordParameter("password")
 			.and()			
 		.logout()				

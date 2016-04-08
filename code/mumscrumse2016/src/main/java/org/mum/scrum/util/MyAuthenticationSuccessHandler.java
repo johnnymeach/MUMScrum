@@ -27,8 +27,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler  {
 
-	@Autowired
-	private IAdminSubSystem hrService;
 			
 	
 	@Override
@@ -36,30 +34,10 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
             HttpServletResponse response, Authentication authentication) 
             throws ServletException, IOException {
         
-		UserDetails userDetails=(UserDetails) authentication.getPrincipal();		
-		
-		Authentication auth = new UsernamePasswordAuthenticationToken(authentication.getPrincipal(), 
-				authentication.getCredentials(), buildUserAuthority(hrService.findEmployeeRoleByEmployee(userDetails.getUsername())));
-		SecurityContextHolder.getContext().setAuthentication(auth);
        	super.onAuthenticationSuccess(request, response, authentication);
         
     }
 	
-	private List<GrantedAuthority> buildUserAuthority(Set<EmployeeRole> userRoles) {
-
-		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
-
-		// Build user's authorities
-		for (EmployeeRole userRole : userRoles) {	
-				setAuths.add(new SimpleGrantedAuthority(userRole.getRole().getRoleName()));
-//			}
-		}
-
-		List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
-
-		return Result;
-	}
-	        
 	
 	
 	

@@ -12,7 +12,7 @@
 <script src="<c:url value="/resources/bootstrap-3.3.6/jsbootstrap.min.js"/>" type="text/javascript"></script>
 </head>
 <body>
-	<form name="loginForm" action="/login" method="post">
+	<form name="loginForm" action="<c:url value="/login"/>" method="post">
 		<div class="container" style="margin-top: 100px;">
 	        <div class="row">
 	            <div class="col-md-6 col-md-offset-3">

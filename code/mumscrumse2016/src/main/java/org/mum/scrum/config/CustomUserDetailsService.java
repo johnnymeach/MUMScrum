@@ -26,46 +26,29 @@ import org.mum.scrum.services.IAdminSubSystem;
 public class CustomUserDetailsService implements UserDetailsService{
 
 	@Autowired
-	private IAdminSubSystem hrService;
+	private IAdminSubSystem adminService;
 	
 	
 	@Override
 	@Transactional(readOnly=true)
-	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
-		return null;
+	public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {		
 		
-//		org.mum.scrum.entities.User user = hrService.findEmployeeByUserName(username);
-//		if(user==null) throw new UsernameNotFoundException("user not found!");
-////		List<GrantedAuthority> authorities = buildUserAuthority(hrService.findEmployeeRoleByEmployee(username));
-//		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-//		return buildUserForAuthentication(user, authorities);
-//		user.setEmployeeRoles(user.getEmployeeRoles());
-//		return new SecurityUser(user);
+		org.mum.scrum.entities.User user = adminService.findUserByEmail(email);
+		if(user==null) throw new UsernameNotFoundException("user not found!");
+		
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		authorities.add(new SimpleGrantedAuthority(user.getRole().getName()));
+		return buildUserForAuthentication(user, authorities);
+
 		
 	}
 
 	// Converts com.pru.pruquote.model.User user to
 	// org.springframework.security.core.u0000-00-00serdetails.User
-//	private User buildUserForAuthentication(org.mum.scrum.entities.Users user, List<GrantedAuthority> authorities) {
-////		
-//		return new User(user.getUsername(), user.getPassword(), user.isEnabled(), true, true, !user.isLocked(), authorities);
-//	}
+	private User buildUserForAuthentication(org.mum.scrum.entities.User user, List<GrantedAuthority> authorities) {
+//		
+		return new User(user.getEmail(), user.getPassword(), user.getStatus(), true, true, true, authorities);
+	}
 
-//	private List<GrantedAuthority> buildUserAuthority(Set<EmployeeRole> userRoles) {
-
-//		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
-//
-//		// Build user's authorities
-//		for (EmployeeRole userRole : userRoles) {	
-////			Set<RolePermission> rolePermissions=securityService.rolePermissionFindByRoleNotDelete(userRole.getRole().getRoleId());
-////			for(RolePermission rolePermission : rolePermissions){
-//				setAuths.add(new SimpleGrantedAuthority(userRole.getRole().getRoleName()));
-////			}
-//		}
-//
-//		List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
-//
-//		return Result;
-//	}
 
 }
