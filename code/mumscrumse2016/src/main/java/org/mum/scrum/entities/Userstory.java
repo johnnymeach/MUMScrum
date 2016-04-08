@@ -1,5 +1,5 @@
 package org.mum.scrum.entities;
-// Generated Apr 7, 2016 10:07:25 PM by Hibernate Tools 3.6.0.Final
+// Generated Apr 7, 2016 10:43:04 PM by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -25,26 +25,26 @@ import javax.persistence.TemporalType;
 public class Userstory implements java.io.Serializable {
 
 	private Integer id;
-	private Sprints sprints;
+	private Sprint sprint;
 	private String name;
 	private String description;
 	private Integer estimatedTime;
 	private Boolean status;
 	private Date assignedDate;
-	private Set<Timelogs> timelogses = new HashSet<Timelogs>(0);
+	private Set<Timelog> timelogs = new HashSet<Timelog>(0);
 
 	public Userstory() {
 	}
 
-	public Userstory(Sprints sprints, String name, String description, Integer estimatedTime, Boolean status,
-			Date assignedDate, Set<Timelogs> timelogses) {
-		this.sprints = sprints;
+	public Userstory(Sprint sprint, String name, String description, Integer estimatedTime, Boolean status,
+			Date assignedDate, Set<Timelog> timelogs) {
+		this.sprint = sprint;
 		this.name = name;
 		this.description = description;
 		this.estimatedTime = estimatedTime;
 		this.status = status;
 		this.assignedDate = assignedDate;
-		this.timelogses = timelogses;
+		this.timelogs = timelogs;
 	}
 
 	@Id
@@ -61,12 +61,12 @@ public class Userstory implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "sprint_id")
-	public Sprints getSprints() {
-		return this.sprints;
+	public Sprint getSprint() {
+		return this.sprint;
 	}
 
-	public void setSprints(Sprints sprints) {
-		this.sprints = sprints;
+	public void setSprint(Sprint sprint) {
+		this.sprint = sprint;
 	}
 
 	@Column(name = "name", length = 100)
@@ -116,12 +116,12 @@ public class Userstory implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userstory")
-	public Set<Timelogs> getTimelogses() {
-		return this.timelogses;
+	public Set<Timelog> getTimelogs() {
+		return this.timelogs;
 	}
 
-	public void setTimelogses(Set<Timelogs> timelogses) {
-		this.timelogses = timelogses;
+	public void setTimelogs(Set<Timelog> timelogs) {
+		this.timelogs = timelogs;
 	}
 
 }
