@@ -1,6 +1,9 @@
 
 package org.mum.scrum.web.controllers;
 
+import java.util.List;
+
+import org.mum.scrum.services.ProjectManager;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +19,8 @@ public class ProjectController {
 
 		ModelAndView model = new ModelAndView();
 		model.setViewName("project");
-
+		List projects = ProjectManager.getAllProjects();
+		model.addObject("projects", projects);
 		return model;
 
 	}
