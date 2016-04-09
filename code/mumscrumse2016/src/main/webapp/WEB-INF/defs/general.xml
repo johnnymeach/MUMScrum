@@ -57,4 +57,8 @@
   	<put-attribute name="tab" value="administrator" />
   </definition>
   
+  <definition name="project" extends="common" >   
+  	<put-attribute name="title" value="User" />
+  	<put-attribute name="body" value="/WEB-INF/view/project/project.jsp" />
+  </definition>
 </tiles-definitions>
