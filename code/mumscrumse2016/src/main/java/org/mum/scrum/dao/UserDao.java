@@ -1,4 +1,4 @@
-package org.mum.scrum.repositories;
+package org.mum.scrum.dao;
 
 import org.mum.scrum.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;

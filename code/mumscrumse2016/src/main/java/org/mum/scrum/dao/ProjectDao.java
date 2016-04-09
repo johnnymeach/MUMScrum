@@ -1,4 +1,4 @@
-package org.mum.scrum.repositories;
+package org.mum.scrum.dao;
 
 import java.util.List;
 

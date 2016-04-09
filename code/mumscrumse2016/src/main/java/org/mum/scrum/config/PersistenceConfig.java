@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages="org.mum.scrum.repositories")
+@EnableJpaRepositories(basePackages="org.mum.scrum.dao")
 public class PersistenceConfig {
 
 	@Autowired

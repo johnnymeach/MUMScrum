@@ -29,27 +29,14 @@ class GlobalDefaultExceptionHandler {
         return "404";
     }
     
+    
     @ExceptionHandler(HttpSessionRequiredException.class)
     @ResponseStatus(value = HttpStatus.UNAUTHORIZED, reason="The session has expired")    
     public String handleSessionExpired(){        
       return "redirect:/login?expired";
     }
     
-       
-//    @ExceptionHandler
-//    @ResponseStatus(HttpStatus.NOT_FOUND)
-//    public ModelAndView handleException (NoSuchRequestHandlingMethodException ex) {
-//            ModelAndView mav = new ModelAndView("404");
-//            return mav;
-//    }
-    
-//    @ExceptionHandler
-//    @ResponseStatus(HttpStatus.NOT_FOUND)
-//    public ModelAndView handleExceptiond (NoHandlerFoundException ex) {
-//            ModelAndView mav = new ModelAndView("404");
-//            return mav;
-//    }
-    
+           
     @ResponseStatus(value=HttpStatus.NOT_FOUND)
     @ExceptionHandler(value=NoHandlerFoundException.class)
     public ModelAndView handleConflict(NoHandlerFoundException e,HttpServletRequest req) {

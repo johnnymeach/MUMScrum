@@ -1,8 +1,16 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 		<header class="header">
 				<div id="menu-toggle" class="btMenu" >
-					<i class="fa fa-bars"></i>
+					<i class="fa fa-bars"><a href="<c:url value="/"/>">Home</a></i>
+					<sec:authorize access="hasAnyRole('System Admin')">					
+					<i class="fa fa-bars"><a href="<c:url value="/createuser"/>">Create New User</a></i>
+					</sec:authorize>
+					<sec:authorize access="hasAnyRole('Scrum Master')">
+					<i class="fa fa-bars"><a href="<c:url value="/createsprint"/>">New Sprint</a></i>
+					</sec:authorize>
+					
 				</div>
 				<div class="dropdown-slide-animate">
 					<div class="dropdown navbar-right">

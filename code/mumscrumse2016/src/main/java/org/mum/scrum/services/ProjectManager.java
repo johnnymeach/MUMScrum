@@ -2,8 +2,9 @@ package org.mum.scrum.services;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.mum.scrum.dao.*;
 import org.mum.scrum.entities.*;
-import org.mum.scrum.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ProjectManager {
