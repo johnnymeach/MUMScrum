@@ -9,13 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @PreAuthorize("hasRole('System Admin')")
-public class UserController {
+public class ProjectController {
 
-	@RequestMapping(value = "/createuser", method = RequestMethod.GET)
+	@RequestMapping(value = "/project", method = RequestMethod.GET)
 	public ModelAndView createUser() {
 
 		ModelAndView model = new ModelAndView();
-		model.setViewName("newuser");
+		model.setViewName("project");
 
 		return model;
 

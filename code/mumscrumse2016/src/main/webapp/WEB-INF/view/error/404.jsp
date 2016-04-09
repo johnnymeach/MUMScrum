@@ -7,14 +7,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>About</title>
+<title>404 Page Not Found</title>
 </head>
 <body>
 <h2>${item.item}</h2>
 <c:forEach items="${item.itemitems}" var="itemitem">
 <p>${itemitem.itemLatin}</p>
 </c:forEach>
-<h1>404 NOT FOUND</h1>
+<div class="centerImage"><img src="<c:url value="/resources/img/404.png"/>" alt="404 Page Not Found" title="404 Page Not Found"></div>
 </body>
 </html>
  
