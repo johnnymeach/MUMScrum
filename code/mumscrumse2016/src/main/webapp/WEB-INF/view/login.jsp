@@ -18,7 +18,7 @@
 	            <div class="col-md-6 col-md-offset-3">
 	                <div class="panel panel-default">
 	                    <div class="panel-heading">
-	                        <h3 class="panel-title">Sign in</h3>
+	                        <h3 class="panel-title">MUM Scrum Management Tool</h3>
 	                    </div>
 	                    <div class="panel-body">
 	                            <fieldset>
@@ -26,7 +26,7 @@
 	                                	<input type="text" name="email" class="form-control" placeholder="Email" autofocus required />
 	                                </div>
 	                                <div class="form-group">
-	                                	<input type="password" class="form-control" name="password" placeholder="password" required />
+	                                	<input type="password" class="form-control" name="password" placeholder="Password" required />
 	                                    <p class="errorLabel">
 	                                    	<c:if test="${not empty error}">
 											  <div class="text-danger">${error}</div>

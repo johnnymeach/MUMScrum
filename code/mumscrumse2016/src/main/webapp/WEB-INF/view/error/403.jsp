@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <body>
-	<h1>HTTP Status 403 - Access is denied</h1>
+	<%-- <h1>HTTP Status 403 - Access is denied</h1>
 
 	<c:choose>
 		<c:when test="${empty username}">
@@ -10,7 +10,8 @@
 		<c:otherwise>
 			<h2>Username : ${username} <br/>You do not have permission to access this page!</h2>
 		</c:otherwise>
-	</c:choose>
+	</c:choose> --%>
+	<div class="centerImage"><img src="<c:url value="/resources/img/403.PNG"/>" alt="403 Permission Denied" title="You do not have permission to access this page"></div>
 
 </body>
 </html>
