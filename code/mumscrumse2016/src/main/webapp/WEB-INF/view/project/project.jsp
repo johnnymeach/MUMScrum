@@ -1,5 +1,16 @@
 <%@ include file="/WEB-INF/view/include/taglib.jsp" %>
 <div class="content-panel">
+<div class="form-group">
+			<label class="control-label col-sm-2" for="pwd">Projects:</label>
+			<div class="col-sm-10">
+			<select class="form-control">
+				<c:forEach items="${projects}" var="p">
+				<option value="${p.id}" selected>${p.name}</option>
+				<br />
+				</c:forEach>
+				</select>
+			</div>
+		</div>
 	Project<hr>
 	<form class="form-horizontal" role="form" name="project" action="" method="post">
 		<div class="form-group">
