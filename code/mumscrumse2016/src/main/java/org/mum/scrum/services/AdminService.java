@@ -26,7 +26,7 @@ public class AdminService implements IAdmin
 	@Override
 	public List<User> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return userRepository.findAll();
 	}
 
 	@Override

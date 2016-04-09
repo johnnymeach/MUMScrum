@@ -74,5 +74,12 @@ public class UserController {
 		
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = "/listuser", method = RequestMethod.GET)
+	public String listUser(Model model) {
+		List<User> listUser = adminService.findAll();
+		model.addAttribute("users", listUser);
+		return "listuser";
+	}
 
 }

@@ -17,8 +17,6 @@
   response.setHeader("Expires", "0");  
 %> 
 <title><tiles:getAsString name="title" /></title>
-<tilesx:useAttribute name="current" scope="request"/>
-<tilesx:useAttribute name="tab" scope="request"/>
 <tiles:insertAttribute name="head" />
 </head>
 <body>

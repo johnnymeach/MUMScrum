@@ -1,8 +1,13 @@
 package org.mum.scrum.web.controllers;
 
+import java.security.Principal;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.mum.scrum.entities.User;
 import org.mum.scrum.services.IAdmin;
+import org.mum.scrum.services.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -10,6 +15,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -28,15 +34,18 @@ public class LoginController {
 	@Autowired
 	private IAdmin adminService;
 	
+	@Autowired 
+	private ValidationService validationService;
 	@ExceptionHandler(ResourceNotFoundException.class)
     public String handleResourceNotFoundException() {
         return "404";
     }
 	@RequestMapping(value =  "/", method = RequestMethod.GET)
-	public ModelAndView defaultPage() {				
-		ModelAndView model = new ModelAndView();
-		model.setViewName("index");
-		return model;
+	public String defaultPage(Principal principle) {				
+		if(validationService.checkAuthority("System Admin")){
+			return "redirect:/listuser";
+		}
+		return "index";
 
 	}
 	
