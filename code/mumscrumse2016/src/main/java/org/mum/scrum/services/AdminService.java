@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Set;
 
 import org.mum.scrum.entities.User;
+import org.mum.scrum.repositories.RoleDao;
+import org.mum.scrum.repositories.UserDao;
 import org.mum.scrum.entities.Role;
-import org.mum.scrum.repositories.UserRepository;
-import org.mum.scrum.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +19,7 @@ public class AdminService implements IAdmin
 	//private UserDao userDao;
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserDao userRepository;
 
 	@Override
 	public List<User> findAll() {

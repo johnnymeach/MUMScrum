@@ -1,7 +1,7 @@
 
 package org.mum.scrum.services;
 
-import org.mum.scrum.repositories.UserRepository;
+import org.mum.scrum.repositories.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,7 +15,7 @@ public class ValidationService {
 	// private UserDao userDao;
 
 	@Autowired
-	private UserRepository employeeRepository;
+	private UserDao employeeRepository;
 
 	/*
 	 * @Autowired public UserService(UserDao userDao) { this.userDao = userDao;

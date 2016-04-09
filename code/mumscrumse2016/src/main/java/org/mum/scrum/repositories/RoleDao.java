@@ -3,7 +3,7 @@ package org.mum.scrum.repositories;
 import org.mum.scrum.entities.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RoleRepository extends JpaRepository<Role,Integer> {
+public interface RoleDao extends JpaRepository<Role,Integer> {
 //	public Set<Role> findByStatus(Byte status);
 //	public Set<Role> findByRoleLVLessThanAndStatus(Byte roleLV,Byte status);
 //	
