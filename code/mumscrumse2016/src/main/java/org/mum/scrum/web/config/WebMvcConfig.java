@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package org.mum.scrum.web.config;
 
 import java.util.Properties;
