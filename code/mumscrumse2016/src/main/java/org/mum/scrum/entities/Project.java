@@ -1,5 +1,5 @@
 package org.mum.scrum.entities;
-// Generated Apr 7, 2016 10:43:04 PM by Hibernate Tools 3.6.0.Final
+// Generated Apr 9, 2016 12:05:30 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -25,17 +25,15 @@ public class Project implements java.io.Serializable {
 	private User user;
 	private String name;
 	private String description;
-	private Boolean status;
 	private Set<Sprint> sprints = new HashSet<Sprint>(0);
 
 	public Project() {
 	}
 
-	public Project(User user, String name, String description, Boolean status, Set<Sprint> sprints) {
+	public Project(User user, String name, String description, Set<Sprint> sprints) {
 		this.user = user;
 		this.name = name;
 		this.description = description;
-		this.status = status;
 		this.sprints = sprints;
 	}
 
@@ -77,15 +75,6 @@ public class Project implements java.io.Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@Column(name = "status")
-	public Boolean getStatus() {
-		return this.status;
-	}
-
-	public void setStatus(Boolean status) {
-		this.status = status;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "project")

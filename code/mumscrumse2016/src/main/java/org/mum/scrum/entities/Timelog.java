@@ -1,5 +1,5 @@
 package org.mum.scrum.entities;
-// Generated Apr 7, 2016 10:43:04 PM by Hibernate Tools 3.6.0.Final
+// Generated Apr 9, 2016 12:05:30 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import javax.persistence.Column;

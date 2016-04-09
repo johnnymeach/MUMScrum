@@ -1,5 +1,5 @@
 package org.mum.scrum.entities;
-// Generated Apr 7, 2016 10:43:04 PM by Hibernate Tools 3.6.0.Final
+// Generated Apr 9, 2016 12:05:30 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -31,21 +31,23 @@ public class Sprint implements java.io.Serializable {
 	private Date startDate;
 	private Date endDate;
 	private Boolean status;
-	private Date assignedDate;
 	private Set<Userstory> userstories = new HashSet<Userstory>(0);
 
 	public Sprint() {
 	}
 
+	public Sprint(String name) {
+		this.name = name;
+	}
+
 	public Sprint(Project project, String name, String description, Date startDate, Date endDate, Boolean status,
-			Date assignedDate, Set<Userstory> userstories) {
+			Set<Userstory> userstories) {
 		this.project = project;
 		this.name = name;
 		this.description = description;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.status = status;
-		this.assignedDate = assignedDate;
 		this.userstories = userstories;
 	}
 
@@ -71,7 +73,7 @@ public class Sprint implements java.io.Serializable {
 		this.project = project;
 	}
 
-	@Column(name = "name", length = 100)
+	@Column(name = "name", nullable = false, length = 100)
 	public String getName() {
 		return this.name;
 	}
@@ -116,16 +118,6 @@ public class Sprint implements java.io.Serializable {
 
 	public void setStatus(Boolean status) {
 		this.status = status;
-	}
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "assignedDate", length = 10)
-	public Date getAssignedDate() {
-		return this.assignedDate;
-	}
-
-	public void setAssignedDate(Date assignedDate) {
-		this.assignedDate = assignedDate;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sprint")

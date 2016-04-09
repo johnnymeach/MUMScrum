@@ -1,5 +1,5 @@
 package org.mum.scrum.entities;
-// Generated Apr 7, 2016 10:43:04 PM by Hibernate Tools 3.6.0.Final
+// Generated Apr 9, 2016 12:05:30 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,16 +22,18 @@ public class Role implements java.io.Serializable {
 	private Integer id;
 	private String name;
 	private String description;
-	private Boolean status;
 	private Set<User> users = new HashSet<User>(0);
 
 	public Role() {
 	}
 
-	public Role(String name, String description, Boolean status, Set<User> users) {
+	public Role(String name) {
+		this.name = name;
+	}
+
+	public Role(String name, String description, Set<User> users) {
 		this.name = name;
 		this.description = description;
-		this.status = status;
 		this.users = users;
 	}
 
@@ -47,7 +49,7 @@ public class Role implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "name", length = 50)
+	@Column(name = "name", nullable = false, length = 50)
 	public String getName() {
 		return this.name;
 	}
@@ -63,15 +65,6 @@ public class Role implements java.io.Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@Column(name = "status")
-	public Boolean getStatus() {
-		return this.status;
-	}
-
-	public void setStatus(Boolean status) {
-		this.status = status;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "role")

@@ -37,7 +37,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	private User buildUserForAuthentication(org.mum.scrum.entities.User user, List<GrantedAuthority> authorities) {
 
-		return new User(user.getEmail(), user.getPassword(), user.getStatus(), true, true, true, authorities);
+		return new User(user.getEmail(), user.getPassword(), true, true, true, true, authorities);
 	}
 
 }

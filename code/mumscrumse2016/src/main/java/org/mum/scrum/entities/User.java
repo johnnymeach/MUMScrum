@@ -1,5 +1,5 @@
 package org.mum.scrum.entities;
-// Generated Apr 7, 2016 10:43:04 PM by Hibernate Tools 3.6.0.Final
+// Generated Apr 9, 2016 12:05:30 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,23 +27,28 @@ public class User implements java.io.Serializable {
 	private String lastName;
 	private String email;
 	private String password;
-	private Boolean status;
-	private String token;
 	private Set<Project> projects = new HashSet<Project>(0);
+	private Set<Userstory> userstories = new HashSet<Userstory>(0);
 
 	public User() {
 	}
 
-	public User(Role role, String firstName, String lastName, String email, String password, Boolean status,
-			String token, Set<Project> projects) {
+	public User(Role role, String firstName, String email, String password) {
+		this.role = role;
+		this.firstName = firstName;
+		this.email = email;
+		this.password = password;
+	}
+
+	public User(Role role, String firstName, String lastName, String email, String password, Set<Project> projects,
+			Set<Userstory> userstories) {
 		this.role = role;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
-		this.status = status;
-		this.token = token;
 		this.projects = projects;
+		this.userstories = userstories;
 	}
 
 	@Id
@@ -59,7 +64,7 @@ public class User implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "role_id")
+	@JoinColumn(name = "role_id", nullable = false)
 	public Role getRole() {
 		return this.role;
 	}
@@ -68,7 +73,7 @@ public class User implements java.io.Serializable {
 		this.role = role;
 	}
 
-	@Column(name = "firstName", length = 50)
+	@Column(name = "firstName", nullable = false, length = 50)
 	public String getFirstName() {
 		return this.firstName;
 	}
@@ -86,7 +91,7 @@ public class User implements java.io.Serializable {
 		this.lastName = lastName;
 	}
 
-	@Column(name = "email", length = 100)
+	@Column(name = "email", nullable = false, length = 100)
 	public String getEmail() {
 		return this.email;
 	}
@@ -95,31 +100,13 @@ public class User implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "password", length = 100)
+	@Column(name = "password", nullable = false, length = 100)
 	public String getPassword() {
 		return this.password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	@Column(name = "status")
-	public Boolean getStatus() {
-		return this.status;
-	}
-
-	public void setStatus(Boolean status) {
-		this.status = status;
-	}
-
-	@Column(name = "token", length = 256)
-	public String getToken() {
-		return this.token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
@@ -129,6 +116,15 @@ public class User implements java.io.Serializable {
 
 	public void setProjects(Set<Project> projects) {
 		this.projects = projects;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	public Set<Userstory> getUserstories() {
+		return this.userstories;
+	}
+
+	public void setUserstories(Set<Userstory> userstories) {
+		this.userstories = userstories;
 	}
 
 }
