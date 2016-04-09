@@ -4,7 +4,6 @@ package org.mum.scrum.web.config;
 import javax.servlet.Filter;
 import javax.servlet.ServletRegistration;
 
-import org.mum.scrum.config.AppConfig;
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -15,14 +14,13 @@ public class SpringWebAppInitializer extends AbstractAnnotationConfigDispatcherS
 	@Override
 	protected Class<?>[] getRootConfigClasses()
 	{
-		return new Class<?>[] { AppConfig.class};
+		return new Class<?>[] { WebMvcConfig.class };
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses()
 	{
-		return new Class<?>[] { WebMvcConfig.class };
-//		return new Class<?>[] {};
+		return null;
 	}
 
 	@Override
