@@ -1,4 +1,6 @@
-
+/**
+ * 
+ */
 package org.mum.scrum.web.config;
 
 import javax.servlet.Filter;
@@ -9,6 +11,10 @@ import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+/**
+ * @author Sam
+ *
+ */
 public class SpringWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer
 {
 

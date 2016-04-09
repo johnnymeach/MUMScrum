@@ -7,7 +7,7 @@
 				<div class="dropdown-slide-animate">
 					<div class="dropdown navbar-right">
 					  	<a data-toggle="dropdown" href="#">
-					  		<span class="glyphicon glyphicon-user"></span>
+					  		<span class="imgProfile"><i class="fa fa-user"></i></span>
 					  		<span class="name">${pageContext.request.userPrincipal.name} </span> &nbsp;<i class="fa fa-angle-down"></i>
 					  	</a>
 					  	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">

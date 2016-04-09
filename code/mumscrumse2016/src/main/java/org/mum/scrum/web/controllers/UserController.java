@@ -20,5 +20,15 @@ public class UserController {
 		return model;
 
 	}
+	
+	@RequestMapping(value = "/listuser", method = RequestMethod.GET)
+	public ModelAndView listUser() {
+
+		ModelAndView model = new ModelAndView();
+		model.setViewName("listuser");
+
+		return model;
+
+	}
 
 }
