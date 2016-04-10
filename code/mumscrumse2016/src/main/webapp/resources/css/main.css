@@ -47,6 +47,16 @@ body{
 	background-color: #4684B9;
 }
 
+.custom-button:hover{
+	color: #fff;
+	background-color: #013C6F;
+}
+
+.custom-button:LINK{
+	color: #fff;
+	background-color: #013C6F;
+}
+
 #content-wrapper .navbar-btn a:hover{
 	color: #fff;
 	background-color: #013C6F;
