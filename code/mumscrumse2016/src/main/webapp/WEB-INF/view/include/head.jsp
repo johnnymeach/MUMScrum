@@ -26,12 +26,12 @@
     <!-- jquery datatables --> 
  	<link href="<c:url value="/resources/jquery_datatables/css/jquery.dataTables.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/jquery_datatables/css/dataTables.colVis.css" />" rel="stylesheet">
-    <link href="<c:url value="/resources/TableTools/css/dataTables.tableTools.css" />" rel="stylesheet">
+    <%-- <link href="<c:url value="/resources/TableTools/css/dataTables.tableTools.css" />" rel="stylesheet"> --%>
     <link href="<c:url value="/resources/jquery_datatables/css/dataTables.bootstrap.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/jquery_datatables/css/responsive.dataTables.min.css" />" rel="stylesheet">              
    	<script type="text/javascript" src="<c:url value="/resources/jquery_datatables/js/jquery.dataTables.js"/>" charset="UTF-8"></script>
    	<script type="text/javascript" src="<c:url value="/resources/jquery_datatables/js/dataTables.colVis.js"/>" charset="UTF-8"></script>
-    <script type="text/javascript" src="<c:url value="/resources/TableTools/js/dataTables.tableTools.js"/>" charset="UTF-8"></script>
+    <%-- <script type="text/javascript" src="<c:url value="/resources/TableTools/js/dataTables.tableTools.js"/>" charset="UTF-8"></script> --%>
     <script type="text/javascript" src="<c:url value="/resources/jquery_datatables/js/dataTables.bootstrap.js"/>" charset="UTF-8"></script>                                            
     <script type="text/javascript" src="<c:url value="/resources/jquery_datatables/js/dataTables.responsive.min.js"/>" charset="UTF-8"></script>
     

@@ -8,7 +8,7 @@ import javax.validation.Valid;
 
 import org.mum.scrum.entities.Role;
 import org.mum.scrum.entities.User;
-import org.mum.scrum.services.IAdmin;
+import org.mum.scrum.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,7 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 @PreAuthorize("hasRole('System Admin')")
 public class UserController {
 	@Autowired
-	private IAdmin adminService;
+	private AdminService adminService;
 	
 	@ModelAttribute("user")
 	public User Constructor(){

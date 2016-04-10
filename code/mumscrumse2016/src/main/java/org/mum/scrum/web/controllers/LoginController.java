@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.mum.scrum.entities.User;
-import org.mum.scrum.services.IAdmin;
+import org.mum.scrum.services.AdminService;
 import org.mum.scrum.services.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;
@@ -32,7 +32,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 			
 	@Autowired
-	private IAdmin adminService;
+	private AdminService adminService;
 	
 	@Autowired 
 	private ValidationService validationService;

@@ -1,16 +1,53 @@
 @CHARSET "ISO-8859-1";
 
 body{
-	margin: 10px;
+	margin: 0;
+	padding: 0;
+	background-color: rgb(235, 239, 243);
 }
 #header-wrapper{
-	border: 1px solid red;
-	height: 100px;
-    padding: 15px;
+	background-color: rgba(16, 59, 113, 0.9);
+	height: 120px;
+    padding: 0 20px;
 }
 #forgotPassword{
   text-align: right;
 }
 .centerImage{
 	text-align: center;
+}
+
+.color-white{
+	color: #fff;
+}
+#header-wrapper a:hover{
+	text-decoration: none;
+}
+.btnMenu{
+	clear:both;
+	float:left;
+	padding-top: 15px;
+}
+
+.header-title{
+	float: left;
+	font-weight: bold;
+	color: #fff;
+	font-size: 28pt;
+}
+
+.dropdown-slide-animate .navbar-right{
+	margin-top: -30px;
+	margin-right: 0;
+	font-size: 12pt;
+}
+
+.custom-button {
+	color: #fff;
+	background-color: #4684B9;
+}
+
+#content-wrapper .navbar-btn a:hover{
+	color: #fff;
+	background-color: #013C6F;
 }

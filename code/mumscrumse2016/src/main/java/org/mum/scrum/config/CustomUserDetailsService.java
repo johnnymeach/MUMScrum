@@ -13,13 +13,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import org.mum.scrum.services.IAdmin;
+import org.mum.scrum.services.AdminService;
 
 @Service("userDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
-	private IAdmin adminService;
+	private AdminService adminService;
 
 	@Override
 	@Transactional(readOnly = true)
