@@ -5,14 +5,15 @@
 			<div class="col-sm-10">
 			<select class="form-control">
 				<c:forEach items="${projects}" var="p">
-				<option value="${p.id}" selected>${p.name}</option>
+				<option value="${p.id}">${p.name}</option>
 				<br />
 				</c:forEach>
 				</select>
 			</div>
 		</div>
+		<hr>
 	Project<hr>
-	<form class="form-horizontal" role="form" name="project" action="" method="post">
+	<form id="formproject" class="form-horizontal" role="form" name="project" action="" method="post">
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="firstname">Project Name:</label>
 			<div class="col-sm-10">
@@ -21,21 +22,20 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="pwd">Role:</label>
+			<label class="control-label col-sm-2" for="scrummaster">Scrum Master:</label>
 			<div class="col-sm-10">
 				<select class="form-control">
-					<option value="1" selected>Developer</option>
-					<option value="2">Scrum Master</option>
-					<option value="3">System Admin</option>
-					<option value="4">Product Owner</option>
+					<c:forEach items="${users}" var="p">
+					<option value="${p.id}">${p.email}</option>
+					<br />
+				</c:forEach>
 				</select>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="lastname">Project Description:</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="lastname" name="lastname"
-					placeholder="Enter last name">
+			<textarea form="formproject" rows="5" cols="80"></textarea>
 			</div>
 		</div>
 		
