@@ -1,17 +1,24 @@
 package org.mum.scrum.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.mum.scrum.dao.*;
 import org.mum.scrum.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-public class ProjectManager {
+@Service
+@Transactional
+public class ProjectManager implements IProject{
 	@Autowired
-	private static ProjectDao pdao;
-	public static List<Project> getAllProjects() {
-		List<Project> ret = pdao.findAll();
-		return ret;
+	private ProjectDao projectRepository;
+	@Override
+	public List<Project> findAll(){
+		return projectRepository.findAll();
+	}
+	@Override
+	public void save(Project p){
+		projectRepository.save(p);
 	}
 }
