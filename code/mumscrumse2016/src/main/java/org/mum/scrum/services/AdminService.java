@@ -10,11 +10,12 @@ import org.mum.scrum.entities.User;
 public interface AdminService {
 
 	public List<User> findAll();
-
+	
+	public User findUserByID(String id);
 	public void save(User user);
 
 	public User findUserByEmail(String email);
-
+	
 	public Set<User> getAvailableDeveloper();
 
 	public Set<User> getAvailableTester();

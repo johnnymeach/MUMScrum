@@ -28,6 +28,11 @@ public class AdminServiceImpl implements AdminService
 		// TODO Auto-generated method stub
 		return userRepository.findAll();
 	}
+	
+	@Override
+	public User findUserByID(String id) {
+		return userRepository.findOne(id);
+	}
 
 	@Override
 	public void save(User user) {

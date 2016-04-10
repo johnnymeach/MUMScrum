@@ -52,12 +52,13 @@ body{
 	background-color: #013C6F;
 }
 
-.custom-button:LINK{
+#content-wrapper .navbar-btn a:hover{
 	color: #fff;
 	background-color: #013C6F;
 }
 
-#content-wrapper .navbar-btn a:hover{
-	color: #fff;
-	background-color: #013C6F;
+.login-title{
+	font-size: 20px;
+	text-align: center;
+    font-weight: bolder;
 }

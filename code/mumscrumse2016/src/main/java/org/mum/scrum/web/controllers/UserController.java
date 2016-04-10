@@ -81,5 +81,13 @@ public class UserController {
 		model.addAttribute("users", listUser);
 		return "listuser";
 	}
+	
+	@RequestMapping(value = "/user/{id}/edit", method = RequestMethod.GET)
+	public String editUser(Model model) {
+		String id = "1";
+		User user = adminService.findUserByID(id);
+		model.addAttribute("user", user);
+		return "edituser";
+	}
 
 }

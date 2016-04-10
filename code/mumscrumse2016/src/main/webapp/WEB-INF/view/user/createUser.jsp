@@ -59,7 +59,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-6">
 					<input type="submit"
-						class="btn btn-default btn-lg btn-block custom-button" value="Save">
+						class="btn btn-default btn-lg btn-block btn-primary" value="Save">
 				</div>
 			</div>
 		</form:form>

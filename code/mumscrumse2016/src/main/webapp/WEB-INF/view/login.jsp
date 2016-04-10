@@ -18,7 +18,7 @@
 	            <div class="col-md-6 col-md-offset-3">
 	                <div class="panel panel-default">
 	                    <div class="panel-heading">
-	                        <h3 class="panel-title">MUM Scrum Management Tool</h3>
+	                        <h3 class="panel-title login-title">MUM Scrum Management Tool</h3>
 	                    </div>
 	                    <div class="panel-body">
 	                            <fieldset>
