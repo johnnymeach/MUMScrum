@@ -30,8 +30,13 @@ public class AdminServiceImpl implements AdminService
 	}
 	
 	@Override
-	public User findUserByID(String id) {
+	public User findUserByID(int id) {
 		return userRepository.findOne(id);
+	}
+	
+	@Override
+	public void deleteUser(int id) {
+		userRepository.delete(id);
 	}
 
 	@Override

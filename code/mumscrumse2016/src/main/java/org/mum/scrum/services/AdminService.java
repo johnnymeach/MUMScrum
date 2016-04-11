@@ -11,7 +11,7 @@ public interface AdminService {
 
 	public List<User> findAll();
 	
-	public User findUserByID(String id);
+	public User findUserByID(int id);
 	public void save(User user);
 
 	public User findUserByEmail(String email);
@@ -21,6 +21,8 @@ public interface AdminService {
 	public Set<User> getAvailableTester();
 
 	public User updateUser(User user);
+	
+	public void deleteUser(int id);
 	
 	public List<Role> getAllRole();
 

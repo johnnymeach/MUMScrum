@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,15 +29,17 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
 	@Autowired
 	private AdminService adminService;
-	
+
 	@ModelAttribute("user")
-	public User Constructor(){
-    	return new User();
-    }
+	public User Constructor() {
+		return new User();
+	}
+
 	@ModelAttribute("roles")
-	public List<Role> getAllRole(){
+	public List<Role> getAllRole() {
 		return adminService.getAllRole();
 	}
+
 	@RequestMapping(value = "/createuser", method = RequestMethod.GET)
 	public ModelAndView createUser() {
 
@@ -45,49 +48,82 @@ public class UserController {
 
 		return model;
 	}
-	
-	@RequestMapping(value="/createuser",method=RequestMethod.POST)
-	public String addNewUser(@Valid @ModelAttribute("user") User user
-			,BindingResult result,Principal principal,Model model,@RequestParam(value="confirmpassword") String confirmPassword){
-		
-		if(result.hasErrors()){
+
+	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
+	public String addNewUser(@Valid @ModelAttribute("user") User user, BindingResult result, Principal principal,
+			Model model, @RequestParam(value = "confirmpassword") String confirmPassword) {
+
+		if (result.hasErrors()) {
 			model.addAttribute("errors", result.getAllErrors());
-			return "newuser";			
+			return "newuser";
 		}
-		
-		if(!user.getPassword().equals(confirmPassword)){
-			ObjectError error = new ObjectError("confirmpassword","Your password does not match!");
+
+		if (!user.getPassword().equals(confirmPassword)) {
+			ObjectError error = new ObjectError("confirmpassword", "Your password does not match!");
 			result.addError(error);
 			model.addAttribute("errors", result.getAllErrors());
-			return "newuser";	
+			return "newuser";
 		}
-		
+
 		// Encode password before saving into the database
-		PasswordEncoder encoder=new BCryptPasswordEncoder();
-	    user.setPassword(encoder.encode(user.getPassword()));
-	    
-	    // Trim the white space of user firstname, lastname
-	    user.setFirstName(user.getFirstName().trim());
-	    user.setLastName(user.getLastName().trim());
-	    
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		user.setPassword(encoder.encode(user.getPassword()));
+
+		// Trim the white space of user firstname, lastname
+		user.setFirstName(user.getFirstName().trim());
+		user.setLastName(user.getLastName().trim());
+
 		adminService.save(user);
-		
+
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping(value = "/listuser", method = RequestMethod.GET)
 	public String listUser(Model model) {
 		List<User> listUser = adminService.findAll();
 		model.addAttribute("users", listUser);
 		return "listuser";
 	}
-	
+
 	@RequestMapping(value = "/user/{id}/edit", method = RequestMethod.GET)
-	public String editUser(Model model) {
-		String id = "1";
+	public String editUser(Model model, @PathVariable("id") int id) {
+
 		User user = adminService.findUserByID(id);
 		model.addAttribute("user", user);
 		return "edituser";
 	}
+
+	@RequestMapping(value = "/user/{id}/edit", method = RequestMethod.POST)
+	public String saveEditedUser(Model model, User user, @PathVariable("id") int id) {
+
+		User editedUser = adminService.findUserByID(id);
+		editedUser.setFirstName(user.getFirstName());
+		editedUser.setLastName(user.getLastName());
+		editedUser.setEmail(user.getEmail());
+		adminService.save(editedUser);
+		return listUser(model);
+	}
+
+	@RequestMapping(value = "/resetpassword", method = RequestMethod.POST)
+	public String resetPassword(Model model, @RequestParam(value = "newpassword") String newPwd,
+			@RequestParam(value = "userId") int userId) {
+
+		User editedUser = adminService.findUserByID(userId);
+
+		// Encode password before saving into the database
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		editedUser.setPassword(encoder.encode(newPwd));
+		adminService.save(editedUser);
+		
+		return "redirect:/user/"+userId+"/edit";
+	}
+	
+	@RequestMapping(value = "/deleteuser", method = RequestMethod.POST)
+	public String deletUser(Model model, @RequestParam(value = "userId") int userId) {
+
+		adminService.deleteUser(userId);
+		return "redirect:/";
+	}
+	
 
 }
