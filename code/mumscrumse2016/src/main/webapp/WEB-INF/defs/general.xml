@@ -58,4 +58,9 @@
   	<put-attribute name="tab" value="administrator" />
   </definition>
   
+  <definition name="userStory" extends="common" >   
+  	<put-attribute name="title" value="UserStory" />
+  	<put-attribute name="body" value="/WEB-INF/view/userstory/userStory.jsp" />
+  </definition>
+  
 </tiles-definitions>
