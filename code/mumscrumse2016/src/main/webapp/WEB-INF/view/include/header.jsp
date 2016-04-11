@@ -8,8 +8,8 @@
 					<sec:authorize access="hasAnyRole('System Admin')">					
 					<%-- <i class="fa"><a href="<c:url value="/createuser"/>">Create New User</a></i> --%>
 					</sec:authorize>
-					<sec:authorize access="hasAnyRole('Scrum Master')">
-					<i class="fa"><a href="<c:url value="/createsprint"/>">New Sprint</a></i>
+					<sec:authorize access="hasAnyRole('Developer')">
+					<i class="fa"><a href="<c:url value="/"/>">Test Developer</a></i>
 					</sec:authorize>
 					
 				</div>

@@ -28,7 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 @PreAuthorize("hasRole('System Admin')")
 public class UserController {
 	@Autowired
-	private UserService adminService;
+	private UserService userService;
 
 	@ModelAttribute("user")
 	public User Constructor() {
@@ -37,7 +37,7 @@ public class UserController {
 
 	@ModelAttribute("roles")
 	public List<Role> getAllRole() {
-		return adminService.getAllRole();
+		return userService.getAllRole();
 	}
 
 	@RequestMapping(value = "/createuser", method = RequestMethod.GET)
@@ -50,7 +50,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
-	public String addNewUser(@Valid @ModelAttribute("user") User user, BindingResult result, Principal principal,
+	public String createUser(@Valid @ModelAttribute("user") User user, BindingResult result, Principal principal,
 			Model model, @RequestParam(value = "confirmpassword") String confirmPassword) {
 
 		if (result.hasErrors()) {
@@ -73,14 +73,14 @@ public class UserController {
 		user.setFirstName(user.getFirstName().trim());
 		user.setLastName(user.getLastName().trim());
 
-		adminService.save(user);
+		userService.save(user);
 
 		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/listuser", method = RequestMethod.GET)
 	public String listUser(Model model) {
-		List<User> listUser = adminService.findAll();
+		List<User> listUser = userService.findAll();
 		model.addAttribute("users", listUser);
 		return "listuser";
 	}
@@ -88,7 +88,7 @@ public class UserController {
 	@RequestMapping(value = "/user/{id}/edit", method = RequestMethod.GET)
 	public String editUser(Model model, @PathVariable("id") int id) {
 
-		User user = adminService.findUserByID(id);
+		User user = userService.findUserByID(id);
 		model.addAttribute("user", user);
 		return "edituser";
 	}
@@ -96,12 +96,12 @@ public class UserController {
 	@RequestMapping(value = "/user/{id}/edit", method = RequestMethod.POST)
 	public String saveEditedUser(Model model, User user, @PathVariable("id") int id) {
 
-		User editedUser = adminService.findUserByID(id);
+		User editedUser = userService.findUserByID(id);
 		editedUser.setFirstName(user.getFirstName());
 		editedUser.setLastName(user.getLastName());
 		editedUser.setEmail(user.getEmail());
 		editedUser.setRole(user.getRole());
-		adminService.save(editedUser);
+		userService.save(editedUser);
 		return "redirect:/";
 	}
 
@@ -109,12 +109,12 @@ public class UserController {
 	public String resetPassword(Model model, @RequestParam(value = "newpassword") String newPwd,
 			@RequestParam(value = "userId") int userId) {
 
-		User editedUser = adminService.findUserByID(userId);
+		User editedUser = userService.findUserByID(userId);
 
 		// Encode password before saving into the database
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
 		editedUser.setPassword(encoder.encode(newPwd));
-		adminService.save(editedUser);
+		userService.save(editedUser);
 		
 		return "redirect:/user/"+userId+"/edit";
 	}
@@ -122,7 +122,7 @@ public class UserController {
 	@RequestMapping(value = "/deleteuser", method = RequestMethod.POST)
 	public String deletUser(Model model, @RequestParam(value = "userId") int userId) {
 
-		adminService.deleteUser(userId);
+		userService.deleteUser(userId);
 		return "redirect:/";
 	}
 	
