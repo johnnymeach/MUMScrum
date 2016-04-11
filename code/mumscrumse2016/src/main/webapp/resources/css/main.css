@@ -1,42 +1,49 @@
 @CHARSET "ISO-8859-1";
 
-body{
+body {
 	margin: 0;
 	padding: 0;
 	background-color: rgb(235, 239, 243);
 }
-#header-wrapper{
+
+#header-wrapper {
 	background-color: rgba(16, 59, 113, 0.9);
 	height: 120px;
-    padding: 0 20px;
+	padding: 0 20px;
 }
-#forgotPassword{
-  text-align: right;
+
+#forgotPassword {
+	text-align: right;
 }
-.centerImage{
+
+.centerImage {
 	text-align: center;
 }
 
-.color-white{
+.color-white {
 	color: #fff;
 }
-#header-wrapper a:hover{
+
+#header-wrapper a:hover {
 	text-decoration: none;
 }
-.btnMenu{
-	clear:both;
-	float:left;
-	padding-top: 15px;
+
+.btnMenu {
+	clear: both;
+	float: left;
+	padding-top: 25px;
+	margin-right: 25px
 }
 
-.header-title{
+.header-title {
 	float: left;
 	font-weight: bold;
 	color: #fff;
 	font-size: 28pt;
+	font-weight: bold;
 }
 
-.dropdown-slide-animate .navbar-right{
+.dropdown-slide-animate .navbar-right {
 	margin-top: -30px;
 	margin-right: 0;
 	font-size: 12pt;
@@ -47,18 +54,32 @@ body{
 	background-color: #4684B9;
 }
 
-.custom-button:hover{
+.custom-button:hover {
 	color: #fff;
 	background-color: #013C6F;
 }
 
-#content-wrapper .navbar-btn a:hover{
+#content-wrapper .navbar-btn a:hover {
 	color: #fff;
 	background-color: #013C6F;
 }
 
-.login-title{
+.login-title {
 	font-size: 20px;
 	text-align: center;
-    font-weight: bolder;
+	font-weight: bolder;
+	text-align: center;
+}
+
+.btnMenuHeader {
+	width: 130px;
+	height: 40px;
+	margin-right: 30px;
+}
+
+.user-role-setting {
+	margin: 0 5px 10px 20px;
+	font-size: 12pt;
+	font-weight: bold;
+	color: rgba(179, 152, 170, 0.6);
 }

@@ -39,6 +39,11 @@ public class UserController {
 	public List<Role> getAllRole() {
 		return userService.getAllRole();
 	}
+	
+	/*@ModelAttribute("role")
+	private String getUserRole(){
+		return "System Administrator";
+	}*/
 
 	@RequestMapping(value = "/createuser", method = RequestMethod.GET)
 	public ModelAndView createUser() {

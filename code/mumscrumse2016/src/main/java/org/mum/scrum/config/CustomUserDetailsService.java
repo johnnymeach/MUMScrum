@@ -19,13 +19,13 @@ import org.mum.scrum.services.UserService;
 public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
-	private UserService adminService;
+	private UserService userService;
 
 	@Override
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
 
-		org.mum.scrum.entities.User user = adminService.findUserByEmail(email);
+		org.mum.scrum.entities.User user = userService.findUserByEmail(email);
 		if (user == null)
 			throw new UsernameNotFoundException("User not found!");
 

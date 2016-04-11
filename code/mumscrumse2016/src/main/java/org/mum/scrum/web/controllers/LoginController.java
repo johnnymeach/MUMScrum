@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.mum.scrum.entities.Role;
 import org.mum.scrum.entities.User;
 import org.mum.scrum.services.UserService;
 import org.mum.scrum.services.ValidationService;
@@ -22,6 +23,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,8 +35,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 			
 	@Autowired
-	private UserService adminService;
+	private UserService userService;
 	
+	/*@ModelAttribute("role")
+	private String getUserRole(){
+		return SecurityContextHolder.getContext().getAuthentication().getName();
+	}*/
 	@Autowired 
 	private ValidationService validationService;
 	@ExceptionHandler(ResourceNotFoundException.class)
@@ -137,11 +143,11 @@ public class LoginController {
 
 	}	
 	
-	@RequestMapping(value =  "/changepwd", method = RequestMethod.GET)
+	/*@RequestMapping(value =  "/changepwd", method = RequestMethod.GET)
 	public ModelAndView changePwd() {		
 		ModelAndView model = new ModelAndView();
 		model.setViewName("changepwd");
 		return model;
-	}
+	}*/
 	
 }

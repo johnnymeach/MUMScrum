@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@PreAuthorize("hasRole('System Admin')")
+@PreAuthorize("hasRole('Scrum Master')")
 public class ProjectController {
 	@Autowired
 	private ProjectService pm;
