@@ -100,6 +100,7 @@ public class UserController {
 		editedUser.setFirstName(user.getFirstName());
 		editedUser.setLastName(user.getLastName());
 		editedUser.setEmail(user.getEmail());
+		editedUser.setRole(user.getRole());
 		adminService.save(editedUser);
 		return "redirect:/";
 	}
