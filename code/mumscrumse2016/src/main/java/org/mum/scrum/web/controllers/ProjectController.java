@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.mum.scrum.entities.Project;
 import org.mum.scrum.entities.User;
-import org.mum.scrum.services.AdminService;
-import org.mum.scrum.services.IProject;
+import org.mum.scrum.services.UserService;
+import org.mum.scrum.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -18,9 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 @PreAuthorize("hasRole('System Admin')")
 public class ProjectController {
 	@Autowired
-	private IProject pm;
+	private ProjectService pm;
 	@Autowired
-	private AdminService adminManager;
+	private UserService adminManager;
 	
 	@RequestMapping(value = "/project", method = RequestMethod.GET)
 	public ModelAndView project() {

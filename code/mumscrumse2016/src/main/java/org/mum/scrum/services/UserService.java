@@ -7,7 +7,7 @@ import java.util.Set;
 import org.mum.scrum.entities.Role;
 import org.mum.scrum.entities.User;
 
-public interface AdminService {
+public interface UserService {
 
 	public List<User> findAll();
 	

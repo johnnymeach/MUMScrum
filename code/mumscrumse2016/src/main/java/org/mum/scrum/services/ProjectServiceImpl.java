@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class ProjectManager implements IProject{
+public class ProjectServiceImpl implements ProjectService{
 	@Autowired
 	private ProjectDao projectRepository;
 	@Override

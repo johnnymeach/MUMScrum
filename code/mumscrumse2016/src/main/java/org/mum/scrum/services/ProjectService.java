@@ -5,7 +5,7 @@ import java.util.Set;
 
 import org.mum.scrum.entities.Project;
 
-public interface IProject {
+public interface ProjectService {
 	public List<Project> findAll();
 	public void save(Project p);
 }
