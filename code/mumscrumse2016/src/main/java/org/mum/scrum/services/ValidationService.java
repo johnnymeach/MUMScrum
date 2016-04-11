@@ -1,8 +1,6 @@
 
 package org.mum.scrum.services;
 
-import org.mum.scrum.dao.UserDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;

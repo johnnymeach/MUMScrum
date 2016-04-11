@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.mum.scrum.entities.User;
 import org.mum.scrum.services.UserService;
 import org.mum.scrum.services.ValidationService;
+import org.mum.scrum.util.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;

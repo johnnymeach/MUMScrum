@@ -1,4 +1,4 @@
-package org.mum.scrum.web.controllers;
+package org.mum.scrum.util;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
