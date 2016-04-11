@@ -46,6 +46,21 @@
   	<put-attribute name="body" value="/WEB-INF/view/user/editUser.jsp" />
   </definition>
   
+  <definition name="listsprint" extends="common" >   
+  	<put-attribute name="title" value="List All Sprint" />
+  	<put-attribute name="body" value="/WEB-INF/view/sprint/listSprint.jsp" />
+  </definition>
+  
+  <definition name="newsprint" extends="common" >   
+  	<put-attribute name="title" value="New Sprint" />
+  	<put-attribute name="body" value="/WEB-INF/view/sprint/createSprint.jsp" />
+  </definition>
+  
+  <definition name="editsprint" extends="common" >   
+  	<put-attribute name="title" value="Edit Sprint" />
+  	<put-attribute name="body" value="/WEB-INF/view/sprint/editSprint.jsp" />
+  </definition>
+  
   <definition name="listuser" extends="common" >   
   	<put-attribute name="title" value="List All User" />
   	<put-attribute name="body" value="/WEB-INF/view/user/listUser.jsp" />
