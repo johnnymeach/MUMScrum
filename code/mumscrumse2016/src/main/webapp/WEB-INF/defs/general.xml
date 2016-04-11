@@ -37,17 +37,17 @@
   </definition>
   
   <definition name="newuser" extends="common" >   
-  	<put-attribute name="title" value="User" />
+  	<put-attribute name="title" value="New User" />
   	<put-attribute name="body" value="/WEB-INF/view/user/createUser.jsp" />
   </definition>
   
   <definition name="edituser" extends="common" >   
-  	<put-attribute name="title" value="User" />
+  	<put-attribute name="title" value="Edit User" />
   	<put-attribute name="body" value="/WEB-INF/view/user/editUser.jsp" />
   </definition>
   
   <definition name="listuser" extends="common" >   
-  	<put-attribute name="title" value="User" />
+  	<put-attribute name="title" value="List All User" />
   	<put-attribute name="body" value="/WEB-INF/view/user/listUser.jsp" />
   </definition>
   

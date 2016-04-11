@@ -101,7 +101,7 @@ public class UserController {
 		editedUser.setLastName(user.getLastName());
 		editedUser.setEmail(user.getEmail());
 		adminService.save(editedUser);
-		return listUser(model);
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/resetpassword", method = RequestMethod.POST)

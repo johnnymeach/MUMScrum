@@ -34,7 +34,7 @@
 	</table>
 	<span class="navbar-btn"> <a
 		href="<c:url value="/createuser"/>"
-		class="glyphicon glyphicon-plus btn btn-default custom-button"> Add User</a>
+		class="glyphicon glyphicon-plus btn btn-primary"> Add User</a>
 	</span>
 	
 	<!-- Modal For Delete User -->
