@@ -69,8 +69,25 @@
   <definition name="project" extends="common" >   
   	<put-attribute name="title" value="Project" />
   	<put-attribute name="body" value="/WEB-INF/view/project/project.jsp" />
-  	<put-attribute name="current" value="user" />     
-  	<put-attribute name="tab" value="administrator" />
+
+  </definition>
+  
+  <definition name="projectlist" extends="common" >   
+  	<put-attribute name="title" value="Project List" />
+  	<put-attribute name="body" value="/WEB-INF/view/project/projectlist.jsp" />
+
+  </definition>
+  
+  <definition name="createproject" extends="common" >   
+  	<put-attribute name="title" value="Create Project" />
+  	<put-attribute name="body" value="/WEB-INF/view/project/createproject.jsp" />
+
+  </definition>
+  
+  <definition name="projectdelete" extends="common" >   
+  	<put-attribute name="title" value="Project Delete" />
+  	<put-attribute name="body" value="/WEB-INF/view/project/projectlist.jsp" />
+
   </definition>
   
   <definition name="userStory" extends="common" >   

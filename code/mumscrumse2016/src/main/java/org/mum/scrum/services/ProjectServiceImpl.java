@@ -25,4 +25,7 @@ public class ProjectServiceImpl implements ProjectService{
 	public Project findProjectByID(int id) {
 		return projectRepository.findOne(id);
 	}
+	public void deleteProjectByID(int id){
+		projectRepository.delete(id);
+	}
 }
