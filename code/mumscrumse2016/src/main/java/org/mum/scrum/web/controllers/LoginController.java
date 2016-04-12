@@ -52,6 +52,9 @@ public class LoginController {
 		if(validationService.checkAuthority("System Admin")){
 			return "redirect:/listuser";
 		}
+		if(validationService.checkAuthority("Developer")){
+			return "redirect:/developer";
+		}
 		return "index";
 
 	}

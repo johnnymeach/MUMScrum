@@ -87,4 +87,14 @@
   	<put-attribute name="title" value="EditUserStory" />
   	<put-attribute name="body" value="/WEB-INF/view/userstory/editUserStory.jsp" />
   </definition>
+
+  <definition name="developer" extends="common" >   
+  	<put-attribute name="title" value="Developer" />
+  	<put-attribute name="body" value="/WEB-INF/view/developer/developer.jsp" />
+  </definition>
+  
+    <definition name="editDeveloper" extends="common" >   
+  	<put-attribute name="title" value="Developer" />
+  	<put-attribute name="body" value="/WEB-INF/view/developer/editDeveloper.jsp" />
+  </definition>
 </tiles-definitions>
