@@ -119,13 +119,17 @@ public class UserController {
 	@RequestMapping(value = "/user/{id}/edit", method = RequestMethod.POST)
 	public String saveEditedUser(Model model, User user, @PathVariable("id") int id) {
 
-		User editedUser = userService.findUserByID(id);
-		editedUser.setFirstName(user.getFirstName());
-		editedUser.setLastName(user.getLastName());
-		editedUser.setEmail(user.getEmail());
-		editedUser.setRole(user.getRole());
-		userService.save(editedUser);
+		User editedUser = userService.findUserByID(id);		
+		setUserData(user,editedUser);
 		return "redirect:/";
+	}
+	
+	public void setUserData(User currentUser, User editedUser){
+		editedUser.setFirstName(currentUser.getFirstName());
+		editedUser.setLastName(currentUser.getLastName());
+		editedUser.setEmail(currentUser.getEmail());
+		editedUser.setRole(currentUser.getRole());
+		userService.save(editedUser);
 	}
 
 	@RequestMapping(value = "/resetpassword", method = RequestMethod.POST)
