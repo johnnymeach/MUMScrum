@@ -12,6 +12,7 @@
 					<i class="navbar-btn"><a class="glyphicon glyphicon-home btn btn-default btnMenuHeader" href="/mumscrum/sprint">  Sprint</a></i>
 					<i class="navbar-btn"><a class="glyphicon glyphicon-home btn btn-default btnMenuHeader" href="/mumscrum/project">  Project</a></i>
 					<i class="navbar-btn"><a class="glyphicon glyphicon-home btn btn-default btnMenuHeader" href="/mumscrum/report">  Report</a></i>
+					<i class="navbar-btn"><a class="glyphicon glyphicon-home btn btn-default btnMenuHeader" href="/mumscrum/backlogs">  Backlogs</a></i>
 					</sec:authorize>
 					
 				</div>
