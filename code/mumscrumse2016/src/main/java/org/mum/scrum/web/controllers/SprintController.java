@@ -34,22 +34,22 @@ public class SprintController {
 
 	@Autowired
 	private ProjectService projectService;
-	
+
 	@ModelAttribute("sprint")
 	public Sprint Constructor() {
 		return new Sprint();
 	}
-	
+
 	@ModelAttribute("projects")
 	public List<Project> getAllProject() {
 		return sprintService.getAllProject();
 	}
-	
+
 	@InitBinder
-	public void initBinder(WebDataBinder binder){
-		 SimpleDateFormat dateFormat=new SimpleDateFormat("MM/dd/yyyy");
-	     binder.registerCustomEditor(Date.class,"startDate",new CustomDateEditor(dateFormat, true));
-	     binder.registerCustomEditor(Date.class,"endDate",new CustomDateEditor(dateFormat, true));
+	public void initBinder(WebDataBinder binder) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		binder.registerCustomEditor(Date.class, "startDate", new CustomDateEditor(dateFormat, true));
+		binder.registerCustomEditor(Date.class, "endDate", new CustomDateEditor(dateFormat, true));
 	}
 
 	@RequestMapping(value = "/createsprint", method = RequestMethod.GET)
@@ -59,14 +59,13 @@ public class SprintController {
 	}
 
 	@RequestMapping(value = "/createsprint", method = RequestMethod.POST)
-	public String createUser(@Valid @ModelAttribute("sprint") Sprint sprint, BindingResult result,
-			Model model) {
+	public String createUser(@Valid @ModelAttribute("sprint") Sprint sprint, BindingResult result, Model model) {
 
 		if (result.hasErrors()) {
 			model.addAttribute("errors", result.getAllErrors());
 			return "newsprint";
 		}
-		
+
 		// Trim the white space of sprint info
 		sprint.setName(sprint.getName().trim());
 		sprintService.save(sprint);
@@ -80,9 +79,17 @@ public class SprintController {
 		model.addAttribute("sprints", listSprint);
 		return "listsprint";
 	}
-	
+
 	@RequestMapping(value = "/sprint", method = RequestMethod.POST)
 	public String listSprintByProject(Model model, @RequestParam(value = "projectId") int projectId) {
+		/*
+		 * if (projectId > 0) { Project project =
+		 * projectService.findProjectByID(projectId); List<Sprint> listSprint =
+		 * sprintService.findSprintByProject(project);
+		 * model.addAttribute("sprints", listSprint); } else { List<Sprint>
+		 * listSprint = sprintService.findAll(); model.addAttribute("sprints",
+		 * listSprint); }
+		 */
 		Project project = projectService.findProjectByID(projectId);
 		List<Sprint> listSprint = sprintService.findSprintByProject(project);
 		model.addAttribute("sprints", listSprint);
@@ -108,13 +115,11 @@ public class SprintController {
 		return "redirect:/sprint";
 	}
 
-	
 	@RequestMapping(value = "/deletesprint", method = RequestMethod.POST)
 	public String deletSprint(@RequestParam(value = "sprintId") int sprintId) {
 
 		sprintService.deleteSprint(sprintId);
 		return "redirect:/sprint";
 	}
-	
 
 }
