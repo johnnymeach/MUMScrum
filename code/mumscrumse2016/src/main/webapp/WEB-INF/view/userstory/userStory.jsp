@@ -7,16 +7,24 @@
 	<table id="userStoryListTable"
 			class="table table-striped table-advance table-hover table-bordered table-fixed">
 			<colgroup>
-		       <col span="1" style="width: 5%;">
-		       <col span="1" style="width: 25%;">
-		       <col span="1" style="width: 60%;">
+		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 30%;">
+		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 10%;">
 		       <col span="1" style="width: 10%;">
     		</colgroup>
 			<thead>
 				<tr>
 					<th>No</th>
 					<th>User story Title</th>
-					<th>Description</th>
+					<th>Developer</th>
+					<th>Sprint</th>
+					<th>Estimated Time</th>
+					<th>Completed Time</th>
+					<th>Status</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -27,7 +35,11 @@
 						<td>${id}</td>
 						<c:set var="id" value="${id+1}"/>					
 						<td><c:out value="${userstory.name}" /></td>
-						<td><c:out value="${userstory.description}" /></td>
+						<td><c:out value="${userstory.user.firstName}" /></td>
+						<td><c:out value="${userstory.sprint.name}" /></td>
+						<td><c:out value="" /></td>
+						<td><c:out value="" /></td>
+						<td><c:out value="" /></td>
 						<td><a href="<c:url value="/backlogs/${userstory.id}/edit"/>"
 						class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
 						<button data-target="#deleteuserstory" data-toggle="modal"
@@ -38,11 +50,12 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<span class="navbar-btn"> 
+	
+	<span class="navbar-btn"> 
 		<a href="<c:url value="/createuserstory"/>" class="glyphicon glyphicon-plus btn btn-primary"> Add User Story</a>
 	</span>
 	
-		<!-- Modal For Delete User story -->
+	<!-- Modal For Delete User story -->
 	<div class="modal fade" id="deleteuserstory" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -71,7 +84,6 @@
 		</div>
 	</div>
 </div>
-
 
 <script type="text/javascript">
 	$(document).ready(function(){
