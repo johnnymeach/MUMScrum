@@ -13,6 +13,8 @@ public interface UserStoryDao extends JpaRepository<Userstory, Integer>{
 	List<Userstory> findByUser(User user);
 	List<Userstory> findBySprintAndUser(Sprint sprint, User user);
 	
+	//Userstory findUserStoryById(Integer id);
+	
 //	@Modifying
 //	@Query("update Userstory us set us.name = ?1, us.description = ?2 where us.id = ?2")
 //	int setNameAndDescriptionByUserStoryId(String name, String description, Integer userStoryId);

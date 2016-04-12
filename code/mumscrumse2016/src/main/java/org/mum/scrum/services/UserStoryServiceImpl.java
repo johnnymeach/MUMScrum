@@ -24,7 +24,7 @@ public class UserStoryServiceImpl implements UserStoryService {
 	}
 
 	@Override
-	public Userstory getAllUserStoryById(int id) {
+	public Userstory getUserStoryById(int id) {
 		return userStoryRepository.findOne(id);
 	}
 

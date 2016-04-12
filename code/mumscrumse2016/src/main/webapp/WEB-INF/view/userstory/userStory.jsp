@@ -4,19 +4,20 @@
 		<h1>Backlogs</h1>
 	</div>
 
-	<div style="height: 200px; overflow:auto;">
-		<table id="userStoryListTable"
+	<table id="userStoryListTable"
 			class="table table-striped table-advance table-hover table-bordered table-fixed">
 			<colgroup>
 		       <col span="1" style="width: 5%;">
 		       <col span="1" style="width: 25%;">
-		       <col span="1" style="width: 70%;">
+		       <col span="1" style="width: 60%;">
+		       <col span="1" style="width: 10%;">
     		</colgroup>
 			<thead>
 				<tr>
 					<th>No</th>
 					<th>User story Title</th>
 					<th>Description</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<c:set var="id" value="${1}"/>
@@ -27,41 +28,57 @@
 						<c:set var="id" value="${id+1}"/>					
 						<td><c:out value="${userstory.name}" /></td>
 						<td><c:out value="${userstory.description}" /></td>
+						<td><a href="<c:url value="/backlogs/${userstory.id}/edit"/>"
+						class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+						<button data-target="#deleteuserstory" data-toggle="modal"
+							class="btn btn-primary btn-xs" name="userstory" value="${userstory.id}">
+							<i class="fa fa-remove text-danger"></i></button>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<span class="navbar-btn"> 
+		<a href="<c:url value="/createuserstory"/>" class="glyphicon glyphicon-plus btn btn-primary"> Add User Story</a>
+	</span>
+	
+		<!-- Modal For Delete User story -->
+	<div class="modal fade" id="deleteuserstory" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Do you want to delete this user story?</h4>
+				</div>
+				<div class="modal-body">
+					<form id="formDeleteUserStory" method="post"
+						action="<spring:url value="backlogs/deleteUserStory" />" class="form-horizontal">
+						
+						<input id="userStoryId" name="userStoryId" type="hidden" value="" /> 
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						<div class="form-group">
+							<div class="col-md-offset-4 col-md-4">
+								<button type="submit" id="btnDelete" class="btn btn-primary ">Yes</button>
+								<button class="btn " data-dismiss="modal" aria-hidden="true">No</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
-
-		<fieldset class="form-border">
-						<legend class="form-border">Create User Story</legend>
-		<hr>
-	<div>
-		<form:form class="form-horizontal" role="form" commandName="userstory" action="" method="post">
-		
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="name">User Story Title:</label>
-				<div class="col-sm-8">
-					<form:input path="name" cssClass="form-control"
-						htmlEscape="true" placeholder="Enter title" required="true" />
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="description">Description:</label>
-				<div class="col-sm-8">
-					<form:textarea path="description" cssClass="form-control"
-						htmlEscape="true" placeholder="Enter description" required="true" />
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-8">
-					<input type="submit"
-						class="btn btn-default btn-lg btn-block btn-success" value="Save">
-				</div>
-			</div>
-		</form:form>
-	</div>
-	</fieldset>
 </div>
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("button[name = 'userstory']").click(function(){
+			$("#userStoryId").val($(this).val());
+			console.log("Value of button : "+$("#userStoryId").val());
+			
+		});
+	});
+</script>

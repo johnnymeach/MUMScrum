@@ -8,7 +8,7 @@ public interface UserStoryService {
 	
 	public void addUserStory(Userstory userStory);
 	
-	public Userstory getAllUserStoryById(int id);
+	public Userstory getUserStoryById(int id);
 	public List<Userstory> getAllUserStories();
 	public List<Userstory> getAllUserStories(Project project);
 	public List<Userstory> getAllUserStories(Project project, Sprint sprint);
