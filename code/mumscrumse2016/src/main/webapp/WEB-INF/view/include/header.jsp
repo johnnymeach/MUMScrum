@@ -9,9 +9,10 @@
 					<%-- <i class="fa"><a href="<c:url value="/createuser"/>">Create New User</a></i> --%>
 					</sec:authorize>
 					<sec:authorize access="hasAnyRole('Scrum Master')">
-					<i class="navbar-btn"><a class="glyphicon glyphicon-list-alt btn btn-default btnMenuHeader" href="/mumscrum/sprint">  Sprint</a></i>
-					<i class="navbar-btn"><a class="glyphicon glyphicon-tasks btn btn-default btnMenuHeader" href="/mumscrum/project">  Project</a></i>
-					<i class="navbar-btn"><a class="glyphicon glyphicon-stats btn btn-default btnMenuHeader" href="/mumscrum/report">  Report</a></i>
+					<i class="navbar-btn"><a class="glyphicon glyphicon-home btn btn-default btnMenuHeader" href="/mumscrum/sprint">  Sprint</a></i>
+					<i class="navbar-btn"><a class="glyphicon glyphicon-home btn btn-default btnMenuHeader" href="/mumscrum/project">  Project</a></i>
+					<i class="navbar-btn"><a class="glyphicon glyphicon-home btn btn-default btnMenuHeader" href="/mumscrum/report">  Report</a></i>
+					<i class="navbar-btn"><a class="glyphicon glyphicon-home btn btn-default btnMenuHeader" href="/mumscrum/backlogs">  Backlogs</a></i>
 					</sec:authorize>
 					
 				</div>

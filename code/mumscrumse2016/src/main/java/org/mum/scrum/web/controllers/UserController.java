@@ -7,13 +7,10 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.mum.scrum.entities.Role;
-import org.mum.scrum.entities.SecurityUser;
 import org.mum.scrum.entities.User;
 import org.mum.scrum.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -47,21 +44,6 @@ public class UserController {
 	private String getUserRole(){
 		return "System Administrator";
 	}*/
-	
-	@ModelAttribute("currentUser")
-	public User getCurrentUser()
-	{
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	    if (principal instanceof UserDetails) 
-	    {
-	    	String email = ((UserDetails) principal).getUsername();
-	    	User loginUser = userService.findUserByEmail(email);
-	    	return new SecurityUser(loginUser);
-	    }
-
-	    return null;
-	}
-
 
 	@RequestMapping(value = "/createuser", method = RequestMethod.GET)
 	public ModelAndView createUser() {
