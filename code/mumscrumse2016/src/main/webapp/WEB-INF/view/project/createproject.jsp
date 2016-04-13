@@ -16,9 +16,12 @@
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="scrummaster">Scrum Master:</label>
 			<div class="col-sm-10">
-				
-				<form:select path="user.id" items="${users}" itemValue="id"
-						itemLabel="name" cssClass="form-control" />
+				<select id="user.id" name="user.id">
+				${project.user == NULL  ? '<option >None-Scrum Master</option>' : ''}
+				<c:forEach items="${users}" var="u">
+					<option value="${u.id}" ${u.id == project.user.id ? 'selected="selected"' : ''}>${u.email}</option>
+				</c:forEach>
+				</select>
 			</div>
 		</div>
 		<div class="form-group">

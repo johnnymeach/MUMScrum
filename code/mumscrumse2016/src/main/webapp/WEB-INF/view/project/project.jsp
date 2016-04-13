@@ -8,7 +8,6 @@
 				<label class="control-label col-sm-4" for="name">
 					Name:</label>
 				<div class="col-sm-6">
-				<form:input type="hidden" path="id" />
 					<form:input path="name" cssClass="form-control"
 						htmlEscape="true" placeholder="Enter project name" required="true" />
 				</div>
