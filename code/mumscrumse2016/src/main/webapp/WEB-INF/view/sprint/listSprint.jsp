@@ -44,10 +44,10 @@
 						<td><c:out value="${sprint.endDate}" /></td>
 						<td>
 							<div class="buttonAction">
-								<a href="<c:url value="/sprint/${sprint.id}/edit"/>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+								<a href="<c:url value="/sprint/${sprint.id}/edit"/>" class="btn btn-primary btn-sm" title="Edit"><i class="fa fa-pencil"></i></a>
 							</div>
 							<div>
-								<button data-target="#deletesprint" data-toggle="modal" class="btn btn-danger btn-sm" name="sprint" value="${sprint.id}">
+								<button data-target="#deletesprint" data-toggle="modal" class="btn btn-danger btn-sm" name="sprint" value="${sprint.id}" title="Delete">
 								<i class="fa fa-remove"></i>
 							</button>
 							</div>
@@ -139,9 +139,9 @@
 						sprintList +="</td>";
 						sprintList +="<td>";
 						sprintList +="<div class='buttonAction'>";
-						sprintList += "<a href="+sprintUrl+" class='btn btn-primary btn-sm'><i class='fa fa-pencil'></i></a>";
+						sprintList += "<a href="+sprintUrl+" class='btn btn-primary btn-sm' title='Edit'><i class='fa fa-pencil'></i></a>";
 						sprintList +="</div>";
-						sprintList +="<div><button data-target='#deletesprint' data-toggle='modal' class='btn btn-danger btn-sm' name='sprint' value="+value.id+"><i class='fa fa-remove'></i></button>";
+						sprintList +="<div><button data-target='#deletesprint' data-toggle='modal' class='btn btn-danger btn-sm' name='sprint' value="+value.id+" title='Delete'><i class='fa fa-remove'></i></button>";
 						sprintList +="</div>";
 						sprintList +="</td>";
 						sprintList +="</tr>";
