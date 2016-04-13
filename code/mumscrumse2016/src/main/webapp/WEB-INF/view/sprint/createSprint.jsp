@@ -12,7 +12,6 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-4" for="name">Sprint Name</label>
 				<div class="col-sm-6">
 					<form:input path="name" cssClass="form-control"
 						htmlEscape="true" placeholder="Enter sprint name" required="true" />
@@ -22,16 +21,16 @@
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="startDate">Sprint Start Date</label>
 				<div class="col-sm-6">
-					<form:input path="startDate" cssClass="form-control"
-						htmlEscape="true" placeholder="Enter sprint start date" required="true" />
+					<form:input path="startDate" cssClass="form-control" id="startDate"
+						htmlEscape="true" placeholder="mm/dd/yyyy" required="true" />
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="endDate">Sprint End Date</label>
 				<div class="col-sm-6">
-					<form:input path="endDate" cssClass="form-control"
-						htmlEscape="true" placeholder="Enter sprint End Date" required="true" />
+					<form:input path="endDate" cssClass="form-control" id="endDate"
+						htmlEscape="true" placeholder="mm/dd/yyyy" required="true" />
 				</div>
 			</div>
 			
@@ -59,3 +58,35 @@
 		</form:form>
 	</fieldset>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	/* $("#startDate").datepicker();
+	$("#endDate").datepicker(); */
+	/* $("#endDate").keydown(false);
+	$("#startDate").keydown(false); */
+	
+	//Date validation for the startDate and endDate, endDate >= startDate
+	var nowTemp = new Date();
+	var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+	 
+	var startDate = $('#startDate').datepicker()
+	.on('changeDate', function(ev) {
+	  if (ev.date.valueOf() > endDate.date.valueOf()) {
+	    var newDate = new Date(ev.date)
+	    newDate.setDate(newDate.getDate() + 1);
+	    endDate.setValue(newDate);
+	  }
+	  startDate.hide();
+	  $('#endDate')[0].focus();
+	}).data('datepicker');
+	
+	var endDate = $('#endDate').datepicker({
+	  onRender: function(date) {
+	    return date.valueOf() < startDate.date.valueOf() ? 'disabled' : '';
+	  }
+	}).on('changeDate', function(ev) {
+		endDate.hide();
+	}).data('datepicker');
+	
+});
+</script>
