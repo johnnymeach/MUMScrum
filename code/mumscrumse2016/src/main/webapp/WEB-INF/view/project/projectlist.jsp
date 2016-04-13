@@ -21,8 +21,8 @@
 					</td>					
 					<td><c:out value="${p.name}" /></td>
 					<td><c:out value="${p.description}" /></td>
-					<td><c:out value="${p.user.name}" /></td>
-					<td><a href="<c:url value="/project/${p.id}"/>"
+					<td><c:out value="${p.user.email}" /></td>
+					<td><a href="<c:url value="/project/${p.id}/edit"/>"
 						class="btn btn-primary btn-xs">Edit </a>
 						<a href="<c:url value="/projectdelete/${p.id}"/>"
 						class="btn btn-primary btn-xs">Delete </a>

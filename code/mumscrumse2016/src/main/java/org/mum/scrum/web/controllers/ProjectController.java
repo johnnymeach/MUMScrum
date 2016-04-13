@@ -33,7 +33,7 @@ public class ProjectController {
 	public Project Constructor() {
 		return new Project();
 	}
-	@RequestMapping(value = "/project/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/project/{id}/edit", method = RequestMethod.GET)
 	public String project(Model model, @PathVariable("id") int id) {
 		Project p = pm.findProjectByID(id);
 		model.addAttribute("project", p);
@@ -42,9 +42,8 @@ public class ProjectController {
 		return "project";
 
 	}
-	@RequestMapping(value = "/project", method = RequestMethod.POST)
-	public String project(@Valid @ModelAttribute("project") Project p, BindingResult result, Principal principal,
-			Model model) {
+	@RequestMapping(value = "/project/{id}/edit", method = RequestMethod.POST)
+	public String saveProject( Model model,  Project p, @PathVariable("id") int id) {
 		pm.save(p);
 		return "redirect:/projectlist";
 	}
