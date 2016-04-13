@@ -1,9 +1,10 @@
 package org.mum.scrum.services;
 
 import java.util.List;
-
 import org.mum.scrum.dao.*;
 import org.mum.scrum.entities.*;
+import org.mum.scrum.services.SprintService;
+import org.mum.scrum.services.UserStoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProjectServiceImpl implements ProjectService{
 	@Autowired
 	private ProjectDao projectRepository;
+	@Autowired
+	private SprintService ss;
+	@Autowired
+	private UserStoryService sss;
+	
 	@Override
 	public List<Project> findAll(){
 		return projectRepository.findAll();
@@ -26,6 +32,12 @@ public class ProjectServiceImpl implements ProjectService{
 		return projectRepository.findOne(id);
 	}
 	public void deleteProjectByID(int id){
+		Project p = this.findProjectByID(id);
+		List<Sprint> list = ss.findSprintByProject(p);
+		for(int i =0; i < list.size(); i++){
+			Sprint s = list.get(i);
+			ss.deleteSprint(s.getId());
+		}
 		projectRepository.delete(id);
 	}
 }
