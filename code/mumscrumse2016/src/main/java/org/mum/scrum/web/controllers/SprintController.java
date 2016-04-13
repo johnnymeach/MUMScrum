@@ -13,6 +13,9 @@ import org.mum.scrum.services.ProjectService;
 import org.mum.scrum.services.SprintService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +24,11 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @PreAuthorize("hasRole('Scrum Master')")
@@ -80,20 +84,15 @@ public class SprintController {
 		return "listsprint";
 	}
 
-	@RequestMapping(value = "/sprint", method = RequestMethod.POST)
-	public String listSprintByProject(Model model, @RequestParam(value = "projectId") int projectId) {
-		/*
-		 * if (projectId > 0) { Project project =
-		 * projectService.findProjectByID(projectId); List<Sprint> listSprint =
-		 * sprintService.findSprintByProject(project);
-		 * model.addAttribute("sprints", listSprint); } else { List<Sprint>
-		 * listSprint = sprintService.findAll(); model.addAttribute("sprints",
-		 * listSprint); }
-		 */
+	@RequestMapping(value = "/sprint/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<Sprint>> listSprintByProject(@PathVariable("id") int projectId) {
+
+		HttpStatus httpStatus = HttpStatus.OK;
 		Project project = projectService.findProjectByID(projectId);
 		List<Sprint> listSprint = sprintService.findSprintByProject(project);
-		model.addAttribute("sprints", listSprint);
-		return "listsprint";
+		
+		return new ResponseEntity<List<Sprint>>(listSprint, httpStatus);
 	}
 
 	@RequestMapping(value = "/sprint/{id}/edit", method = RequestMethod.GET)
