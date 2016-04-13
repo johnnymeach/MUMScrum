@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@PreAuthorize("hasRole('Scrum Master')")
+@PreAuthorize("hasAnyRole('Scrum Master')")
 public class UserStoryController {
 	
 	@Autowired
@@ -43,20 +43,6 @@ public class UserStoryController {
 		userStoryService.addUserStory(userStory);
 		return "redirect:/backlogs";
 	}
-	
-	@RequestMapping(value="/backlogs/product/{product}", method=RequestMethod.GET)
-	public String get(@PathVariable Project product, Model model) {
-		model.addAttribute("userstories", userStoryService.getAllUserStories(product));
-		return "redirect:/backlogs";
-	}
-	
-	@RequestMapping(value="/backlogs/product/{product}/sprint/{sprint}", method=RequestMethod.GET)
-	public String get(@PathVariable Project product, @PathVariable Sprint sprint, Model model) {
-		model.addAttribute("userstories", userStoryService.getAllUserStories(product, sprint));
-		return "redirect:/backlogs";
-	}
-	
-	// to-do other get methods
 	
 	@RequestMapping(value="/backlogs/{id}/edit", method=RequestMethod.GET)
 	public String editUserStory(Model model, @PathVariable("id") int id) {

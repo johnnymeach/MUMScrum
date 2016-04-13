@@ -34,29 +34,10 @@ public class UserStoryServiceImpl implements UserStoryService {
 	}
 
 	@Override
-	public List<Userstory> getAllUserStories(Project project) {
-		//to-do
-		return userStoryRepository.findBySprint(null);
+	public List<Userstory> getAllUserStoriesByUserId(int userId) {
+		return userStoryRepository.findByUserId(userId);
 	}
-
-	@Override
-	public List<Userstory> getAllUserStories(Project project, Sprint sprint) {
-		// to-do
-		return userStoryRepository.findBySprint(sprint);
-	}
-
-	@Override
-	public List<Userstory> getAllUserStories(Project project, User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Userstory> getAllUserStories(Project project, Sprint sprint, User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public void updateUserStory(Userstory userStory) {
 		userStoryRepository.save(userStory);
@@ -66,10 +47,4 @@ public class UserStoryServiceImpl implements UserStoryService {
 	public void deleteUserStoryById(int id) {
 		userStoryRepository.delete(id);
 	}
-
-	@Override
-	public void deleteUserStories(List<Userstory> userStories) {
-		userStoryRepository.delete(userStories);
-	}
-
 }
