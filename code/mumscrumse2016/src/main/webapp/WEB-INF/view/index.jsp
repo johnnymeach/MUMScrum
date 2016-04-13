@@ -20,5 +20,9 @@
 	<sec:authorize access="hasAnyRole('Scrum Master')">
 		<h2>This is the scrum master dashboard</h2>
 	</sec:authorize>
+	<sec:authorize access="hasAnyRole('Developer')">
+		<h2>This is the developer dashboard</h2>
+		<%@ include file="/WEB-INF/view/developer/developer.jsp" %>
+	</sec:authorize>
 </body>
 </html>

@@ -10,13 +10,9 @@ public interface UserStoryService {
 	
 	public Userstory getUserStoryById(int id);
 	public List<Userstory> getAllUserStories();
-	public List<Userstory> getAllUserStories(Project project);
-	public List<Userstory> getAllUserStories(Project project, Sprint sprint);
-	public List<Userstory> getAllUserStories(Project project, User user);
-	public List<Userstory> getAllUserStories(Project project, Sprint sprint, User user);
+	public List<Userstory> getAllUserStoriesByUserId(int userId);
 	
 	public void updateUserStory(Userstory userStory);
 	
 	public void deleteUserStoryById(int id);
-	public void deleteUserStories(List<Userstory> userStories);
 }
