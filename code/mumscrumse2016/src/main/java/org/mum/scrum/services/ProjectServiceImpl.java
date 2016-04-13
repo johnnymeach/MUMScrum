@@ -21,4 +21,11 @@ public class ProjectServiceImpl implements ProjectService{
 	public void save(Project p){
 		projectRepository.save(p);
 	}
+	@Override
+	public Project findProjectByID(int id) {
+		return projectRepository.findOne(id);
+	}
+	public void deleteProjectByID(int id){
+		projectRepository.delete(id);
+	}
 }

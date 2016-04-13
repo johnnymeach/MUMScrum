@@ -7,6 +7,7 @@ import java.util.Set;
 import org.mum.scrum.dao.ProjectDao;
 import org.mum.scrum.dao.RoleDao;
 import org.mum.scrum.dao.SprintDao;
+import org.mum.scrum.entities.Project;
 import org.mum.scrum.entities.Sprint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +46,18 @@ public class SprintServiceImpl implements SprintService
 	public void deleteSprint(int id) {
 		
 		sprintRepository.delete(id);
+	}
+
+	@Override
+	public List<Project> getAllProject() {
+		
+		return projectRepository.findAll();
+	}
+
+	@Override
+	public List<Sprint> findSprintByProject(Project project) {
+		
+		return sprintRepository.findByProject(project);
 	}
 
 	
