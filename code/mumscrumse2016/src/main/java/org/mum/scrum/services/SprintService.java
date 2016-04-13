@@ -19,5 +19,6 @@ public interface SprintService {
 	public void deleteSprint(int id);
 	
 	public List<Project> getAllProject();
-
+	
+	public List<Integer> getRemainingTimeList(Sprint s);
 }

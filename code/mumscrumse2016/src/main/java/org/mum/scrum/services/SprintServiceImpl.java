@@ -60,7 +60,19 @@ public class SprintServiceImpl implements SprintService
 		return sprintRepository.findByProject(project);
 	}
 
+	protected int getTotalEstimateTime(Sprint s){
+		return 0;
+	}
+	protected int getLoggedTimeByDate(Sprint s, String date){
+		return 0;
+	}
+	protected int getRemainingTimeByDate(Sprint s, String date){
+		return 0;
+	}
 	
-	
+	public List<Integer> getRemainingTimeList(Sprint s){
+		List<Integer> list = null;
+		return list;
+	}
 }
 
