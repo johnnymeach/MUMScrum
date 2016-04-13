@@ -28,8 +28,8 @@
 							<a href="<c:url value="/user/${user.id}/edit"/>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
 						</div>
 						<div>
-							<button data-target="#deleteuser" data-toggle="modal" class="btn btn-primary btn-sm" name="user" value="${user.id}">
-							<i class="fa fa-remove text-danger"></i>
+							<button data-target="#deleteuser" data-toggle="modal" class="btn btn-danger btn-sm" name="user" value="${user.id}">
+							<i class="fa fa-remove"></i>
 							</button>
 						</div>
 						</td>
