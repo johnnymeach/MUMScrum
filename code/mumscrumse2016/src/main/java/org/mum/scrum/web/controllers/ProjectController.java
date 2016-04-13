@@ -60,6 +60,9 @@ public class ProjectController {
 	@RequestMapping(value = "/createproject", method = RequestMethod.POST)
 	public String createproject(@Valid @ModelAttribute("project") Project p, BindingResult result, Principal principal,
 			Model model) {
+		if(p.getUser().getId() == 0){
+			p.setUser(null);
+		}
 		pm.save(p);
 		return "redirect:/projectlist";
 	}

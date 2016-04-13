@@ -17,7 +17,7 @@
 			<label class="control-label col-sm-2" for="scrummaster">Scrum Master:</label>
 			<div class="col-sm-10">
 				<select id="user.id" name="user.id">
-				${project.user == NULL  ? '<option >None-Scrum Master</option>' : ''}
+				${project.user == NULL  ? '<option value="0">None-Scrum Master</option>' : ''}
 				<c:forEach items="${users}" var="u">
 					<option value="${u.id}" ${u.id == project.user.id ? 'selected="selected"' : ''}>${u.email}</option>
 				</c:forEach>
