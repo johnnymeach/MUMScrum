@@ -6,8 +6,13 @@
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="project">Project:</label>
 			<div class="col-sm-4">
-				<form:select path="project.id" items="${projects}" itemValue="id"
-					itemLabel="name" cssClass="form-control" id="projectFilter" />
+				<form:select path="project.id"  itemValue="id"
+					itemLabel="name" cssClass="form-control" id="projectFilter" >
+					<option value="">All</option>
+					<c:forEach items="${projects}" var="p">
+					<option value="${p.id }">${p.name }</option>
+					</c:forEach>
+				</form:select>
 			</div>
 		</div>
 		<input id="projectId" name="projectId" type="hidden" value="" />
