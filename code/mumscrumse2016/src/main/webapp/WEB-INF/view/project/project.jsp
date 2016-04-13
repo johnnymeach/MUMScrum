@@ -1,41 +1,34 @@
 <%@ include file="/WEB-INF/view/include/taglib.jsp" %>
 <div class="content-panel">
-<div class="form-group">
-			<label class="control-label col-sm-2" for="pwd">Projects:</label>
-			<div class="col-sm-10">
-			<select class="form-control">
-				<c:forEach items="${projects}" var="p">
-				<option value="${p.id}">${p.name}</option>
-				<br />
-				</c:forEach>
-				</select>
-			</div>
-		</div>
-		<hr>
-	Project<hr>
-	<form id="formproject" class="form-horizontal" role="form" name="project" action="" method="post">
+	<fieldset class="form-border">
+		<legend class="form-border">Project</legend>
+	<form:form class="form-horizontal" role="form" commandName="project"
+			action="" method="post">
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="firstname">Project Name:</label>
-			<div class="col-sm-10">
-				<input type="email" class="form-control" id="firstname" name="firstname"
-					placeholder="Enter first name">
-			</div>
+				<label class="control-label col-sm-4" for="name">
+					Name:</label>
+				<div class="col-sm-6">
+				<form:input type="hidden" path="id" />
+					<form:input path="name" cssClass="form-control"
+						htmlEscape="true" placeholder="Enter project name" required="true" />
+				</div>
 		</div>
+			
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="scrummaster">Scrum Master:</label>
 			<div class="col-sm-10">
-				<select class="form-control">
-					<c:forEach items="${users}" var="p">
-					<option value="${p.id}">${p.email}</option>
-					<br />
+				<select id="user.id" name="user.id">
+				${project.user == NULL  ? '<option >None-Scrum Master</option>' : ''}
+				<c:forEach items="${users}" var="u">
+					<option value="${u.id}" ${u.id == project.user.id ? 'selected="selected"' : ''}>${u.email}</option>
 				</c:forEach>
 				</select>
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="lastname">Project Description:</label>
+			<label class="control-label col-sm-2" for="description">Project Description:</label>
 			<div class="col-sm-10">
-			<textarea form="formproject" rows="5" cols="80"></textarea>
+			<form:textarea path="description" rows="5" cols="80" required="true" />
 			</div>
 		</div>
 		
@@ -44,5 +37,6 @@
 				<input type="submit" class="btn btn-default btn-lg btn-block btn-success" value="Submit">
 			</div>
 		</div>
-	</form>
+	</form:form>
+	</fieldset>
 </div>

@@ -29,12 +29,24 @@ public class ProjectController {
 	@Autowired
 	private UserService adminManager;
 	
+	@ModelAttribute("project")
+	public Project Constructor() {
+		return new Project();
+	}
 	@RequestMapping(value = "/project/{id}", method = RequestMethod.GET)
 	public String project(Model model, @PathVariable("id") int id) {
 		Project p = pm.findProjectByID(id);
 		model.addAttribute("project", p);
+		List<User> users = adminManager.findAll();
+		model.addAttribute("users", users);
 		return "project";
 
+	}
+	@RequestMapping(value = "/project", method = RequestMethod.POST)
+	public String project(@Valid @ModelAttribute("project") Project p, BindingResult result, Principal principal,
+			Model model) {
+		pm.save(p);
+		return "redirect:/projectlist";
 	}
 	@RequestMapping(value = "/createproject", method = RequestMethod.GET)
 	public ModelAndView createproject() {
