@@ -72,9 +72,16 @@ body {
 }
 
 .btnMenuHeader {
-	width: 130px;
-	height: 40px;
-	margin-right: 30px;
+	width: 140px;
+    height: 40px;
+    margin-right: 50px;
+    background-color: #DAA226;
+    color: #fff;
+}
+
+.btnMenuHeaderActive{
+    background-color: #fff;
+    color: #000;
 }
 
 .user-role-setting {
