@@ -23,10 +23,15 @@
 					<td><c:out value="${user.lastName}" /></td>
 					<td><c:out value="${user.email}" /></td>
 					<td><c:out value="${user.role.name}" /></td>
-					<td><a href="<c:url value="/user/${user.id}/edit"/>"
-						class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> </a>
-						<button data-target="#deleteuser" data-toggle="modal"
-							class="btn btn-primary btn-xs" name="user" value="${user.id}"><i class="fa fa-remove text-danger"></i></button>
+					<td>
+						<div class="buttonAction">
+							<a href="<c:url value="/user/${user.id}/edit"/>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+						</div>
+						<div>
+							<button data-target="#deleteuser" data-toggle="modal" class="btn btn-primary btn-sm" name="user" value="${user.id}">
+							<i class="fa fa-remove text-danger"></i>
+							</button>
+						</div>
 						</td>
 				</tr>
 			</c:forEach>

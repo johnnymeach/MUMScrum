@@ -83,3 +83,8 @@ body {
 	font-weight: bold;
 	color: rgba(179, 152, 170, 0.6);
 }
+
+.buttonAction{
+	float:left;
+	margin-right: 15px;
+}

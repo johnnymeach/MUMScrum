@@ -84,16 +84,13 @@ public class SprintController {
 		return "listsprint";
 	}
 
-	@RequestMapping(value = "/sprint/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public ResponseEntity<List<Sprint>> listSprintByProject(@PathVariable("id") int projectId) {
+	@RequestMapping(value = "/deletesprint", method = RequestMethod.POST)
+	public String deletSprint(@RequestParam(value = "sprintId") int sprintId) {
 
-		HttpStatus httpStatus = HttpStatus.OK;
-		Project project = projectService.findProjectByID(projectId);
-		List<Sprint> listSprint = sprintService.findSprintByProject(project);
-		
-		return new ResponseEntity<List<Sprint>>(listSprint, httpStatus);
+		sprintService.deleteSprint(sprintId);
+		return "redirect:/sprint";
 	}
+	
 
 	@RequestMapping(value = "/sprint/{id}/edit", method = RequestMethod.GET)
 	public String editUser(Model model, @PathVariable("id") int id) {
@@ -113,12 +110,21 @@ public class SprintController {
 		sprintService.save(editedSprint);
 		return "redirect:/sprint";
 	}
+	
+	@RequestMapping(value = "/sprint/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<Sprint>> listSprintByProject(@PathVariable("id") int projectId) {
 
-	@RequestMapping(value = "/deletesprint", method = RequestMethod.POST)
-	public String deletSprint(@RequestParam(value = "sprintId") int sprintId) {
-
-		sprintService.deleteSprint(sprintId);
-		return "redirect:/sprint";
+		HttpStatus httpStatus = HttpStatus.OK;
+		Project project = projectService.findProjectByID(projectId);
+		List<Sprint> listSprint;
+		if(project == null){
+			listSprint = sprintService.findAll();
+		}else{
+			listSprint = sprintService.findSprintByProject(project);
+		}
+		
+		return new ResponseEntity<List<Sprint>>(listSprint, httpStatus);
 	}
 
 }

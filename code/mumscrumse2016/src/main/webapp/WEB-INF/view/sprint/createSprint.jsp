@@ -12,6 +12,7 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="control-label col-sm-4" for="project">Sprint Name</label>
 				<div class="col-sm-6">
 					<form:input path="name" cssClass="form-control"
 						htmlEscape="true" placeholder="Enter sprint name" required="true" />

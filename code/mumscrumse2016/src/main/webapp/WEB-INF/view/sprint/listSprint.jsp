@@ -8,9 +8,9 @@
 			<div class="col-sm-4">
 				<form:select path="project.id"  itemValue="id"
 					itemLabel="name" cssClass="form-control" id="projectFilter" >
-					<option value="">All</option>
+					<option value="0">All</option>
 					<c:forEach items="${projects}" var="p">
-					<option value="${p.id }">${p.name }</option>
+					<option value="${p.id}">${p.name }</option>
 					</c:forEach>
 				</form:select>
 			</div>
@@ -29,7 +29,6 @@
 					<th>Description</th>
 					<th>Start Date</th>
 					<th>End Date</th>
-					<th>Project</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -43,14 +42,16 @@
 						<td><c:out value="${sprint.description}" /></td>
 						<td><c:out value="${sprint.startDate}" /></td>
 						<td><c:out value="${sprint.endDate}" /></td>
-						<td><c:out value="${sprint.project.name}" /></td>
-						<td><a href="<c:url value="/sprint/${sprint.id}/edit"/>"
-							class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-							<button data-target="#deletesprint" data-toggle="modal"
-								class="btn btn-primary btn-xs" name="sprint"
-								value="${sprint.id}">
+						<td>
+							<div class="buttonAction">
+								<a href="<c:url value="/sprint/${sprint.id}/edit"/>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+							</div>
+							<div>
+								<button data-target="#deletesprint" data-toggle="modal" class="btn btn-primary btn-sm" name="sprint" value="${sprint.id}">
 								<i class="fa fa-remove text-danger"></i>
-							</button></td>
+							</button>
+							</div>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -116,7 +117,7 @@
 				data : JSON.stringify(data),
 				success : function(result) {
 					var sprintList = "<table id='sprintListTable' class='table table-striped table-advance table-hover table-bordered table-fixed'>";
-					sprintList += "<thead><tr><th>No</th><th>Name</th><th>Description</th><th>Start Date</th><th>End Date</th><th>Project</th><th>Action</th></tr></thead>";
+					sprintList += "<thead><tr><th>No</th><th>Name</th><th>Description</th><th>Start Date</th><th>End Date</th><th>Action</th></tr></thead>";
 					sprintList += "<tbody>";
 					$.each(result, function(index, value) {
 						var sprintUrl = "<c:url value='/sprint/'/>"+value.id+"/edit";
@@ -137,12 +138,11 @@
 						sprintList += value.endDate;
 						sprintList +="</td>";
 						sprintList +="<td>";
-						sprintList += $('#projectFilter option:selected').text();
-						sprintList +="</td>";
-						sprintList +="<td>";
-						sprintList += "<a href="+sprintUrl+" class='btn btn-primary btn-xs'><i class='fa fa-pencil'></i></a>";
-						sprintList +="<button data-target='#deletesprint' data-toggle='modal' class='btn btn-primary btn-xs' name='sprint' value="+value.id+"><i class='fa fa-remove text-danger'></i></button>";
-						sprintList +="</a>";
+						sprintList +="<div class='buttonAction'>";
+						sprintList += "<a href="+sprintUrl+" class='btn btn-primary btn-sm'><i class='fa fa-pencil'></i></a>";
+						sprintList +="</div>";
+						sprintList +="<div><button data-target='#deletesprint' data-toggle='modal' class='btn btn-primary btn-sm' name='sprint' value="+value.id+"><i class='fa fa-remove text-danger'></i></button>";
+						sprintList +="</div>";
 						sprintList +="</td>";
 						sprintList +="</tr>";
 						
