@@ -1,74 +1,85 @@
--- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 08, 2016 at 07:40 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: mumscrum_prod
+-- ------------------------------------------------------
+-- Server version	5.7.9-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-
---
--- Database: `mumscrum_prod`
---
-
--- --------------------------------------------------------
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `projects`
 --
 
-CREATE TABLE IF NOT EXISTS `projects` (
+DROP TABLE IF EXISTS `projects`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `projects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
   `description` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '1',
   `user_id` int(11) DEFAULT NULL,
+  `status` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_user_id_idx` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `fk_user_id_idx` (`user_id`),
+  CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `projects`
+--
+
+LOCK TABLES `projects` WRITE;
+/*!40000 ALTER TABLE `projects` DISABLE KEYS */;
+INSERT INTO `projects` VALUES (3,'First Project 2','sdfds',2,NULL),(4,'New Project X','sdf sdf',2,NULL);
+/*!40000 ALTER TABLE `projects` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `roles`
 --
 
-CREATE TABLE IF NOT EXISTS `roles` (
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
+  `name` varchar(50) NOT NULL,
   `description` varchar(256) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT NULL,
+  `status` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `roles`
 --
 
-INSERT INTO `roles` (`id`, `name`, `description`, `status`) VALUES
-(1, 'Developer', 'The developer in our company.', 1),
-(2, 'Scrum Master', 'The Scrum Master for our project.', 1),
-(3, 'System Admin', 'The administrator in our system to manage users.', 1),
-(4, 'Product Owner', 'The owner of our project.', 1);
-
--- --------------------------------------------------------
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'Developer','The developer in our company.',NULL),(2,'Scrum Master','The Scrum Master for our project.',NULL),(3,'System Admin','The administrator in our system to manage users.',NULL),(4,'Product Owner','The owner of our project.',NULL);
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `sprints`
 --
 
-CREATE TABLE IF NOT EXISTS `sprints` (
+DROP TABLE IF EXISTS `sprints`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sprints` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
   `description` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
   `startDate` date DEFAULT NULL,
   `endDate` date DEFAULT NULL,
@@ -76,103 +87,124 @@ CREATE TABLE IF NOT EXISTS `sprints` (
   `project_id` int(11) DEFAULT NULL,
   `assignedDate` date DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_project_id_idx` (`project_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `fk_project_id_idx` (`project_id`),
+  CONSTRAINT `fk_project_id` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `sprints`
+--
+
+LOCK TABLES `sprints` WRITE;
+/*!40000 ALTER TABLE `sprints` DISABLE KEYS */;
+INSERT INTO `sprints` VALUES (1,'dfgdfgdf sdfgdf','dfgdfg','2016-04-14','2016-04-28',NULL,3,NULL);
+/*!40000 ALTER TABLE `sprints` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `timelogs`
 --
 
-CREATE TABLE IF NOT EXISTS `timelogs` (
+DROP TABLE IF EXISTS `timelogs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `timelogs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `duration` int(11) DEFAULT NULL,
   `userstory_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `updatedDate` date DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_userstory_id_idx` (`userstory_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `fk_userstory_id_idx` (`userstory_id`),
+  CONSTRAINT `fk_userstory_id` FOREIGN KEY (`userstory_id`) REFERENCES `userstory` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `timelogs`
+--
+
+LOCK TABLES `timelogs` WRITE;
+/*!40000 ALTER TABLE `timelogs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `timelogs` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `firstName` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `firstName` varchar(50) CHARACTER SET utf8 NOT NULL,
   `lastName` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `password` varchar(100) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '1',
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  `status` bit(1) DEFAULT NULL,
   `token` varchar(256) DEFAULT NULL,
-  `role_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_role_id_idx` (`role_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  KEY `fk_role_id_idx` (`role_id`),
+  CONSTRAINT `fk_role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `status`, `token`, `role_id`) VALUES
-(1, 'Sokly', 'Meach', 'meachsokly@gmail.com', '$2a$10$bJ3lCLfd.VaIlDYdDmw/jO4YLSgeWUIiO2lVWgcxixthB73CfCYW.', 1, NULL, 3);
-
--- --------------------------------------------------------
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Sokly','Meach','meachsokly@gmail.com','$2a$10$bJ3lCLfd.VaIlDYdDmw/jO4YLSgeWUIiO2lVWgcxixthB73CfCYW.',3,NULL,NULL),(2,'Sudeep','Pradhan','pradhan_sudeep@hotmail.com','$2a$10$nh.KAJxnSfZDE78ySGtEnO4c2OF7d1G9aF.DsB3.r6Ce.6rqEJVzy',2,NULL,NULL),(3,'Admin','admin','admin@hotmail.com','$2a$10$qr9uE5S7L.NAS685drkJ7ub.rLQjf1A8UGifKUcbHK6Xr4mlH871.',3,NULL,NULL),(4,'sudeep','Pradhan','dev@hotmail.com','$2a$10$/W5Xc2A4LwolfW3y81HPGO/mafD1.C6EdZzFZ1fulKx71PzQbely6',1,NULL,NULL);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `userstory`
 --
 
-CREATE TABLE IF NOT EXISTS `userstory` (
+DROP TABLE IF EXISTS `userstory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `userstory` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
   `description` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
   `estimatedTime` int(11) DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
   `sprint_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `assignedDate` date DEFAULT NULL,
+  `project_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_sprint_id_idx` (`sprint_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `fk_sprint_id_idx` (`sprint_id`),
+  KEY `fk_userUS_id_idx` (`user_id`),
+  KEY `fk_projectUS_id_idx` (`project_id`),
+  CONSTRAINT `fk_projectUS_id` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sprint_id` FOREIGN KEY (`sprint_id`) REFERENCES `sprints` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_userUS_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Constraints for dumped tables
+-- Dumping data for table `userstory`
 --
 
---
--- Constraints for table `projects`
---
-ALTER TABLE `projects`
-  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+LOCK TABLES `userstory` WRITE;
+/*!40000 ALTER TABLE `userstory` DISABLE KEYS */;
+/*!40000 ALTER TABLE `userstory` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Constraints for table `sprints`
---
-ALTER TABLE `sprints`
-  ADD CONSTRAINT `fk_project_id` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `timelogs`
---
-ALTER TABLE `timelogs`
-  ADD CONSTRAINT `fk_userstory_id` FOREIGN KEY (`userstory_id`) REFERENCES `userstory` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `fk_role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `userstory`
---
-ALTER TABLE `userstory`
-  ADD CONSTRAINT `fk_sprint_id` FOREIGN KEY (`sprint_id`) REFERENCES `sprints` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-04-13 13:51:31
