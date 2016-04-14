@@ -11,6 +11,7 @@ public interface UserStoryService {
 	public Userstory getUserStoryById(int id);
 	public List<Userstory> getAllUserStories();
 	public List<Userstory> getAllUserStoriesByUserId(int userId);
+	public List<Userstory> getAllUserStoriesBySprintId(int sprintId);
 	
 	public void updateUserStory(Userstory userStory);
 	

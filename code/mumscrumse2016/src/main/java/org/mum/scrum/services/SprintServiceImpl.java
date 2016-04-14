@@ -6,9 +6,11 @@ import java.util.Set;
 
 import org.mum.scrum.dao.ProjectDao;
 import org.mum.scrum.dao.RoleDao;
+import org.mum.scrum.dao.UserStoryDao;
 import org.mum.scrum.dao.SprintDao;
 import org.mum.scrum.entities.Project;
 import org.mum.scrum.entities.Sprint;
+import org.mum.scrum.entities.Userstory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class SprintServiceImpl implements SprintService
 {
+	@Autowired
+	private UserStoryDao userstoryRepository;
 	
 	@Autowired
 	private SprintDao sprintRepository;
@@ -61,6 +65,7 @@ public class SprintServiceImpl implements SprintService
 	}
 
 	protected int getTotalEstimateTime(Sprint s){
+//		List<Userstory> list = userstoryRepository.findAllBySprintId(s.getId());
 		return 0;
 	}
 	protected int getLoggedTimeByDate(Sprint s, String date){

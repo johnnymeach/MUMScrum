@@ -66,6 +66,18 @@
   	<put-attribute name="body" value="/WEB-INF/view/user/listUser.jsp" />
   </definition>
   
+  <definition name="burndownchart" extends="common" >   
+  	<put-attribute name="title" value="Burndown Chart" />
+  	<put-attribute name="body" value="/WEB-INF/view/burndownchart/burndownchart.jsp" />
+
+  </definition>
+  
+  <definition name="burndownchartlist" extends="common" >   
+  	<put-attribute name="title" value="Burndown Chart List" />
+  	<put-attribute name="body" value="/WEB-INF/view/burndownchart/burndownchartlist.jsp" />
+
+  </definition>
+  
   <definition name="project" extends="common" >   
   	<put-attribute name="title" value="Project" />
   	<put-attribute name="body" value="/WEB-INF/view/project/project.jsp" />

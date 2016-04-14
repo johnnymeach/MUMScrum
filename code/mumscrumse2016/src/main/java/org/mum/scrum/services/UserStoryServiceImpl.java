@@ -47,4 +47,7 @@ public class UserStoryServiceImpl implements UserStoryService {
 	public void deleteUserStoryById(int id) {
 		userStoryRepository.delete(id);
 	}
+	public List<Userstory> getAllUserStoriesBySprintId(int sprintId){
+		return userStoryRepository.findBySprintId(sprintId);
+	}
 }
