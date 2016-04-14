@@ -65,7 +65,7 @@
 							</div>
 							<button data-target="#deleteuserstory" data-toggle="modal"
 								class="btn btn-danger btn-sm" name="userstory" value="${userstory.id}">
-								<i class="fa fa-remove text-danger"></i>
+								<i class="fa fa-remove"></i>
 							</button>
 						</td>
 					</tr>

@@ -66,17 +66,45 @@
     $(document).ready(function() {
        $('#projectFilter').change(function()
         {   
-    	   getSprints();
+    	   $("#projectId").val($('#projectFilter').val());
+			var projectId = $("#projectId").val();
+			var data = {
+				"projectId" : projectId
+			};
+			var url = "<c:url value='/sprint/'/>";
+			$.ajax({
+				type : "GET",
+				contentType : "application/json",
+				url : url + projectId,
+				data : JSON.stringify(data),
+				success : function(data) {
+					var html = '<option value="">Select All</option>';
+					var len = data.length;
+					for ( var i = 0; i < len; i++) {
+						html += '<option value="' + data[i].name + '">'
+								+ data[i].name + '</option>';
+					}
+					html += '</option>';
+	 
+					$('#sprintFilter').html(html);
+				},
+				error : function(xhr, status, exception) {
+					console.log(xhr, status, exception);
+				},
+				done : function(e) {
+					console.log("DONE");
+				}
+			});
         });
     });
     
-    function getSprints(){
+    /* function getSprints(){
         $.getJSON(
-             "edit/hello", 
+             "hello", 
              {projectId: $('#projectFilter').val()},
              function(data) {
-                  alert('d');
+                  console.log("hello");
              }
           );
-  	}
+  	} */
 </script>
