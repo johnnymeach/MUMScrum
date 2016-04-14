@@ -28,17 +28,22 @@ public class BurndownchartController {
 	@Autowired
 	private UserStoryService usService;
 	
-	@RequestMapping(value = "/burndownchartlist", method = RequestMethod.GET)
+	@RequestMapping(value = "/burndownchart", method = RequestMethod.GET)
 	public ModelAndView burndownchartlist() {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("burndownchart");
 		List<Sprint> list = sprintService.findAll();
+		Sprint s = list.get(0);
 		model.addObject("sprints", list);
+		model.addObject("selectedId", s.getId());
 		return model;
 	}
 	
 	@RequestMapping(value = "/burndownchart/{id}", method = RequestMethod.GET)
 	public String burndownchart(Model model, @PathVariable("id") int id) {
+		List<Sprint> list = sprintService.findAll();
+		model.addAttribute("sprints", list);
+		model.addAttribute("selectedId", id);
 		return "burndownchart";
 
 	}
