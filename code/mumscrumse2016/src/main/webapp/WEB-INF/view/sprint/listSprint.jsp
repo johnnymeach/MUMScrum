@@ -122,7 +122,7 @@
 		        tr.hide();
 		      }
 		    });
-		  });
+		  }); 
 
 		/* $('#projectFilter').on('change', function() {
 			$("#projectId").val($('#projectFilter').val());
@@ -130,6 +130,7 @@
 			var data = {
 				"projectId" : projectId
 			};
+			
 			var url = "<c:url value='/sprint/'/>";
 			$.ajax({
 				type : "GET",
@@ -137,44 +138,10 @@
 				url : url + projectId,
 				data : JSON.stringify(data),
 				success : function(result) {
-					var sprintList = "<table id='sprintListTable' class='table table-striped table-advance table-hover table-bordered table-fixed'>";
-					sprintList += "<thead><tr><th>No</th><th>Name</th><th>Description</th><th>Start Date</th><th>End Date</th><th>Project Name</th><th>Action</th></tr></thead>";
-					sprintList += "<tbody>";
+					console.log(result);
 					$.each(result, function(index, value) {
-						var sprintUrl = "<c:url value='/sprint/'/>"+value.id+"/edit";
-						sprintList +="<tr>";
-						sprintList +="<td>";
-						sprintList += index+1;
-						sprintList +="</td>";
-						sprintList +="<td>";
-						sprintList += value.name;
-						sprintList +="</td>";
-						sprintList +="<td>";
-						sprintList += value.description;
-						sprintList +="</td>";
-						sprintList +="<td>";
-						sprintList += value.startDate;
-						sprintList +="</td>";
-						sprintList +="<td>";
-						sprintList += value.endDate;
-						sprintList +="</td>";
-						sprintList +="<td>";
-						sprintList += value.project.name;
-						sprintList +="</td>";
-						sprintList +="<td>";
-						sprintList +="<div class='buttonAction'>";
-						sprintList += "<a href="+sprintUrl+" class='btn btn-primary btn-sm' title='Edit'><i class='fa fa-pencil'></i></a>";
-						sprintList +="</div>";
-						sprintList +="<div><button data-target='#deletesprint' data-toggle='modal' class='btn btn-danger btn-sm' name='sprint' value="+value.id+" title='Delete'><i class='fa fa-remove'></i></button>";
-						sprintList +="</div>";
-						sprintList +="</td>";
-						sprintList +="</tr>";
-						
-					});
-					sprintList += "</tbody>";
-					sprintList += "</table>";
-					
-					$('#tableSprint').html(sprintList);
+						console.log("SprintID:" + index + " : Sprint Name:"+value.name);
+					}); 
 				},
 				error : function(xhr, status, exception) {
 					console.log(xhr, status, exception);
