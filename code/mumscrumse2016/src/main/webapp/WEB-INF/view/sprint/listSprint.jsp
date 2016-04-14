@@ -9,9 +9,13 @@
 			<div class="col-sm-4">
 				<form:select path="project.id"  itemValue="id"
 					itemLabel="name" cssClass="form-control" id="projectFilter" >
-					<option value="0">All</option>
+					<%-- <option value="0">All</option>
 					<c:forEach items="${projects}" var="p">
-					<option value="${p.id}">${p.name }</option>
+						<option value="${p.id}">${p.name }</option>
+					</c:forEach> --%>
+					<option value="zero">All</option>
+					<c:forEach items="${projects}" var="p">
+						<option value="${p.name}">${p.name}</option>
 					</c:forEach>
 				</form:select>
 			</div>
@@ -30,19 +34,21 @@
 					<th>Description</th>
 					<th>Start Date</th>
 					<th>End Date</th>
+					<th>Project Name</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<c:set var="id" value="${1}" />
 			<tbody>
 				<c:forEach items="${sprints}" var="sprint">
-					<tr>
+					<tr class="${sprint.project.name}">
 						<td>${id}</td>
 						<c:set var="id" value="${id+1}" />
 						<td><c:out value="${sprint.name}" /></td>
 						<td><c:out value="${sprint.description}" /></td>
 						<td><c:out value="${sprint.startDate}" /></td>
 						<td><c:out value="${sprint.endDate}" /></td>
+						<td><c:out value="${sprint.project.name}" /></td>
 						<td>
 							<div class="buttonAction">
 								<a href="<c:url value="/sprint/${sprint.id}/edit"/>" class="btn btn-primary btn-sm" title="Edit"><i class="fa fa-pencil"></i></a>
@@ -103,8 +109,22 @@
 			$("#sprintId").val($(this).val());
 
 		});
+		
+		$("#projectFilter").on("change", function(){
+		    var opt = $(this).val();
+		    $("tr", "tbody").each(function(){
+		      var tr = $(this);
+		      tr.show();
+		      
+		      if (opt == "zero"){
+		        tr.show();
+		      } else if (! tr.hasClass(opt)){
+		        tr.hide();
+		      }
+		    });
+		  });
 
-		$('#projectFilter').on('change', function() {
+		/* $('#projectFilter').on('change', function() {
 			$("#projectId").val($('#projectFilter').val());
 			var projectId = $("#projectId").val();
 			var data = {
@@ -118,7 +138,7 @@
 				data : JSON.stringify(data),
 				success : function(result) {
 					var sprintList = "<table id='sprintListTable' class='table table-striped table-advance table-hover table-bordered table-fixed'>";
-					sprintList += "<thead><tr><th>No</th><th>Name</th><th>Description</th><th>Start Date</th><th>End Date</th><th>Action</th></tr></thead>";
+					sprintList += "<thead><tr><th>No</th><th>Name</th><th>Description</th><th>Start Date</th><th>End Date</th><th>Project Name</th><th>Action</th></tr></thead>";
 					sprintList += "<tbody>";
 					$.each(result, function(index, value) {
 						var sprintUrl = "<c:url value='/sprint/'/>"+value.id+"/edit";
@@ -137,6 +157,9 @@
 						sprintList +="</td>";
 						sprintList +="<td>";
 						sprintList += value.endDate;
+						sprintList +="</td>";
+						sprintList +="<td>";
+						sprintList += value.project.name;
 						sprintList +="</td>";
 						sprintList +="<td>";
 						sprintList +="<div class='buttonAction'>";
@@ -160,6 +183,6 @@
 					console.log("DONE");
 				}
 			});
-		});
+		}); */
 	});
 </script>
