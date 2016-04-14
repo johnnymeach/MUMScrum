@@ -68,7 +68,6 @@ public class SprintServiceImpl implements SprintService
 	
 	@Override
 	public List<Sprint> findSprintByProjectId(int id) {
-		
 		return sprintRepository.findByProjectId(id);
 	}
 	

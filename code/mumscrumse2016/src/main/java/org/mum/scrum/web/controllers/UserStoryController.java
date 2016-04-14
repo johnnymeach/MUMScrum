@@ -9,6 +9,8 @@ import org.mum.scrum.services.SprintService;
 import org.mum.scrum.services.UserService;
 import org.mum.scrum.services.UserStoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,9 +77,13 @@ public class UserStoryController {
 		return "redirect:/backlogs";
 	}
 	
-   @RequestMapping(value="/backlogs/{id}/{projectId}/edit/hello")
-   public @ResponseBody String sectionList(@RequestParam(value="projectId", required=true) int id){
-    return "hello";
+   @RequestMapping(value="/backlogs/11/3/hello")
+   @ResponseBody
+   public List<Sprint> sectionList(@RequestParam(value="projectId", required=true) int projectId){
+    List<Sprint> sprints = sprintService.findSprintByProjectId(projectId);
+    System.out.println(sprints.size());
+    return sprints;
+    //return new ResponseEntity<List<Sprint>>(sprintService.findSprintByProjectId(projectId), HttpStatus.OK);
    }
 	   
 	@RequestMapping(value="/backlogs/{id}/{projectId}/edit", method=RequestMethod.GET)
