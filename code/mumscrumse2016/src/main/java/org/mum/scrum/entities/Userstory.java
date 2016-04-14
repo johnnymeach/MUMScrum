@@ -28,6 +28,7 @@ public class Userstory implements java.io.Serializable {
 	private String description;
 	private Integer estimatedTime;
 	private Boolean status;
+	private Project project;
 	private Set<Timelog> timelogs = new HashSet<Timelog>(0);
 
 	public Userstory() {
@@ -71,13 +72,23 @@ public class Userstory implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "users_id")
+	@JoinColumn(name = "user_id")
 	public User getUser() {
 		return this.user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "project_id")
+	public Project getProject() {
+		return this.project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
 	}
 
 	@Column(name = "name", nullable = false, length = 100)

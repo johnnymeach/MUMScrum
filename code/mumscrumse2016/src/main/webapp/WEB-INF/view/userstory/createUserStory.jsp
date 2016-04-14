@@ -9,19 +9,24 @@
 	<hr>
 	<div>
 		<form:form class="form-horizontal" role="form" commandName="userstory" action="" method="post">
-
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="project">Project:</label>
+				<div class="col-sm-8">
+					<form:select path="project.id" items="${projects}" itemValue="id"
+						itemLabel="name" cssClass="form-control" />
+				</div>
+			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="name">User Story Title:</label>
 				<div class="col-sm-8">
-					<form:input path="name" cssClass="form-control"
+					<form:input path="name" cssClass="form-control" 
 						htmlEscape="true" placeholder="Enter title" required="true" />
 				</div>
 			</div>
-
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="description">Description:</label>
 				<div class="col-sm-8">
-					<form:textarea path="description" cssClass="form-control"
+					<form:textarea path="description" cssClass="form-control" rows="6" style="resize:none"
 						htmlEscape="true" placeholder="Enter description" required="true" />
 				</div>
 			</div>

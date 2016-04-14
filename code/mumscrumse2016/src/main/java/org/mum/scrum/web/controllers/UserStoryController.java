@@ -1,6 +1,9 @@
 package org.mum.scrum.web.controllers;
 
+import java.util.List;
+
 import org.mum.scrum.entities.*;
+import org.mum.scrum.services.ProjectService;
 import org.mum.scrum.services.UserStoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,9 +23,17 @@ public class UserStoryController {
 	@Autowired
 	private UserStoryService userStoryService;
 	
+	@Autowired
+	private ProjectService projectService;
+	
 	@ModelAttribute("userstory")
 	public Userstory getUserStory() {
 		return new Userstory();
+	}
+	
+	@ModelAttribute("projects")
+	public List<Project> getAllProject() {
+		return projectService.findAll();
 	}
 	
 	@RequestMapping(value="/backlogs", method=RequestMethod.GET)

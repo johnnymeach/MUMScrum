@@ -3,23 +3,39 @@
 	<div>
 		<h1>Backlogs</h1>
 	</div>
-
+	<form:form class="form-horizontal" role="form" commandName="userstory"
+		action="" method="post" id="formProjectList">
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="project">Project:</label>
+			<div class="col-sm-4">
+				<form:select path="project.id"  itemValue="id"
+					itemLabel="name" cssClass="form-control" id="projectFilter" >
+					<option value="zero">All</option>
+					<c:forEach items="${projects}" var="p">
+						<option value="${p.name}">${p.name}</option>
+					</c:forEach>
+				</form:select>
+			</div>
+		</div>
+	</form:form>
 	<table id="userStoryListTable"
 			class="table table-striped table-advance table-hover table-bordered table-fixed">
 			<colgroup>
-		       <col span="1" style="width: 10%;">
-		       <col span="1" style="width: 30%;">
-		       <col span="1" style="width: 10%;">
-		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 5%;">
+		       <col span="1" style="width: 20%;">
 		       <col span="1" style="width: 10%;">
 		       <col span="1" style="width: 10%;">
 		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 5%;">
 		       <col span="1" style="width: 10%;">
     		</colgroup>
 			<thead>
 				<tr>
 					<th>No</th>
 					<th>User story Title</th>
+					<th>Project</th>
 					<th>Developer</th>
 					<th>Sprint</th>
 					<th>Estimated Time</th>
@@ -31,20 +47,25 @@
 			<c:set var="id" value="${1}"/>
 			<tbody>
 				<c:forEach items="${userstories}" var="userstory">
-					<tr>
+					<tr class="${userstory.project.name}">
 						<td>${id}</td>
 						<c:set var="id" value="${id+1}"/>					
 						<td><c:out value="${userstory.name}" /></td>
+						<td><c:out value="${userstory.project.name}" /></td>
 						<td><c:out value="${userstory.user.firstName}" /></td>
 						<td><c:out value="${userstory.sprint.name}" /></td>
 						<td><c:out value="" /></td>
 						<td><c:out value="" /></td>
 						<td><c:out value="" /></td>
-						<td><a href="<c:url value="/backlogs/${userstory.id}/edit"/>"
-						class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-						<button data-target="#deleteuserstory" data-toggle="modal"
-							class="btn btn-primary btn-xs" name="userstory" value="${userstory.id}">
-							<i class="fa fa-remove text-danger"></i></button>
+						<td>
+							<div class="buttonAction">
+								<a href="<c:url value="/backlogs/${userstory.id}/edit"/>" class="btn btn-primary btn-sm">
+								<i class="fa fa-pencil"></i></a>
+							</div>
+							<button data-target="#deleteuserstory" data-toggle="modal"
+								class="btn btn-danger btn-sm" name="userstory" value="${userstory.id}">
+								<i class="fa fa-remove text-danger"></i>
+							</button>
 						</td>
 					</tr>
 				</c:forEach>
@@ -88,9 +109,20 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("button[name = 'userstory']").click(function(){
-			$("#userStoryId").val($(this).val());
-			console.log("Value of button : "+$("#userStoryId").val());
-			
+			$("#userStoryId").val($(this).val());			
 		});
+		$("#projectFilter").on("change", function(){
+		    var opt = $(this).val();
+		    $("tr", "tbody").each(function(){
+		      var tr = $(this);
+		      tr.show();
+		      
+		      if (opt == "zero"){
+		        tr.show();
+		      } else if (! tr.hasClass(opt)){
+		        tr.hide();
+		      }
+		    });
+		  });
 	});
 </script>
