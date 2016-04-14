@@ -1,6 +1,8 @@
 
 package org.mum.scrum.services;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -82,7 +84,11 @@ public class SprintServiceImpl implements SprintService
 	}
 	
 	public List<Integer> getRemainingTimeList(Sprint s){
-		List<Integer> list = null;
+		List<Integer> list = Collections.<Integer>emptyList();
+		return list;
+	}
+	public List<String> getRemainingTimeLabelList(Sprint s){
+		List<String> list = Collections.<String>emptyList();
 		return list;
 	}
 }
