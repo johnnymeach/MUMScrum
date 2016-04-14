@@ -54,12 +54,13 @@
 						<td><c:out value="${userstory.project.name}" /></td>
 						<td><c:out value="${userstory.user.firstName}" /></td>
 						<td><c:out value="${userstory.sprint.name}" /></td>
-						<td><c:out value="" /></td>
+						<td><c:out value="" />${userstory.estimatedTime}</td>
 						<td><c:out value="" /></td>
 						<td><c:out value="" /></td>
 						<td>
 							<div class="buttonAction">
-								<a href="<c:url value="/backlogs/${userstory.id}/edit"/>" class="btn btn-primary btn-sm">
+								<a href="<c:url value="/backlogs/${userstory.id}/${userstory.project.id}/edit"/>" 
+								class="btn btn-primary btn-sm">
 								<i class="fa fa-pencil"></i></a>
 							</div>
 							<button data-target="#deleteuserstory" data-toggle="modal"

@@ -59,7 +59,13 @@ public class SprintServiceImpl implements SprintService
 		
 		return sprintRepository.findByProject(project);
 	}
-
+	
+	@Override
+	public List<Sprint> findSprintByProjectId(int id) {
+		
+		return sprintRepository.findByProjectId(id);
+	}
+	
 	protected int getTotalEstimateTime(Sprint s){
 		return 0;
 	}

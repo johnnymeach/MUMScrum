@@ -14,6 +14,8 @@ public interface SprintService {
 	
 	public List<Sprint> findSprintByProject(Project project);
 	
+	public List<Sprint> findSprintByProjectId(int projectId);
+	
 	public void save(Sprint sprint);
 	
 	public void deleteSprint(int id);

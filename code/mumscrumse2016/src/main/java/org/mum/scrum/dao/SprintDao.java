@@ -9,4 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface SprintDao extends JpaRepository<Sprint, Integer> {
 
 	public List<Sprint> findByProject(Project project);
+	
+	public List<Sprint> findByProjectId(int id);
 }

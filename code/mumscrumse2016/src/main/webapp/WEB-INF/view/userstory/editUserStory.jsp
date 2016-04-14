@@ -12,8 +12,22 @@
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="project">Project:</label>
 					<div class="col-sm-8">
-						<form:select path="project.id" items="${projects}" itemValue="id"
+						<form:select path="project.id" items="${projects}" itemValue="id" id="projectFilter"
 							itemLabel="name" cssClass="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="sprint">Sprint:</label>
+					<div class="col-sm-8">
+						<form:select path="sprint.id" items="${sprints}" itemValue="id" id="sprintFilter"
+							itemLabel="name" cssClass="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="user">Users:</label>
+					<div class="col-sm-8">
+						<form:select path="user.id" items="${users}" itemValue="id" id="userFilter"
+							itemLabel="email" cssClass="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -23,15 +37,20 @@
 							htmlEscape="true" placeholder="Enter title" required="true" />
 					</div>
 				</div>
-	
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="name">Estimated Time (Days):</label>
+					<div class="col-sm-8">
+						<form:input path="estimatedTime" cssClass="form-control"
+							htmlEscape="true" placeholder="Enter Days"/>
+					</div>
+				</div>	
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="description">Description:</label>
 					<div class="col-sm-8">
-						<form:textarea path="description" cssClass="form-control"
+						<form:textarea path="description" cssClass="form-control" rows="6" style="resize:none"
 							htmlEscape="true" placeholder="Enter description" required="true" />
 					</div>
 				</div>
-	
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-8">
 						<input type="submit"
@@ -42,3 +61,22 @@
 		</div>
 	</fieldset>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+       $('#projectFilter').change(function()
+        {   
+    	   getSprints();
+        });
+    });
+    
+    function getSprints(){
+        $.getJSON(
+             "edit/hello", 
+             {projectId: $('#projectFilter').val()},
+             function(data) {
+                  alert('d');
+             }
+          );
+  	}
+</script>
