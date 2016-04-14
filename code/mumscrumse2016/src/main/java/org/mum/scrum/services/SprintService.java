@@ -23,4 +23,5 @@ public interface SprintService {
 	public List<Project> getAllProject();
 	
 	public List<Integer> getRemainingTimeList(Sprint s);
+	public List<String> getRemainingTimeLabelList(Sprint s);
 }
