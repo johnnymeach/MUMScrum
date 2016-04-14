@@ -9,9 +9,13 @@
 			<div class="col-sm-4">
 				<form:select path="project.id"  itemValue="id"
 					itemLabel="name" cssClass="form-control" id="projectFilter" >
-					<option value="0">All</option>
+					<%-- <option value="0">All</option>
 					<c:forEach items="${projects}" var="p">
-					<option value="${p.id}">${p.name }</option>
+						<option value="${p.id}">${p.name }</option>
+					</c:forEach> --%>
+					<option value="zero">All</option>
+					<c:forEach items="${projects}" var="p">
+						<option value="${p.name}">${p.name}</option>
 					</c:forEach>
 				</form:select>
 			</div>
@@ -37,7 +41,7 @@
 			<c:set var="id" value="${1}" />
 			<tbody>
 				<c:forEach items="${sprints}" var="sprint">
-					<tr>
+					<tr class="${sprint.project.name}">
 						<td>${id}</td>
 						<c:set var="id" value="${id+1}" />
 						<td><c:out value="${sprint.name}" /></td>
@@ -105,8 +109,22 @@
 			$("#sprintId").val($(this).val());
 
 		});
+		
+		$("#projectFilter").on("change", function(){
+		    var opt = $(this).val();
+		    $("tr", "tbody").each(function(){
+		      var tr = $(this);
+		      tr.show();
+		      
+		      if (opt == "zero"){
+		        tr.show();
+		      } else if (! tr.hasClass(opt)){
+		        tr.hide();
+		      }
+		    });
+		  });
 
-		$('#projectFilter').on('change', function() {
+		/* $('#projectFilter').on('change', function() {
 			$("#projectId").val($('#projectFilter').val());
 			var projectId = $("#projectId").val();
 			var data = {
@@ -165,6 +183,6 @@
 					console.log("DONE");
 				}
 			});
-		});
+		}); */
 	});
 </script>
