@@ -95,3 +95,7 @@ body {
 	float:left;
 	margin-right: 15px;
 }
+
+.alignLeft{
+	text-align: left;
+}

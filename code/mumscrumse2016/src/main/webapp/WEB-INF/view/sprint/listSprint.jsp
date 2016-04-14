@@ -1,10 +1,11 @@
 <%@ include file="/WEB-INF/view/include/taglib.jsp"%>
 
 <div class="content-panel">
+<h2>Sprint List</h2>
 	<form:form class="form-horizontal" role="form" commandName="sprint"
 		action="" method="post" id="formProjectList">
 		<div class="form-group">
-			<label class="control-label col-sm-1" for="project">Project:</label>
+			<label class="col-sm-offset-6 control-label col-sm-2" for="project">Filter By Project:</label>
 			<div class="col-sm-4">
 				<form:select path="project.id"  itemValue="id"
 					itemLabel="name" cssClass="form-control" id="projectFilter" >

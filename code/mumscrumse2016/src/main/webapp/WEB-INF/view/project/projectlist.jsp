@@ -1,7 +1,7 @@
 <%@ include file="/WEB-INF/view/include/taglib.jsp" %>
 <div class="content-panel">
 
-	Project List <a href="/mumscrum/createproject">Create Project</a><hr>
+	<h2>Project List</h2><hr>
 	<table id="projectListTable"
 		class="table table-striped table-advance table-hover table-bordered table-fixed">
 		<thead>
@@ -35,4 +35,8 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<span class="navbar-btn"> <a
+		href="<c:url value="/createproject"/>"
+		class="glyphicon glyphicon-plus btn btn-primary"> Add New Project</a>
+	</span>
 </div>
