@@ -76,15 +76,6 @@ public class UserStoryController {
 		userStoryService.addUserStory(userStory);
 		return "redirect:/backlogs";
 	}
-	
-   @RequestMapping(value="/backlogs/11/3/hello")
-   @ResponseBody
-   public List<Sprint> sectionList(@RequestParam(value="projectId", required=true) int projectId){
-    List<Sprint> sprints = sprintService.findSprintByProjectId(projectId);
-    System.out.println(sprints.size());
-    return sprints;
-    //return new ResponseEntity<List<Sprint>>(sprintService.findSprintByProjectId(projectId), HttpStatus.OK);
-   }
 	   
 	@RequestMapping(value="/backlogs/{id}/{projectId}/edit", method=RequestMethod.GET)
 	public String editUserStory(Model model, @PathVariable("id") int id, @PathVariable("projectId") int projectId) {
