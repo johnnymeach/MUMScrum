@@ -26,7 +26,7 @@
 					<th>Estimated Time (hours)</th>
 					<th>Completed Time (hours)</th>
 					<th>Status</th>
-					<th>Action</th>
+					<th>Add Time Log</th>
 				</tr>
 			</thead>
 			<c:set var="id" value="${1}"/>
