@@ -128,6 +128,7 @@ public class Sprint implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sprint")
+	@JsonIgnore
 	public Set<Userstory> getUserstories() {
 		return this.userstories;
 	}
