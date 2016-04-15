@@ -12,6 +12,7 @@ public interface UserStoryService {
 	public List<Userstory> getAllUserStories();
 	public List<Userstory> getAllUserStoriesByUserId(int userId);
 	public List<Userstory> getAllUserStoriesBySprintId(int sprintId);
+	public List<Userstory> getAllUserStoriesByEmail(String email);
 	
 	public void updateUserStory(Userstory userStory);
 	

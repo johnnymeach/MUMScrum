@@ -7,8 +7,9 @@
 	<table id="userStoryListTable"
 			class="table table-striped table-advance table-hover table-bordered table-fixed">
 			<colgroup>
+		       <col span="1" style="width: 5%;">
+		       <col span="1" style="width: 25%;">
 		       <col span="1" style="width: 10%;">
-		       <col span="1" style="width: 30%;">
 		       <col span="1" style="width: 10%;">
 		       <col span="1" style="width: 10%;">
 		       <col span="1" style="width: 10%;">
@@ -20,9 +21,10 @@
 				<tr>
 					<th>No</th>
 					<th>User story</th>
+					<th>Project</th>
 					<th>Sprint</th>
-					<th>Estimated Time</th>
-					<th>Completed Time</th>
+					<th>Estimated Time (hours)</th>
+					<th>Completed Time (hours)</th>
 					<th>Status</th>
 					<th>Action</th>
 				</tr>
@@ -34,6 +36,7 @@
 						<td>${id}</td>
 						<c:set var="id" value="${id+1}"/>					
 						<td><c:out value="${userstory.name}" /></td>
+						<td><c:out value="${userstory.project.name}" /></td>
 						<td><c:out value="${userstory.sprint.name}" /></td>
 						<td><c:out value="" />${userstory.estimatedTime}</td>
 						<td><c:out value="" />${userstory.estimatedTime}</td>

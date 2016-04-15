@@ -16,7 +16,7 @@ public interface UserService {
 
 	public User findUserByEmail(String email);
 	
-	public Set<User> getAvailableDeveloper();
+	public List<User> getAvailableDeveloper();
 
 	public Set<User> getAvailableTester();
 

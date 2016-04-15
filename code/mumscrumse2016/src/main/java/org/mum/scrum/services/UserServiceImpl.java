@@ -54,12 +54,6 @@ public class UserServiceImpl implements UserService
 	}
 
 	@Override
-	public Set<User> getAvailableDeveloper() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Set<User> getAvailableTester() {
 		// TODO Auto-generated method stub
 		return null;
@@ -76,7 +70,10 @@ public class UserServiceImpl implements UserService
 		// TODO Auto-generated method stub
 		return roleRepository.findAll();
 	}
-	
-	
+
+	@Override
+	public List<User> getAvailableDeveloper() {
+		return userRepository.findByRoleId(1);
+	}	
 }
 
