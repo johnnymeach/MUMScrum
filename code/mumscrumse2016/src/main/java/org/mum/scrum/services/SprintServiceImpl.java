@@ -3,16 +3,12 @@ package org.mum.scrum.services;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import org.mum.scrum.dao.ProjectDao;
-import org.mum.scrum.dao.RoleDao;
-import org.mum.scrum.dao.UserStoryDao;
-import org.mum.scrum.dao.SprintDao;
-import org.mum.scrum.entities.Project;
-import org.mum.scrum.entities.Sprint;
-import org.mum.scrum.entities.Userstory;
+import org.mum.scrum.dao.*;
+import org.mum.scrum.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +19,8 @@ public class SprintServiceImpl implements SprintService
 {
 	@Autowired
 	private UserStoryDao userstoryRepository;
+	@Autowired
+	private TimelogDao timelogRepository;
 	
 	@Autowired
 	private SprintDao sprintRepository;
@@ -71,23 +69,61 @@ public class SprintServiceImpl implements SprintService
 		return sprintRepository.findByProjectId(id);
 	}
 	
-	protected int getTotalEstimateTime(Sprint s){
-//		List<Userstory> list = userstoryRepository.findAllBySprintId(s.getId());
-		return 0;
+	protected int getTotalEstimateTime(List<Userstory> list){
+		int ret = 0;
+		for(int i = 0; i < list.size(); i++){
+			Userstory u = list.get(i);
+			ret += u.getEstimatedTime();
+		}
+		return ret;
 	}
-	protected int getLoggedTimeByDate(Sprint s, String date){
-		return 0;
+	protected int getLoggedTimeByDate(List<Timelog> list, Date date){
+		int hours = 0;
+		for(int j = 0; j < list.size(); j++){
+			Timelog tl = list.get(j);
+			if(tl.getUpdatedDate().compareTo(date) < 0){
+				hours += tl.getDuration();
+			}
+		}
+		return hours;
 	}
-	protected int getRemainingTimeByDate(Sprint s, String date){
-		return 0;
+	protected int getRemainingTimeByDate(List<Timelog> list, Date date, int total){
+		int ret = 0;
+		ret = total - this.getLoggedTimeByDate(list, date);
+		return ret;
 	}
 	
 	public List<Integer> getRemainingTimeList(Sprint s){
-		List<Integer> list = Collections.<Integer>emptyList();
+		List<Integer> list = new ArrayList<Integer>();
+		List<Userstory> backlog = userstoryRepository.findBySprintId(s.getId());
+		int total = this.getTotalEstimateTime(backlog);
+		List<Timelog> timelogs = new ArrayList<Timelog>();
+		for(int i = 0; i < backlog.size(); i++){
+			Userstory u = backlog.get(i);
+			List<Timelog> tmp = timelogRepository.findByUserstoryId(u.getId());
+			timelogs.addAll(tmp);
+		}
+		long ed = s.getEndDate().getTime();
+		long sd = s.getStartDate().getTime() - 15*1000*24*60*60;
+		long daynum = (ed - sd)/(1000*60*60*24);
+		Date date = s.getStartDate();
+		long t = sd;
+		for(int i = 0; i < daynum; i++){
+			int h = this.getRemainingTimeByDate(timelogs, date, total);
+			list.add(h);
+			t += 24*60*60;
+			date.setTime(t);
+		}
 		return list;
 	}
 	public List<String> getRemainingTimeLabelList(Sprint s){
-		List<String> list = Collections.<String>emptyList();
+		List<String> list = new ArrayList<String>();
+		long ed = s.getEndDate().getTime();
+		long sd = s.getStartDate().getTime() - 15*1000*24*60*60;
+		long daynum = (ed - sd)/(1000*60*60*24);
+		for(int i = 1; i <= daynum; i++){
+			list.add(Integer.toString(i));
+		}
 		return list;
 	}
 }
