@@ -83,7 +83,7 @@
 					var html = '';
 					var len = data.length;
 					for ( var i = 0; i < len; i++) {
-						html += '<option value="' + data[i].name + '">'
+						html += '<option value="' + data[i].id + '">'
 								+ data[i].name + '</option>';
 					}
 					html += '</option>';
