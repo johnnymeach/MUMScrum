@@ -51,6 +51,7 @@
 						htmlEscape="true" placeholder="Enter description" required="true" />
 				</div>
 			</div>
+			<input id="projectId" name="projectId" type="hidden" value="" />
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-8">
 					<input type="submit"
