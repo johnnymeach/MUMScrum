@@ -51,6 +51,7 @@
 							htmlEscape="true" placeholder="Enter description" required="true" />
 					</div>
 				</div>
+				<input id="projectId" name="projectId" type="hidden" value="" />
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-8">
 						<input type="submit"
@@ -68,6 +69,7 @@
         {   
     	   $("#projectId").val($('#projectFilter').val());
 			var projectId = $("#projectId").val();
+			console.log("Pid: "+projectId);
 			var data = {
 				"projectId" : projectId
 			};
@@ -78,7 +80,7 @@
 				url : url + projectId,
 				data : JSON.stringify(data),
 				success : function(data) {
-					var html = '<option value="">Select All</option>';
+					var html = '';
 					var len = data.length;
 					for ( var i = 0; i < len; i++) {
 						html += '<option value="' + data[i].name + '">'
@@ -98,13 +100,4 @@
         });
     });
     
-    /* function getSprints(){
-        $.getJSON(
-             "hello", 
-             {projectId: $('#projectFilter').val()},
-             function(data) {
-                  console.log("hello");
-             }
-          );
-  	} */
 </script>
