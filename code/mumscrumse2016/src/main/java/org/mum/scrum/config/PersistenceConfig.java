@@ -80,6 +80,10 @@ public class PersistenceConfig {
 		dataSource.setUrl(env.getProperty("jdbc.url"));
 		dataSource.setUsername(env.getProperty("jdbc.username"));
 		dataSource.setPassword(env.getProperty("jdbc.password"));
+		dataSource.setTestWhileIdle(true);
+		dataSource.setValidationQuery("SELECT 1");
+		dataSource.setTimeBetweenEvictionRunsMillis(3600);
+		dataSource.setMinEvictableIdleTimeMillis(3600);
 		return dataSource;
 	}
 		
