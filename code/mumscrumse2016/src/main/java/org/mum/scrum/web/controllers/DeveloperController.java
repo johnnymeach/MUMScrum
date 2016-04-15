@@ -64,7 +64,14 @@ public class DeveloperController {
 		timelog.setUserId(userService.findUserByEmail(userEmail).getId());
 		timelog.setUpdatedDate(new Date());
 		timelogService.save(timelog);
-		userStory.setCompletedTime(userStory.getCompletedTime() + timelog.getDuration());
+		if(userStory.getCompletedTime() != null)
+		{
+			userStory.setCompletedTime(userStory.getCompletedTime() + timelog.getDuration());
+		}
+		else
+		{
+			userStory.setCompletedTime(timelog.getDuration());
+		}
 		userStoryService.updateUserStory(userStory);
 		return "redirect:/developer";
 	}
