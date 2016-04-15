@@ -55,7 +55,7 @@
 						<td><c:out value="${userstory.user.firstName}" /></td>
 						<td><c:out value="${userstory.sprint.name}" /></td>
 						<td><c:out value="" />${userstory.estimatedTime}</td>
-						<td><c:out value="" /></td>
+						<td><c:out value="" />${userstory.completedTime}</td>
 						<td><c:out value="" /></td>
 						<td>
 							<div class="buttonAction">
