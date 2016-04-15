@@ -14,13 +14,6 @@
 					<div class="col-sm-8">
 						<form:select path="project.id" items="${projects}" itemValue="id" id="projectFilter"
 							itemLabel="name" cssClass="form-control" />
-							<%-- <form:select path="project.id"  itemValue="id"
-					itemLabel="name" cssClass="form-control" id="projectFilter" >
-						<option value="0">All</option>
-						<c:forEach items="${projects}" var="p">
-							<option value="${p.id}">${p.name }</option>
-						</c:forEach>
-						</form:select> --%>
 					</div>
 				</div>
 				<div class="form-group">

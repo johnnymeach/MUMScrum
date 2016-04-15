@@ -12,14 +12,14 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="project">Project:</label>
 				<div class="col-sm-8">
-					<form:select path="project.id" items="${projects}" itemValue="id"
+					<form:select path="project.id" items="${projects}" itemValue="id" id="projectFilter"
 						itemLabel="name" cssClass="form-control" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="sprint">Sprint:</label>
 				<div class="col-sm-8">
-					<form:select path="sprint.id" items="${sprints}" itemValue="id"
+					<form:select path="sprint.id" items="${sprints}" itemValue="id" id="sprintFilter"
 						itemLabel="name" cssClass="form-control" />
 				</div>
 			</div>
@@ -61,3 +61,42 @@
 	</div>
 	</fieldset>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+       $('#projectFilter').change(function()
+        {   
+    	   $("#projectId").val($('#projectFilter').val());
+			var projectId = $("#projectId").val();
+			console.log("Pid: "+projectId);
+			var data = {
+				"projectId" : projectId
+			};
+			var url = "<c:url value='/sprint/'/>";
+			$.ajax({
+				type : "GET",
+				contentType : "application/json",
+				url : url + projectId,
+				data : JSON.stringify(data),
+				success : function(data) {
+					var html = '';
+					var len = data.length;
+					for ( var i = 0; i < len; i++) {
+						html += '<option value="' + data[i].name + '">'
+								+ data[i].name + '</option>';
+					}
+					html += '</option>';
+	 
+					$('#sprintFilter').html(html);
+				},
+				error : function(xhr, status, exception) {
+					console.log(xhr, status, exception);
+				},
+				done : function(e) {
+					console.log("DONE");
+				}
+			});
+        });
+    });
+    
+</script>
