@@ -28,3 +28,12 @@ var data = {
 	}
 new Chart(ctx).Bar(data);
 </script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#sprint").on("change", function(){
+		    var opt = $(this).val();
+		    location.href = "/mumscrum/burndownchart/" + opt;
+		  }); 
+	});
+</script>
