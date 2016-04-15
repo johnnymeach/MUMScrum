@@ -104,14 +104,14 @@ public class SprintServiceImpl implements SprintService
 			timelogs.addAll(tmp);
 		}
 		long ed = s.getEndDate().getTime();
-		long sd = s.getStartDate().getTime() - 15*1000*24*60*60;
+		long sd = s.getStartDate().getTime();
 		long daynum = (ed - sd)/(1000*60*60*24);
 		Date date = s.getStartDate();
 		long t = sd;
 		for(int i = 0; i < daynum; i++){
 			int h = this.getRemainingTimeByDate(timelogs, date, total);
 			list.add(h);
-			t += 24*60*60;
+			t += 24*60*60*1000;
 			date.setTime(t);
 		}
 		return list;
@@ -119,7 +119,7 @@ public class SprintServiceImpl implements SprintService
 	public List<String> getRemainingTimeLabelList(Sprint s){
 		List<String> list = new ArrayList<String>();
 		long ed = s.getEndDate().getTime();
-		long sd = s.getStartDate().getTime() - 15*1000*24*60*60;
+		long sd = s.getStartDate().getTime() ;
 		long daynum = (ed - sd)/(1000*60*60*24);
 		for(int i = 1; i <= daynum; i++){
 			list.add(Integer.toString(i));
