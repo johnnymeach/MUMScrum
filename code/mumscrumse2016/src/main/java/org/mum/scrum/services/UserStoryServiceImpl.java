@@ -50,4 +50,9 @@ public class UserStoryServiceImpl implements UserStoryService {
 	public List<Userstory> getAllUserStoriesBySprintId(int sprintId){
 		return userStoryRepository.findBySprintId(sprintId);
 	}
+
+	@Override
+	public List<Userstory> getAllUserStoriesByEmail(String email) {
+		return userStoryRepository.findByUserEmail(email);
+	}
 }

@@ -24,7 +24,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="user">Users:</label>
+					<label class="control-label col-sm-2" for="user">Users (email):</label>
 					<div class="col-sm-8">
 						<form:select path="user.id" items="${users}" itemValue="id" id="userFilter"
 							itemLabel="email" cssClass="form-control" />
@@ -38,7 +38,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="name">Estimated Time (Days):</label>
+					<label class="control-label col-sm-2" for="name">Estimated Time (hours):</label>
 					<div class="col-sm-8">
 						<form:input path="estimatedTime" cssClass="form-control"
 							htmlEscape="true" placeholder="Enter Days"/>

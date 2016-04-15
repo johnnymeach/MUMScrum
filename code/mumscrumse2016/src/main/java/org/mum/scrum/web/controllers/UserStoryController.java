@@ -55,7 +55,7 @@ public class UserStoryController {
 	
 	@ModelAttribute("users")
 	public List<User> getAllUsers() {
-		return userService.findAll();
+		return userService.getAvailableDeveloper();
 	}
 	
 	@RequestMapping(value="/backlogs", method=RequestMethod.GET)
