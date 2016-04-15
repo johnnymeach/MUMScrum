@@ -65,8 +65,14 @@
 
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
+    	UpdateSprint();
        $('#projectFilter').change(function()
         {   
+    	   UpdateSprint();
+        });
+       
+       function UpdateSprint()
+       {
     	   $("#projectId").val($('#projectFilter').val());
 			var projectId = $("#projectId").val();
 			console.log("Pid: "+projectId);
@@ -97,7 +103,6 @@
 					console.log("DONE");
 				}
 			});
-        });
+       }
     });
-    
 </script>
