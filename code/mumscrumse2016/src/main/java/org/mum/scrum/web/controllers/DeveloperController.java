@@ -1,6 +1,7 @@
 package org.mum.scrum.web.controllers;
 
 import java.util.Date;
+import java.util.Set;
 
 import org.mum.scrum.entities.*;
 import org.mum.scrum.services.TimelogService;
@@ -48,18 +49,28 @@ public class DeveloperController {
 	
 	@RequestMapping(value = "/developerUS/{id}/edit", method=RequestMethod.GET)
 	public String editDeveloperUserStory(Model model, @PathVariable("id") int id) {
+		Userstory userstory = userStoryService.getUserStoryById(id);
 		Timelog timelog = new Timelog();
-		timelog.setUserstory(userStoryService.getUserStoryById(id));
+		timelog.setUserstory(userstory);
 		model.addAttribute("timelog", timelog);	
+		//model.addAttribute("completedTime", getCompletedTime(userstory.getTimelogs()));	
 		return "editDeveloper";
 	}
 	
 	@RequestMapping(value = "/developerUS/{id}/edit", method = RequestMethod.POST)
 	public String saveDeveloperUserStory(Timelog timelog, @PathVariable("id") int id) {
-		timelog.setUserstory(userStoryService.getUserStoryById(id));
+		Userstory userStory = userStoryService.getUserStoryById(id);
+		timelog.setUserstory(userStory);
 		timelog.setUserId(userService.findUserByEmail(userEmail).getId());
 		timelog.setUpdatedDate(new Date());
 		timelogService.save(timelog);
+		userStory.setCompletedTime(userStory.getCompletedTime() + timelog.getDuration());
+		userStoryService.updateUserStory(userStory);
 		return "redirect:/developer";
+	}
+	
+	public int getCompletedTime(Set<Timelog> timelogs)
+	{
+		return timelogs.stream().mapToInt(Timelog::getDuration).sum();
 	}
 }

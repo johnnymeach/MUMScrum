@@ -27,8 +27,15 @@
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="name">Completed Time (hours):</label>
 					<div class="col-sm-8">
+						 <form:input path="userstory.completedTime" cssClass="form-control" readonly="true"
+							htmlEscape="true" placeholder="Enter title" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="name">Today Completed Time (hours):</label>
+					<div class="col-sm-8">
 						<form:input path="duration" cssClass="form-control"
-							htmlEscape="true" placeholder="Update time in hours" required="true" />
+							htmlEscape="true" placeholder="Enter time log for today" required="true" />
 					</div>
 				</div>	
 				<div class="form-group">

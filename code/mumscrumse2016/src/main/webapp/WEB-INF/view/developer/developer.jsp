@@ -39,7 +39,7 @@
 						<td><c:out value="${userstory.project.name}" /></td>
 						<td><c:out value="${userstory.sprint.name}" /></td>
 						<td><c:out value="" />${userstory.estimatedTime}</td>
-						<td><c:out value="" />${userstory.estimatedTime}</td>
+						<td><c:out value="" />${userstory.completedTime}</td>
 						<td><c:out value="" /></td>
 						<td><a href="<c:url value="/developerUS/${userstory.id}/edit"/>"
 						class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>

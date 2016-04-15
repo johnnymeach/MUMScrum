@@ -40,7 +40,6 @@ CREATE TABLE `projects` (
 
 LOCK TABLES `projects` WRITE;
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;
-INSERT INTO `projects` VALUES (3,'First Project 2','sdfds',2,NULL),(4,'New Project X','sdf sdf',2,NULL);
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,7 +88,7 @@ CREATE TABLE `sprints` (
   PRIMARY KEY (`id`),
   KEY `fk_project_id_idx` (`project_id`),
   CONSTRAINT `fk_project_id` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +97,6 @@ CREATE TABLE `sprints` (
 
 LOCK TABLES `sprints` WRITE;
 /*!40000 ALTER TABLE `sprints` DISABLE KEYS */;
-INSERT INTO `sprints` VALUES (1,'dfgdfgdf sdfgdf','dfgdfg','2016-04-14','2016-04-28',NULL,3,NULL);
 /*!40000 ALTER TABLE `sprints` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +116,7 @@ CREATE TABLE `timelogs` (
   PRIMARY KEY (`id`),
   KEY `fk_userstory_id_idx` (`userstory_id`),
   CONSTRAINT `fk_userstory_id` FOREIGN KEY (`userstory_id`) REFERENCES `userstory` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +147,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `fk_role_id_idx` (`role_id`),
   CONSTRAINT `fk_role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,7 +156,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Sokly','Meach','meachsokly@gmail.com','$2a$10$bJ3lCLfd.VaIlDYdDmw/jO4YLSgeWUIiO2lVWgcxixthB73CfCYW.',3,NULL,NULL),(2,'Sudeep','Pradhan','pradhan_sudeep@hotmail.com','$2a$10$nh.KAJxnSfZDE78ySGtEnO4c2OF7d1G9aF.DsB3.r6Ce.6rqEJVzy',2,NULL,NULL),(3,'Admin','admin','admin@hotmail.com','$2a$10$qr9uE5S7L.NAS685drkJ7ub.rLQjf1A8UGifKUcbHK6Xr4mlH871.',3,NULL,NULL),(4,'sudeep','Pradhan','dev@hotmail.com','$2a$10$/W5Xc2A4LwolfW3y81HPGO/mafD1.C6EdZzFZ1fulKx71PzQbely6',1,NULL,NULL);
+INSERT INTO `users` VALUES (1,'Sokly','Meach','meachsokly@gmail.com','$2a$10$bJ3lCLfd.VaIlDYdDmw/jO4YLSgeWUIiO2lVWgcxixthB73CfCYW.',3,NULL,NULL),(2,'Sudeep','Pradhan','pradhan_sudeep@hotmail.com','$2a$10$nh.KAJxnSfZDE78ySGtEnO4c2OF7d1G9aF.DsB3.r6Ce.6rqEJVzy',2,NULL,NULL),(3,'Admin','admin','admin@hotmail.com','$2a$10$qr9uE5S7L.NAS685drkJ7ub.rLQjf1A8UGifKUcbHK6Xr4mlH871.',3,NULL,NULL),(4,'sudeep','Pradhan','dev@hotmail.com','$2a$10$/W5Xc2A4LwolfW3y81HPGO/mafD1.C6EdZzFZ1fulKx71PzQbely6',1,NULL,NULL),(5,'Developer A','Last name','devA@hotmail.com','$2a$10$9B8MHQFCPrVAb4FufQswp.iicujgEc32kQOLDHI68JVwgRiMUZ6jm',1,NULL,NULL),(6,'Developer B','Last name','DevB@hotmail.com','$2a$10$v95nFPJhbQ6rzHQOWptZtumM2uxKVK9HkFCCCqR4iiqdlgiCXcf2y',1,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,6 +177,7 @@ CREATE TABLE `userstory` (
   `user_id` int(11) DEFAULT NULL,
   `assignedDate` date DEFAULT NULL,
   `project_id` int(11) NOT NULL,
+  `completedTime` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_sprint_id_idx` (`sprint_id`),
   KEY `fk_userUS_id_idx` (`user_id`),
@@ -186,7 +185,7 @@ CREATE TABLE `userstory` (
   CONSTRAINT `fk_projectUS_id` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_sprint_id` FOREIGN KEY (`sprint_id`) REFERENCES `sprints` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_userUS_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -207,4 +206,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-13 13:51:31
+-- Dump completed on 2016-04-14 23:25:23

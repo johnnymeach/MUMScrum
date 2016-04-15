@@ -30,6 +30,7 @@ public class Userstory implements java.io.Serializable {
 	private Boolean status;
 	private Project project;
 	private Set<Timelog> timelogs = new HashSet<Timelog>(0);
+	private Integer completedTime;
 
 	public Userstory() {
 	}
@@ -135,5 +136,13 @@ public class Userstory implements java.io.Serializable {
 	public void setTimelogs(Set<Timelog> timelogs) {
 		this.timelogs = timelogs;
 	}
+	
+	@Column(name = "completedTime")
+	public Integer getCompletedTime() {
+		return this.completedTime;
+	}
 
+	public void setCompletedTime(Integer completedTime) {
+		this.completedTime = completedTime;
+	}
 }
