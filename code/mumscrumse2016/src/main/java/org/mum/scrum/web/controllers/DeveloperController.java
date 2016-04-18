@@ -1,9 +1,11 @@
 package org.mum.scrum.web.controllers;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import org.mum.scrum.entities.*;
+import org.mum.scrum.services.ProjectService;
 import org.mum.scrum.services.TimelogService;
 import org.mum.scrum.services.UserService;
 import org.mum.scrum.services.UserStoryService;
@@ -32,10 +34,18 @@ public class DeveloperController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private ProjectService projectService;
+	
 	private String userEmail;
 	@ModelAttribute("userstory")
 	public Userstory getUserStory() {
 		return new Userstory();
+	}
+	
+	@ModelAttribute("projects")
+	public List<Project> getAllProjects() {
+		return projectService.findAll();
 	}
 	
 	@RequestMapping(value = "/developer", method=RequestMethod.GET)

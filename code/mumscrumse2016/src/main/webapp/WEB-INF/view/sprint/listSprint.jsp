@@ -29,7 +29,7 @@
 			class="table table-striped table-advance table-hover table-bordered table-fixed">
 			<thead>
 				<tr>
-					<th>No</th>
+					<th>ID</th>
 					<th>Name</th>
 					<th>Description</th>
 					<th>Start Date</th>
@@ -38,12 +38,10 @@
 					<th width="10%">Action</th>
 				</tr>
 			</thead>
-			<c:set var="id" value="${1}" />
 			<tbody>
 				<c:forEach items="${sprints}" var="sprint">
 					<tr class="${sprint.project.name}">
-						<td>${id}</td>
-						<c:set var="id" value="${id+1}" />
+						<td><c:out value="${sprint.id}" /></td>
 						<td><c:out value="${sprint.name}" /></td>
 						<td><c:out value="${sprint.description}" /></td>
 						<td><c:out value="${sprint.startDate}" /></td>
