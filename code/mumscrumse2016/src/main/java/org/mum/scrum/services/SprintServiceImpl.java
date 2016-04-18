@@ -1,6 +1,7 @@
 
 package org.mum.scrum.services;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -121,8 +122,11 @@ public class SprintServiceImpl implements SprintService
 		long ed = s.getEndDate().getTime();
 		long sd = s.getStartDate().getTime() ;
 		long daynum = (ed - sd)/(1000*60*60*24);
+		SimpleDateFormat dt = new SimpleDateFormat("MM-dd"); 
 		for(int i = 1; i <= daynum; i++){
-			list.add(Integer.toString(i));
+			Date n = new Date(sd);
+			sd += (1000*60*60*24);
+			list.add(dt.format(n));
 		}
 		return list;
 	}
