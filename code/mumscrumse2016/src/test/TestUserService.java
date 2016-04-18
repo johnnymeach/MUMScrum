@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.mum.scrum.entities.User;
 import org.mum.scrum.services.UserService;
 
+@RunWith(SpringJUnit4ClassRunner.class)
 public class TestUserService {
 //	@Autowired
 //	private UserService userService;
