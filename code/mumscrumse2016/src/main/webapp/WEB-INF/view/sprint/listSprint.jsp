@@ -35,7 +35,7 @@
 					<th>Start Date</th>
 					<th>End Date</th>
 					<th>Project Name</th>
-					<th>Action</th>
+					<th width="10%">Action</th>
 				</tr>
 			</thead>
 			<c:set var="id" value="${1}" />

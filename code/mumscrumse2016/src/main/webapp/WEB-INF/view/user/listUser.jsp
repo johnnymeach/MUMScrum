@@ -10,7 +10,7 @@
 				<th>Last Name</th>
 				<th>Email</th>
 				<th>Role</th>
-				<th>Action</th>
+				<th width="10%">Action</th>
 			</tr>
 		</thead>
 		<c:set var="id" value="${1}" />

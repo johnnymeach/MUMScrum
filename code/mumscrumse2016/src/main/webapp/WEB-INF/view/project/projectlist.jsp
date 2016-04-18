@@ -10,7 +10,7 @@
 				<th>Project Name</th>
 				<th>Project Description</th>
 				<th>Scrum Master</th>
-				<th>Action</th>
+				<th width="10%">Action</th>
 			</tr>
 		</thead>
 		<tbody>
