@@ -51,7 +51,7 @@ public class BurndownchartController {
 	private  <T> String  listToString(List<T> tl){
 		String tls = "[";
 		for(int i = 0; i < tl.size(); i++){
-			tls = tls + tl.get(i);
+			tls = tls + "'" + tl.get(i) + "'";
 			if(i == tl.size() - 1){
 			
 			}else{
