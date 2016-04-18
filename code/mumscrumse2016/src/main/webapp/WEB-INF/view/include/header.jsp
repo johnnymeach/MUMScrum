@@ -9,10 +9,10 @@
 					<%-- <i class="fa"><a href="<c:url value="/createuser"/>">Create New User</a></i> --%>
 					</sec:authorize>
 					<sec:authorize access="hasAnyRole('Scrum Master')">
-					<i class="navbar-btn"><a class="glyphicon glyphicon-list btn btn-default btnMenuHeader" href="/mumscrum/sprint">  Sprint</a></i>
-					<i class="navbar-btn"><a class="glyphicon glyphicon-th-list btn btn-default btnMenuHeader" href="/mumscrum/projectlist">  Project</a></i>
-					<i class="navbar-btn"><a class="glyphicon glyphicon-stats btn btn-default btnMenuHeader" href="/mumscrum/report">  Report</a></i>
-					<i class="navbar-btn"><a class="glyphicon glyphicon-file btn btn-default btnMenuHeader" href="/mumscrum/backlogs">  Backlogs</a></i>
+					<i class="navbar-btn"><a class="glyphicon glyphicon-list btn btn-default btnMenuHeader" href="<c:url value="/sprint"/>">  Sprint</a></i>
+					<i class="navbar-btn"><a class="glyphicon glyphicon-th-list btn btn-default btnMenuHeader" href="<c:url value="projectlist"/>">  Project</a></i>
+					<i class="navbar-btn"><a class="glyphicon glyphicon-stats btn btn-default btnMenuHeader" href="<c:url value="/report"/>">  Report</a></i>
+					<i class="navbar-btn"><a class="glyphicon glyphicon-file btn btn-default btnMenuHeader" href="<c:url value="/backlogs"/>">  Backlogs</a></i>
 					</sec:authorize>
 					
 				</div>
