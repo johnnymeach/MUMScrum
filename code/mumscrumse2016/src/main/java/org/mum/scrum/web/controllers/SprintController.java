@@ -103,6 +103,8 @@ public class SprintController {
 
 		Sprint editedSprint = sprintService.findSprintByID(id);
 		editedSprint.setName(sprint.getName());
+		editedSprint.setStartDate(sprint.getStartDate());
+		editedSprint.setEndDate(sprint.getEndDate());
 		editedSprint.setDescription(sprint.getDescription());
 		editedSprint.setProject(sprint.getProject());
 		sprintService.save(editedSprint);
