@@ -33,7 +33,7 @@ new Chart(ctx).Bar(data);
 	$(document).ready(function() {
 		$("#sprint").on("change", function(){
 		    var opt = $(this).val();
-		    location.href = "<c:url value="/burndownchart/">" + opt;
+		    location.href = "<c:url value="/burndownchart"/>" + opt;
 		  }); 
 	});
 </script>
