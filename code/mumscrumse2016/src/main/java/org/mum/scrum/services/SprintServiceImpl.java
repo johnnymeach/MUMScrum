@@ -106,7 +106,7 @@ public class SprintServiceImpl implements SprintService
 		long ed = s.getEndDate().getTime();
 		long sd = s.getStartDate().getTime();
 		long daynum = (ed - sd)/(1000*60*60*24);
-		Date date = s.getStartDate();
+		Date date = new Date(sd);
 		long t = sd;
 		for(int i = 0; i < daynum; i++){
 			int h = this.getRemainingTimeByDate(timelogs, date, total);
