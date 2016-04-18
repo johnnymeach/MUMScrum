@@ -19,15 +19,19 @@
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="sprint">Sprint:</label>
 					<div class="col-sm-8">
-						<form:select path="sprint.id" items="${sprints}" itemValue="id" id="sprintFilter"
-							itemLabel="name" cssClass="form-control" />
+						<form:select id="sprintFilter" path="sprint.id" cssClass="form-control">
+							<form:option value="">Not Selected (Optional)</form:option>
+							<form:options items="${sprints}" itemLabel="name" itemValue="id"/>
+						</form:select>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="user">Users (email):</label>
 					<div class="col-sm-8">
-						<form:select path="user.id" items="${users}" itemValue="id" id="userFilter"
-							itemLabel="email" cssClass="form-control" />
+						<form:select id="userFilter" path="user.id" cssClass="form-control">
+							<form:option value="">Not Selected (Optional)</form:option>
+							<form:options items="${users}" itemLabel="email" itemValue="id"/>
+						</form:select>
 					</div>
 				</div>
 				<div class="form-group">
@@ -66,7 +70,6 @@
 
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
-    	UpdateSprint();
        $('#projectFilter').change(function()
         {   
     	   UpdateSprint();
@@ -87,7 +90,7 @@
 				url : url + projectId,
 				data : JSON.stringify(data),
 				success : function(data) {
-					var html = '';
+					var html = '<option value="">Not Selected (Optional)</option>';
 					var len = data.length;
 					for ( var i = 0; i < len; i++) {
 						html += '<option value="' + data[i].id + '">'

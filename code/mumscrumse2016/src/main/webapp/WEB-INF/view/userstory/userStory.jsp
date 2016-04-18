@@ -52,7 +52,7 @@
 						<c:set var="id" value="${id+1}"/>					
 						<td><c:out value="${userstory.name}" /></td>
 						<td><c:out value="${userstory.project.name}" /></td>
-						<td><c:out value="${userstory.user.firstName}" /></td>
+						<td><c:out value="${userstory.user.email}" /></td>
 						<td><c:out value="${userstory.sprint.name}" /></td>
 						<td><c:out value="" />${userstory.estimatedTime}</td>
 						<td><c:out value="" />${userstory.completedTime}</td>
@@ -86,7 +86,8 @@
 					<button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">Do you want to delete this user story?</h4>
+					<h4 class="modal-title" id="myModalLabel">Do you want to delete this user story?
+					All the time logs associated with the user story will also be deleted.</h4>
 				</div>
 				<div class="modal-body">
 					<form id="formDeleteUserStory" method="post"

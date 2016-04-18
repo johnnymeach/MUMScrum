@@ -3,6 +3,8 @@ package org.mum.scrum.entities;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -128,7 +130,7 @@ public class Userstory implements java.io.Serializable {
 		this.status = status;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userstory")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userstory", cascade = CascadeType.ALL, orphanRemoval = true)
 	public Set<Timelog> getTimelogs() {
 		return this.timelogs;
 	}
