@@ -34,15 +34,24 @@ public class BurndownchartController {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("burndownchart");
 		List<Sprint> list = sprintService.findAll();
-		Sprint s = list.get(0);
-		model.addObject("sprints", list);
-		model.addObject("selectedId", s.getId());
+		if(list.size() > 0){
+			Sprint s = list.get(0);
+			model.addObject("sprints", list);
+			model.addObject("selectedId", s.getId());
+			List<Integer> tl = sprintService.getRemainingTimeList(s);
+			String tls = this.listToString(tl);
+			model.addObject("timelist", tls);
+
+			List<String> tll = sprintService.getRemainingTimeLabelList(s);
+			String tlls = this.listToString(tll);
+			model.addObject("timelabellist", tlls);
+		}
 		return model;
 	}
 	private  <T> String  listToString(List<T> tl){
 		String tls = "[";
 		for(int i = 0; i < tl.size(); i++){
-			tls = tls + tl.get(i);
+			tls = tls + "'" + tl.get(i) + "'";
 			if(i == tl.size() - 1){
 			
 			}else{
@@ -59,13 +68,15 @@ public class BurndownchartController {
 		model.addAttribute("sprints", list);
 		model.addAttribute("selectedId", id);
 		Sprint s = sprintService.findSprintByID(id);
-		List<Integer> tl = sprintService.getRemainingTimeList(s);
-		String tls = this.listToString(tl);
-		model.addAttribute("timelist", tls);
-		
-		List<String> tll = sprintService.getRemainingTimeLabelList(s);
-		String tlls = this.listToString(tll);
-		model.addAttribute("timelabellist", tlls);
+		if(s != null){
+			List<Integer> tl = sprintService.getRemainingTimeList(s);
+			String tls = this.listToString(tl);
+			model.addAttribute("timelist", tls);
+
+			List<String> tll = sprintService.getRemainingTimeLabelList(s);
+			String tlls = this.listToString(tll);
+			model.addAttribute("timelabellist", tlls);
+		}
 		return "burndownchart";
 
 	}
