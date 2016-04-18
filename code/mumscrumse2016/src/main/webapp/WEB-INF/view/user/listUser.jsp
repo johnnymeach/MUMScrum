@@ -13,35 +13,40 @@
 				<th>Action</th>
 			</tr>
 		</thead>
-		<c:set var="id" value="${1}"/>
+		<c:set var="id" value="${1}" />
 		<tbody>
 			<c:forEach items="${users}" var="user">
-				<tr>
-					<td>${id}</td>
-					<c:set var="id" value="${id+1}"/>					
-					<td><c:out value="${user.firstName}" /></td>
-					<td><c:out value="${user.lastName}" /></td>
-					<td><c:out value="${user.email}" /></td>
-					<td><c:out value="${user.role.name}" /></td>
-					<td>
-						<div class="buttonAction">
-							<a href="<c:url value="/user/${user.id}/edit"/>" class="btn btn-primary btn-sm" title="Edit"><i class="fa fa-pencil"></i></a>
-						</div>
-						<div>
-							<button data-target="#deleteuser" data-toggle="modal" class="btn btn-danger btn-sm" name="user" value="${user.id}" title="Delete">
-							<i class="fa fa-remove"></i>
-							</button>
-						</div>
+				<c:if test="${pageContext.request.userPrincipal.name != user.email}">
+					<tr>
+						<td>${id}</td>
+						<c:set var="id" value="${id+1}" />
+						<td><c:out value="${user.firstName}" /></td>
+						<td><c:out value="${user.lastName}" /></td>
+						<td><c:out value="${user.email}" /></td>
+						<td><c:out value="${user.role.name}" /></td>
+						<td>
+							<div class="buttonAction">
+								<a href="<c:url value="/user/${user.id}/edit"/>"
+									class="btn btn-primary btn-sm" title="Edit"><i
+									class="fa fa-pencil"></i></a>
+							</div>
+							<div>
+								<button data-target="#deleteuser" data-toggle="modal"
+									class="btn btn-danger btn-sm" name="user" value="${user.id}"
+									title="Delete">
+									<i class="fa fa-remove"></i>
+								</button>
+							</div>
 						</td>
-				</tr>
+					</tr>
+				</c:if>
 			</c:forEach>
 		</tbody>
 	</table>
-	<span class="navbar-btn"> <a
-		href="<c:url value="/createuser"/>"
+	<span class="navbar-btn"> <a href="<c:url value="/createuser"/>"
 		class="glyphicon glyphicon-plus btn btn-primary"> Add User</a>
 	</span>
-	
+
 	<!-- Modal For Delete User -->
 	<div class="modal fade" id="deleteuser" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
@@ -51,12 +56,14 @@
 					<button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">Do you want to delete this user?</h4>
+					<h4 class="modal-title" id="myModalLabel">Do you want to
+						delete this user?</h4>
 				</div>
 				<div class="modal-body">
 					<form id="formDeleteUser" method="post"
-						action="<spring:url value="/deleteuser" />" class="form-horizontal">
-						
+						action="<spring:url value="/deleteuser" />"
+						class="form-horizontal">
+
 						<input id="userId" name="userId" type="hidden" value="" /> <input
 							type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
@@ -74,12 +81,11 @@
 </div>
 
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("button[name = 'user']").click(function(){
+	$(document).ready(function() {
+		$("button[name = 'user']").click(function() {
 			//console.log("Value of button : "+$(this).val());
 			$("#userId").val($(this).val());
-			console.log("Value of button : "+$("#userId").val());
-			
+
 		});
 	});
 </script>
