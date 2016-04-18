@@ -1,5 +1,6 @@
 package org.mum.scrum.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.mum.scrum.dao.TimelogDao;
@@ -21,5 +22,9 @@ public class TimelogServiceImpl implements TimelogService{
 	}
 	public List<Timelog> findTimelogByUserstoryId(int id){
 		return timelogDao.findByUserstoryId(id);
+	}
+	
+	public Timelog findByUserstoryIdAndUpdatedDate(int id, Date date){
+		return timelogDao.findByUserstoryIdAndUpdatedDate(id, date);
 	}
 }

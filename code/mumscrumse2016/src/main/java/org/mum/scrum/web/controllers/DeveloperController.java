@@ -50,10 +50,13 @@ public class DeveloperController {
 	@RequestMapping(value = "/developerUS/{id}/edit", method=RequestMethod.GET)
 	public String editDeveloperUserStory(Model model, @PathVariable("id") int id) {
 		Userstory userstory = userStoryService.getUserStoryById(id);
-		Timelog timelog = new Timelog();
-		timelog.setUserstory(userstory);
+		Timelog timelog = timelogService.findByUserstoryIdAndUpdatedDate(id, new Date());
+		if(timelog == null)
+		{
+			timelog = new Timelog();
+			timelog.setUserstory(userstory);
+		}
 		model.addAttribute("timelog", timelog);	
-		//model.addAttribute("completedTime", getCompletedTime(userstory.getTimelogs()));	
 		return "editDeveloper";
 	}
 	
@@ -62,16 +65,11 @@ public class DeveloperController {
 		Userstory userStory = userStoryService.getUserStoryById(id);
 		timelog.setUserstory(userStory);
 		timelog.setUserId(userService.findUserByEmail(userEmail).getId());
+		
 		timelog.setUpdatedDate(new Date());
 		timelogService.save(timelog);
-		if(userStory.getCompletedTime() != null)
-		{
-			userStory.setCompletedTime(userStory.getCompletedTime() + timelog.getDuration());
-		}
-		else
-		{
-			userStory.setCompletedTime(timelog.getDuration());
-		}
+		userStory.setCompletedTime(timelog.getDuration());
+		
 		userStoryService.updateUserStory(userStory);
 		return "redirect:/developer";
 	}
