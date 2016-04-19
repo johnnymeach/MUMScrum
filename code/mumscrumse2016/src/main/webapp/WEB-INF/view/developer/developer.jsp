@@ -34,9 +34,9 @@
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th>User story</th>
-					<th>Project</th>
-					<th>Sprint</th>
+					<th>User Story Title</th>
+					<th>Project Name</th>
+					<th>Sprint Name</th>
 					<th>Estimated Time (hours)</th>
 					<th>Completed Time (hours)</th>
 					<th>Status</th>
