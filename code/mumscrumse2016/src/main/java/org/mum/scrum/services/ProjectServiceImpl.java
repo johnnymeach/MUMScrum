@@ -33,11 +33,6 @@ public class ProjectServiceImpl implements ProjectService{
 	}
 	public void deleteProjectByID(int id){
 		Project p = this.findProjectByID(id);
-		List<Sprint> list = ss.findSprintByProject(p);
-		for(int i =0; i < list.size(); i++){
-			Sprint s = list.get(i);
-			ss.deleteSprint(s.getId());
-		}
 		projectRepository.delete(id);
 	}
 }
