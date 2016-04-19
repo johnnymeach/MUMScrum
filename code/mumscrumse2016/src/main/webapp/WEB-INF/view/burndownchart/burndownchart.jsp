@@ -30,8 +30,11 @@ var data = {
 				data : ${expectedtimelist}
 			}
 		]
-	}
-new Chart(ctx).Bar(data);
+	};
+var options = {
+		bezierCurve : false,
+}
+new Chart(ctx).Line(data,options);
 </script>
 
 <script type="text/javascript">
