@@ -11,6 +11,7 @@ import org.mum.scrum.entities.Project;
 import org.mum.scrum.entities.Sprint;
 import org.mum.scrum.services.ProjectService;
 import org.mum.scrum.services.SprintService;
+import org.mum.scrum.util.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpStatus;
@@ -91,10 +92,16 @@ public class SprintController {
 	
 
 	@RequestMapping(value = "/sprint/{id}/edit", method = RequestMethod.GET)
-	public String editUser(Model model, @PathVariable("id") int id) {
+	public String editUser(Model model, @PathVariable("id") String id) {
 
-		Sprint sprint = sprintService.findSprintByID(id);
-		model.addAttribute("sprint", sprint);
+		try{
+			int sId = Integer.parseInt(id);
+			Sprint sprint = sprintService.findSprintByID(sId);
+			model.addAttribute("sprint", sprint);
+		}catch(Exception e){
+			throw new ResourceNotFoundException();
+		}
+		
 		return "editsprint";
 	}
 
@@ -113,18 +120,23 @@ public class SprintController {
 	
 	@RequestMapping(value = "/sprint/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<List<Sprint>> listSprintByProject(@PathVariable("id") int projectId) {
+	public ResponseEntity<List<Sprint>> listSprintByProject(@PathVariable("id") String projectId) {
 
-		HttpStatus httpStatus = HttpStatus.OK;
-		Project project = projectService.findProjectByID(projectId);
 		List<Sprint> listSprint;
-		if(project == null){
-			listSprint = sprintService.findAll();
-		}else{
-			listSprint = sprintService.findSprintByProject(project);
+		try{
+			int pId = Integer.parseInt(projectId);
+			Project project = projectService.findProjectByID(pId);
+			if(project == null){
+				listSprint = sprintService.findAll();
+			}else{
+				listSprint = sprintService.findSprintByProject(project);
+			}
+		}catch(Exception e){
+			throw new ResourceNotFoundException();
 		}
 		
-		return new ResponseEntity<List<Sprint>>(listSprint, httpStatus);
+		
+		return new ResponseEntity<List<Sprint>>(listSprint, HttpStatus.OK);
 	}
 
 }

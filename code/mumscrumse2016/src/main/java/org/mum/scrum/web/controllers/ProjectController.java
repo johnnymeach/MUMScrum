@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.mum.scrum.entities.Project;
 import org.mum.scrum.entities.User;
 import org.mum.scrum.services.UserService;
+import org.mum.scrum.util.ResourceNotFoundException;
 import org.mum.scrum.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -34,11 +35,17 @@ public class ProjectController {
 		return new Project();
 	}
 	@RequestMapping(value = "/project/{id}/edit", method = RequestMethod.GET)
-	public String project(Model model, @PathVariable("id") int id) {
-		Project p = pm.findProjectByID(id);
-		model.addAttribute("project", p);
-		List<User> users = adminManager.findAll();
-		model.addAttribute("users", users);
+	public String project(Model model, @PathVariable("id") String id) {
+		try{
+			int pId = Integer.parseInt(id);
+			Project p = pm.findProjectByID(pId);
+			model.addAttribute("project", p);
+			List<User> users = adminManager.findAll();
+			model.addAttribute("users", users);
+		}catch(Exception e){
+			throw new ResourceNotFoundException();
+		}
+		
 		return "project";
 
 	}
@@ -77,8 +84,14 @@ public class ProjectController {
 
 	}
 	@RequestMapping(value = "/projectdelete/{id}", method = RequestMethod.GET)
-	public String projectdelete(Model model, @PathVariable("id") int id) {
-		pm.deleteProjectByID(id);
+	public String projectdelete(Model model, @PathVariable("id") String id) {
+		try{
+			int pId = Integer.parseInt(id);
+			pm.deleteProjectByID(pId);
+		}catch(Exception e){
+			throw new ResourceNotFoundException();
+		}
+		
 		return "redirect:/projectlist";
 
 	}

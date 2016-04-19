@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.mum.scrum.entities.Role;
 import org.mum.scrum.entities.User;
 import org.mum.scrum.services.UserService;
+import org.mum.scrum.util.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -87,10 +88,16 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/user/{id}/edit", method = RequestMethod.GET)
-	public String editUser(Model model, @PathVariable("id") int id) {
-
-		User user = userService.findUserByID(id);
-		model.addAttribute("user", user);
+	public String editUser(Model model, @PathVariable("id") String id) {
+		
+		try{
+			int uId = Integer.parseInt(id);
+			User user = userService.findUserByID(uId);
+			model.addAttribute("user", user);
+		}catch(Exception e){
+			throw new ResourceNotFoundException();
+		}
+		
 		return "edituser";
 	}
 

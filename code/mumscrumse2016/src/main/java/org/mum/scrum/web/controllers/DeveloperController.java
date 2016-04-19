@@ -9,6 +9,7 @@ import org.mum.scrum.services.ProjectService;
 import org.mum.scrum.services.TimelogService;
 import org.mum.scrum.services.UserService;
 import org.mum.scrum.services.UserStoryService;
+import org.mum.scrum.util.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -58,29 +59,42 @@ public class DeveloperController {
 	}
 	
 	@RequestMapping(value = "/developerUS/{id}/edit", method=RequestMethod.GET)
-	public String editDeveloperUserStory(Model model, @PathVariable("id") int id) {
-		Userstory userstory = userStoryService.getUserStoryById(id);
-		Timelog timelog = timelogService.findByUserstoryIdAndUpdatedDate(id, new Date());
-		if(timelog == null)
-		{
-			timelog = new Timelog();
-			timelog.setUserstory(userstory);
+	public String editDeveloperUserStory(Model model, @PathVariable("id") String id) {
+		try{
+			int usId = Integer.parseInt(id);
+			Userstory userstory = userStoryService.getUserStoryById(usId);
+			Timelog timelog = timelogService.findByUserstoryIdAndUpdatedDate(usId, new Date());
+			if(timelog == null)
+			{
+				timelog = new Timelog();
+				timelog.setUserstory(userstory);
+			}
+			model.addAttribute("timelog", timelog);	
+		}catch(Exception e){
+			throw new ResourceNotFoundException();
 		}
-		model.addAttribute("timelog", timelog);	
+		
 		return "editDeveloper";
 	}
 	
 	@RequestMapping(value = "/developerUS/{id}/edit", method = RequestMethod.POST)
-	public String saveDeveloperUserStory(Timelog timelog, @PathVariable("id") int id) {
-		Userstory userStory = userStoryService.getUserStoryById(id);
-		timelog.setUserstory(userStory);
-		timelog.setUserId(userService.findUserByEmail(userEmail).getId());
+	public String saveDeveloperUserStory(Timelog timelog, @PathVariable("id") String id) {
 		
-		timelog.setUpdatedDate(new Date());
-		timelogService.save(timelog);
-		userStory.setCompletedTime(timelog.getDuration());
+		try{
+			int usId = Integer.parseInt(id);
+			Userstory userStory = userStoryService.getUserStoryById(usId);
+			timelog.setUserstory(userStory);
+			timelog.setUserId(userService.findUserByEmail(userEmail).getId());
+			
+			timelog.setUpdatedDate(new Date());
+			timelogService.save(timelog);
+			userStory.setCompletedTime(timelog.getDuration());
+			
+			userStoryService.updateUserStory(userStory);
+		}catch(Exception e){
+			throw new ResourceNotFoundException();
+		}
 		
-		userStoryService.updateUserStory(userStory);
 		return "redirect:/developer";
 	}
 	

@@ -6,7 +6,7 @@
 				<div id="menu-toggle" class="btnMenu" >
 					<%-- <i class="navbar-btn"><a class="glyphicon glyphicon-home btn btn-default btnMenuHeader" href="<c:url value="/"/>">  Home</a></i> --%>
 					<sec:authorize access="hasAnyRole('System Admin')">					
-					<%-- <i class="fa"><a href="<c:url value="/createuser"/>">Create New User</a></i> --%>
+					<i class="navbar-btn"><a class="glyphicon glyphicon-home btn btn-default btnMenuHeader" href="<c:url value="/"/>">  Home</a></i>
 					</sec:authorize>
 					<sec:authorize access="hasAnyRole('Scrum Master')">
 					<i class="navbar-btn"><a class="glyphicon glyphicon-stats btn btn-default btnMenuHeader" href="<c:url value="/burndownchart"/>">  Report</a></i>
