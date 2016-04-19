@@ -10,28 +10,57 @@
 					</select>
 					</div>
 <div class="col-sm-10">
-<div id="graph">
-<canvas id="myChart" width="800" height="400"></canvas>
+ <div id="container"></div>
+    			</div>
+
 </div>
-</div>
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+
 <script type="text/javascript">
-var ctx = document.getElementById("myChart").getContext("2d");
-var data = {
-		labels : ${timelabellist},
-		datasets : [
-			{
-				fillColor : "rgba(151,187,205,0.5)",
-				strokeColor : "rgba(151,187,205,1)",
-				data : ${timelist}
-			},
-			{
-				fillColor : "rgba(91,137,155,0.5)",
-				strokeColor : "rgba(111,147,165,1)",
-				data : ${expectedtimelist}
-			}
-		]
-	}
-new Chart(ctx).Bar(data);
+$(function () {
+	
+    $('#container').highcharts({
+        title: {
+            text: 'Burn Down Chart',
+            x: -20 //center
+        },
+        subtitle: {
+            text: '${SprintName}',
+            x: -20
+        },
+        xAxis: {
+            categories: ${timelabellist},
+        },
+        yAxis: {
+            title: {
+                text: 'Effort'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: 'hour(s)'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        
+        series: [ {
+            name: 'Original Estimation',
+            data: ${expectedtimelist}
+        }, {
+            name: 'Remaining Time',
+            data: ${timelist}
+        }]
+    }); 
+});
 </script>
 
 <script type="text/javascript">
