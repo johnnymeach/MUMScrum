@@ -54,7 +54,7 @@
 						<td><c:out value="" />${userstory.completedTime}</td>
 						<td><c:out value="" /></td>
 						<td><a href="<c:url value="/developerUS/${userstory.id}/edit"/>"
-						class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+						class="btn btn-primary btn-xs"><i class="fa fa-plus"></i></a>
 					</tr>
 				</c:forEach>
 			</tbody>
