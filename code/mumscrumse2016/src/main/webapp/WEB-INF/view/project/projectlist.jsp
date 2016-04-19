@@ -1,14 +1,14 @@
 <%@ include file="/WEB-INF/view/include/taglib.jsp" %>
 <div class="content-panel">
 
-	<h2>Project List</h2><hr>
+	<h2>Projects</h2><hr>
 	<table id="projectListTable"
 		class="table table-striped table-advance table-hover table-bordered table-fixed">
 		<thead>
 			<tr>
 				<th>ID</th>
-				<th>Project Name</th>
-				<th>Project Description</th>
+				<th>Name</th>
+				<th>Description</th>
 				<th>Scrum Master</th>
 				<th width="10%">Action</th>
 			</tr>

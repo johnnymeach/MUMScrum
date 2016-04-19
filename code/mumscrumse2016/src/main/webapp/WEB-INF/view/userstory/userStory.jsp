@@ -6,7 +6,7 @@
 	<form:form class="form-horizontal" role="form" commandName="userstory"
 		action="" method="post" id="formProjectList">
 		<div class="form-group">
-			<label class="control-label col-sm-1" for="project">Project:</label>
+			<label class="col-sm-offset-6 control-label col-sm-2" for="project">Filter By Project:</label>
 			<div class="col-sm-4">
 				<form:select path="project.id"  itemValue="id"
 					itemLabel="name" cssClass="form-control" id="projectFilter" >
@@ -22,41 +22,36 @@
 			class="table table-striped table-advance table-hover table-bordered table-fixed">
 			<colgroup>
 		       <col span="1" style="width: 5%;">
+		       <col span="1" style="width: 30%;">
 		       <col span="1" style="width: 20%;">
 		       <col span="1" style="width: 10%;">
 		       <col span="1" style="width: 10%;">
-		       <col span="1" style="width: 10%;">
-		       <col span="1" style="width: 10%;">
-		       <col span="1" style="width: 10%;">
+		       <col span="1" style="width: 5%;">
 		       <col span="1" style="width: 5%;">
 		       <col span="1" style="width: 10%;">
     		</colgroup>
 			<thead>
 				<tr>
-					<th>No</th>
+					<th>ID</th>
 					<th>User story Title</th>
-					<th>Project</th>
+					<th>Project Name</th>
 					<th>Developer</th>
 					<th>Sprint</th>
 					<th>Estimated Time</th>
 					<th>Completed Time</th>
-					<th>Status</th>
 					<th>Action</th>
 				</tr>
 			</thead>
-			<c:set var="id" value="${1}"/>
 			<tbody>
 				<c:forEach items="${userstories}" var="userstory">
-					<tr class="${userstory.project.name}">
-						<td>${id}</td>
-						<c:set var="id" value="${id+1}"/>					
+					<tr class="${userstory.project.name}">	
+						<td><c:out value="${userstory.id}" /></td>			
 						<td><c:out value="${userstory.name}" /></td>
 						<td><c:out value="${userstory.project.name}" /></td>
 						<td><c:out value="${userstory.user.email}" /></td>
 						<td><c:out value="${userstory.sprint.name}" /></td>
 						<td><c:out value="" />${userstory.estimatedTime}</td>
 						<td><c:out value="" />${userstory.completedTime}</td>
-						<td><c:out value="" /></td>
 						<td>
 							<div class="buttonAction">
 								<a href="<c:url value="/backlogs/${userstory.id}/${userstory.project.id}/edit"/>" 
