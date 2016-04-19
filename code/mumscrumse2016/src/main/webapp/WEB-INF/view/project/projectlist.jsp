@@ -7,8 +7,8 @@
 		<thead>
 			<tr>
 				<th>ID</th>
-				<th>Project Name</th>
-				<th>Project Description</th>
+				<th>Name</th>
+				<th>Description</th>
 				<th>Scrum Master</th>
 				<th width="10%">Action</th>
 			</tr>

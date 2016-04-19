@@ -28,19 +28,17 @@
 		       <col span="1" style="width: 10%;">
 		       <col span="1" style="width: 5%;">
 		       <col span="1" style="width: 5%;">
-		       <col span="1" style="width: 5%;">
 		       <col span="1" style="width: 10%;">
     		</colgroup>
 			<thead>
 				<tr>
 					<th>ID</th>
 					<th>User story Title</th>
-					<th>Project</th>
+					<th>Project Name</th>
 					<th>Developer</th>
 					<th>Sprint</th>
 					<th>Estimated Time</th>
 					<th>Completed Time</th>
-					<th>Status</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -54,7 +52,6 @@
 						<td><c:out value="${userstory.sprint.name}" /></td>
 						<td><c:out value="" />${userstory.estimatedTime}</td>
 						<td><c:out value="" />${userstory.completedTime}</td>
-						<td><c:out value="" /></td>
 						<td>
 							<div class="buttonAction">
 								<a href="<c:url value="/backlogs/${userstory.id}/${userstory.project.id}/edit"/>" 
