@@ -4,6 +4,8 @@ package org.mum.scrum.entities;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -127,7 +129,7 @@ public class Sprint implements java.io.Serializable {
 		this.status = status;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sprint")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sprint",  cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnore
 	public Set<Userstory> getUserstories() {
 		return this.userstories;

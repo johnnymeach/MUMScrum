@@ -80,7 +80,7 @@
 						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 					</button>
 					<h4 class="modal-title" id="myModalLabel">Do you want to
-						delete this user?</h4>
+						delete this sprint? All the User Stories associated with this sprint will also be deleted.</h4>
 				</div>
 				<div class="modal-body">
 					<form id="formDeleteSprint" method="post"
