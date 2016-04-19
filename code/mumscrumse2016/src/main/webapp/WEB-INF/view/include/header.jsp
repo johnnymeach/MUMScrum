@@ -37,9 +37,9 @@
 					  		<span class="name color-white">${pageContext.request.userPrincipal.name} </span> &nbsp;<i class="fa fa-angle-down color-white"></i>
 					  	</a>
 					  	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-					   	 	<li><a href="#"><i class="fa fa-credit-card"></i> <span>Profile</span></a></li>
+					   	 	<!-- <li><a href="#"><i class="fa fa-credit-card"></i> <span>Profile</span></a></li>
 					   	 	<li><a href="#"><i class="fa fa-cogs"></i> <span>Change Password</span></a></li>				   	 	
-					   	 	<li class="divider"></li>
+					   	 	<li class="divider"></li> -->
 					   	 	<li>
 					   	 	<c:url value="/logout" var="logoutUrl" />
 							<form action="${logoutUrl}" method="post" id="logoutForm">

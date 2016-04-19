@@ -39,7 +39,7 @@
 											 </c:if>
 	                                    </p>
 	                                </div>
-	                                <p id="forgotPassword"><a href="#">Forgot your password?</a></p>
+	                                <p id="forgotPassword"><a href="#"><!-- Forgot your password? --></a></p>
 	                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Login" />
 	                            </fieldset>
 	                        </div>
