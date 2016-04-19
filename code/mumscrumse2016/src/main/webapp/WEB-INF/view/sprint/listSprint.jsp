@@ -1,7 +1,7 @@
 <%@ include file="/WEB-INF/view/include/taglib.jsp"%>
 
 <div class="content-panel">
-<h2>Sprint List</h2>
+<h2>Sprints</h2>
 	<form:form class="form-horizontal" role="form" commandName="sprint"
 		action="" method="post" id="formProjectList">
 		<div class="form-group">
