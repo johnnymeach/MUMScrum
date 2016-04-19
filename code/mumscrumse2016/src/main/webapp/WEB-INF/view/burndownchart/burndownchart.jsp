@@ -16,11 +16,13 @@
 </div>
 
 <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 <script type="text/javascript">
 $(function () {
 	
     $('#container').highcharts({
+    	colors :['#0066ff', '#f7a35c'],
         title: {
             text: 'Burn Down Chart',
             x: -20 //center
