@@ -52,8 +52,10 @@ public class LoginController {
 		if(validationService.checkAuthority("System Admin")){
 			return "redirect:/listuser";
 		}
-		if(validationService.checkAuthority("Developer")){
+		else if(validationService.checkAuthority("Developer")){
 			return "redirect:/developer";
+		}else if(validationService.checkAuthority("Scrum Master")){
+			return "redirect:/burndownchart";
 		}
 		return "index";
 
