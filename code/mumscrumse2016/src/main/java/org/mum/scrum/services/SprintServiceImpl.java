@@ -93,7 +93,20 @@ public class SprintServiceImpl implements SprintService
 		ret = total - this.getLoggedTimeByDate(list, date);
 		return ret;
 	}
-	
+	public List<Integer> getExpectedTimeList(Sprint s){
+		List<Integer> list = new ArrayList<Integer>();
+		long ed = s.getEndDate().getTime();
+		long sd = s.getStartDate().getTime();
+		long daynum = (ed - sd)/(1000*60*60*24);
+		List<Userstory> backlog = userstoryRepository.findBySprintId(s.getId());
+		int total = this.getTotalEstimateTime(backlog);
+		int g = (int) (total/daynum);
+		for(int i = 0; i < daynum - 1; i++){
+			list.add(total - g * i);
+		}
+		list.add(0);
+		return list;
+	}
 	public List<Integer> getRemainingTimeList(Sprint s){
 		List<Integer> list = new ArrayList<Integer>();
 		List<Userstory> backlog = userstoryRepository.findBySprintId(s.getId());

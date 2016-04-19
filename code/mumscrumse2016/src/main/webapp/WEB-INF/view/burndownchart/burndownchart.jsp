@@ -23,6 +23,11 @@ var data = {
 				fillColor : "rgba(151,187,205,0.5)",
 				strokeColor : "rgba(151,187,205,1)",
 				data : ${timelist}
+			},
+			{
+				fillColor : "rgba(91,137,155,0.5)",
+				strokeColor : "rgba(111,147,165,1)",
+				data : ${expectedtimelist}
 			}
 		]
 	}

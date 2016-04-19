@@ -42,6 +42,10 @@ public class BurndownchartController {
 			String tls = this.listToString(tl);
 			model.addObject("timelist", tls);
 
+			List<Integer> etl = sprintService.getExpectedTimeList(s);
+			String etls = this.listToString(etl);
+			model.addObject("expectedtimelist", etls);
+			
 			List<String> tll = sprintService.getRemainingTimeLabelList(s);
 			String tlls = this.listToString(tll);
 			model.addObject("timelabellist", tlls);
@@ -72,6 +76,10 @@ public class BurndownchartController {
 			List<Integer> tl = sprintService.getRemainingTimeList(s);
 			String tls = this.listToString(tl);
 			model.addAttribute("timelist", tls);
+			
+			List<Integer> etl = sprintService.getExpectedTimeList(s);
+			String etls = this.listToString(etl);
+			model.addAttribute("expectedtimelist", etls);
 
 			List<String> tll = sprintService.getRemainingTimeLabelList(s);
 			String tlls = this.listToString(tll);
