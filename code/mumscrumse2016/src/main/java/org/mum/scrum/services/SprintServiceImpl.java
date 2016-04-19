@@ -126,11 +126,15 @@ public class SprintServiceImpl implements SprintService
 		long daynum = this.daynum(ed,  sd);
 		Date date = new Date(sd);
 		long t = sd;
+		Date now = new Date();
 		for(int i = 0; i < daynum; i++){
 			int h = this.getRemainingTimeByDate(timelogs, date, total);
 			list.add(h);
 			t += 24*60*60*1000;
 			date.setTime(t);
+			if(date.compareTo(now) > 0){
+				break;
+			}
 		}
 		return list;
 	}
