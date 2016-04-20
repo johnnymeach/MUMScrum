@@ -104,9 +104,10 @@ public class SprintServiceImpl implements SprintService
 		long daynum = this.daynum(ed,  sd);
 		List<Userstory> backlog = userstoryRepository.findBySprintId(s.getId());
 		int total = this.getTotalEstimateTime(backlog);
-		int g = (int) (total/daynum);
-		for(int i = 0; i < daynum - 1; i++){
-			list.add(total - g * i);
+		long g = Math.round((double) total/daynum);
+		list.add(total);
+		for(int i = 1; i < daynum ; i++){
+			list.add((int)(total - g * i));
 		}
 		list.add(0);
 		return list;
@@ -141,8 +142,8 @@ public class SprintServiceImpl implements SprintService
 	public List<String> getRemainingTimeLabelList(Sprint s){
 		List<String> list = new ArrayList<String>();
 		long ed = s.getEndDate().getTime();
-		long sd = s.getStartDate().getTime() ;
-		long daynum = this.daynum(ed,  sd);
+		long sd = s.getStartDate().getTime();
+		long daynum = this.daynum(ed,  sd) + 1;
 		SimpleDateFormat dt = new SimpleDateFormat("MM-dd"); 
 		for(int i = 1; i <= daynum; i++){
 			Date n = new Date(sd);
