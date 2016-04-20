@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -83,16 +84,9 @@ public class ProjectController {
 		return model;
 
 	}
-	@RequestMapping(value = "/projectdelete/{id}", method = RequestMethod.GET)
-	public String projectdelete(Model model, @PathVariable("id") String id) {
-		try{
-			int pId = Integer.parseInt(id);
-			pm.deleteProjectByID(pId);
-		}catch(Exception e){
-			throw new ResourceNotFoundException();
-		}
-		
+	@RequestMapping(value = "/projectdelete", method = RequestMethod.POST)
+	public String projectdelete(@RequestParam(value = "projectId") int projectId) {
+		pm.deleteProjectByID(projectId);
 		return "redirect:/projectlist";
-
 	}
 }
