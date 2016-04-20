@@ -10,14 +10,14 @@
 	<div>
 		<form:form class="form-horizontal" role="form" commandName="userstory" action="" method="post">
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="project">Project:</label>
+				<label class="control-label col-sm-2" for="projectFilter">Project:</label>
 				<div class="col-sm-8">
 					<form:select path="project.id" items="${projects}" itemValue="id" id="projectFilter"
 						itemLabel="name" cssClass="form-control" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="sprint">Sprint:</label>
+				<label class="control-label col-sm-2" for="sprintFilter">Sprint:</label>
 				<div class="col-sm-8">
 					<form:select id="sprintFilter" path="sprint.id" cssClass="form-control">
 						<form:options items="${sprints}" itemLabel="name" itemValue="id"/>
@@ -25,7 +25,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="user">Users (email):</label>
+				<label class="control-label col-sm-2" for="userFilter">Users (email):</label>
 				<div class="col-sm-8">
 					<form:select id="userFilter" path="user.id" cssClass="form-control">
 						<form:option value="">Not Selected (Optional)</form:option>
@@ -34,24 +34,24 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="name">User Story Title:</label>
+				<label class="control-label col-sm-2" for="USName">User Story Title:</label>
 				<div class="col-sm-8">
-					<form:input path="name" cssClass="form-control" 
+					<form:input path="name" cssClass="form-control" id="USName"
 						htmlEscape="true" placeholder="Enter title" required="true" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="name">Estimated Time (hours):</label>
+				<label class="control-label col-sm-2" for="EstTime">Estimated Time (hours):</label>
 				<div class="col-sm-8">
-					<form:input path="estimatedTime" cssClass="form-control"
+					<form:input path="estimatedTime" cssClass="form-control" id="EstTime"
 						htmlEscape="true" placeholder="Enter Days (Optional)"/>
 				</div>
 			</div>	
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="description">Description:</label>
+				<label class="control-label col-sm-2" for="Desc">Description:</label>
 				<div class="col-sm-8">
 					<form:textarea path="description" cssClass="form-control" rows="6" style="resize:none"
-						htmlEscape="true" placeholder="Enter description" required="true" />
+						htmlEscape="true" placeholder="Enter description" required="true" id="Desc"/>
 				</div>
 			</div>
 			<input id="projectId" name="projectId" type="hidden" value="" />
@@ -78,7 +78,6 @@
        {
     	   $("#projectId").val($('#projectFilter').val());
 			var projectId = $("#projectId").val();
-			console.log("Pid: "+projectId);
 			var data = {
 				"projectId" : projectId
 			};
