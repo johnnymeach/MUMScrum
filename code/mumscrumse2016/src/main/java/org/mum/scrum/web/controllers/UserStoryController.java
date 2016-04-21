@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@PreAuthorize("hasRole('Scrum Master')")
+@PreAuthorize("hasAnyRole('Scrum Master','Product Owner')")
 public class UserStoryController {
 	
 	@Autowired

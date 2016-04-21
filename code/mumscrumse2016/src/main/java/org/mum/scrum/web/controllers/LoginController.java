@@ -37,10 +37,7 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 	
-	/*@ModelAttribute("role")
-	private String getUserRole(){
-		return SecurityContextHolder.getContext().getAuthentication().getName();
-	}*/
+	
 	@Autowired 
 	private ValidationService validationService;
 	@ExceptionHandler(ResourceNotFoundException.class)
@@ -54,7 +51,7 @@ public class LoginController {
 		}
 		else if(validationService.checkAuthority("Developer")){
 			return "redirect:/developer";
-		}else if(validationService.checkAuthority("Scrum Master")){
+		}else if(validationService.checkAuthority("Scrum Master") || validationService.checkAuthority("Product Owner")){
 			return "redirect:/burndownchart";
 		}
 		return "index";
