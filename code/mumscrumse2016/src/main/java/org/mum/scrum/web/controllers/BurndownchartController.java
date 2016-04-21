@@ -5,6 +5,7 @@ import org.mum.scrum.entities.*;
 import org.mum.scrum.services.*;
 import org.mum.scrum.util.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-
+@PreAuthorize("hasAnyRole('Scrum Master','Product Owner')")
 public class BurndownchartController {
 	@Autowired
 	private ProjectService pm;
