@@ -6,7 +6,7 @@
 	<form:form class="form-horizontal" role="form" commandName="userstory"
 		action="" method="post" id="formProjectList">
 		<div class="form-group">
-			<label class="col-sm-offset-6 control-label col-sm-2" for="project">Filter By Project:</label>
+			<label class="col-sm-offset-6 control-label col-sm-2" for="projectFilter">Filter By Project:</label>
 			<div class="col-sm-4">
 				<form:select path="project.id"  itemValue="id"
 					itemLabel="name" cssClass="form-control" id="projectFilter" >
