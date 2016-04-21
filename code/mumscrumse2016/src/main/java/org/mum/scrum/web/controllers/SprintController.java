@@ -62,7 +62,7 @@ public class SprintController {
 	}
 
 	@RequestMapping(value = "/createsprint", method = RequestMethod.POST)
-	public String createUser(@Valid @ModelAttribute("sprint") Sprint sprint, BindingResult result, Model model) {
+	public String createSprint(@Valid @ModelAttribute("sprint") Sprint sprint, BindingResult result, Model model) {
 
 		if (result.hasErrors()) {
 			model.addAttribute("errors", result.getAllErrors());
@@ -92,7 +92,7 @@ public class SprintController {
 	
 
 	@RequestMapping(value = "/sprint/{id}/edit", method = RequestMethod.GET)
-	public String editUser(Model model, @PathVariable("id") String id) {
+	public String searchSprintByID(Model model, @PathVariable("id") String id) {
 
 		try{
 			int sId = Integer.parseInt(id);

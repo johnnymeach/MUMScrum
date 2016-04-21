@@ -88,7 +88,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/user/{id}/edit", method = RequestMethod.GET)
-	public String editUser(Model model, @PathVariable("id") String id) {
+	public String searchUserByID(Model model, @PathVariable("id") String id) {
 		
 		try{
 			int uId = Integer.parseInt(id);
