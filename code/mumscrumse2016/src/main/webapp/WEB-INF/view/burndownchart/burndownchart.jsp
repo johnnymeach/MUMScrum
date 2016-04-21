@@ -2,7 +2,7 @@
 <div class="content-panel">
 	<h2>Burndown Chart</h2>
 	
-	<div class="form-group" style="margin-right: -15px;">
+	<div class="form-group">
 		<form class="form-horizontal">
 			<label class="col-sm-offset-6 control-label col-sm-2" for="sprint">Filter By Sprint:</label>
 			<div class="col-sm-4">
